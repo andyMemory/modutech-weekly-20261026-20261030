@@ -3,9 +3,9 @@
 <html data-mode="light" data-style="80" data-theme="paper" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
-<meta content="default-src 'none'; script-src 'sha256-qwC2biNEcgyecbiltRqW7IRXKbRzrNXGQNfjQpxbiXs=' 'sha256-vjQfZ+oX05M1l9ERqRkMpxLi1EZh23JhiYF5QAjG6aA='; style-src 'unsafe-inline'; img-src data:; font-src data:; media-src data:; connect-src 'self'; form-action 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
+<meta content="default-src 'none'; script-src 'sha256-COhqkbaPOF+O1MeXzrrqyxS5JHiLZTzpFZpBTV1Hy4A=' 'sha256-lPqFPx9oza8AmRj6iqQLqEVdDcwxhxzQ3yQnVhy8ZDM='; style-src 'unsafe-inline'; img-src data:; font-src data:; media-src data:; connect-src 'self'; form-action 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="Answer me with HTML 0.5.5" name="generator"/>
+<meta content="Answer me with HTML 0.5.10" name="generator"/>
 <title>项目周报</title>
 <style>
 html[data-theme="blueprint"], html[data-theme="blueprint"][data-mode="light"] {
@@ -228,12 +228,59 @@ html:lang(he)[data-theme][data-mode] {
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Hebrew", "Arial Hebrew", Arial, Roboto, "Helvetica Neue", sans-serif;
 }
 
+html {
+  --am-fs-title: calc(24px * var(--am-scale, 1));
+  --am-fs-stat: calc(17px * var(--am-scale, 1));
+  --am-fs-lead: calc(15.5px * var(--am-scale, 1));
+  --am-fs-heading: calc(15px * var(--am-scale, 1));
+  --am-fs-body: calc(14px * var(--am-scale, 1));
+  --am-fs-text: calc(13px * var(--am-scale, 1));
+  --am-fs-code: calc(12.5px * var(--am-scale, 1));
+  --am-fs-small: calc(12px * var(--am-scale, 1));
+  --am-fs-fine: calc(11.5px * var(--am-scale, 1));
+  --am-fs-label: calc(11px * var(--am-scale, 1));
+  --am-fs-tick: calc(10px * var(--am-scale, 1));
+  --am-fs-d-node: 13px;
+  --am-fs-d-field: 12px;
+  --am-fs-d-edge: 11.5px;
+  --am-fs-d-cluster: 11px;
+  --am-fs-d-step: 10px;
+  --am-fs-d-note: 12px;
+  --am-fs-d-badge: 11px;
+  --am-fs-d-chartCat: 12px;
+  --am-fs-d-chartTick: 11px;
+  --am-fs-d-chartVal: 11px;
+  --am-fs-d-chartLegend: 12px;
+  --am-fs-d-totalMin: 10px;
+  --am-fs-d-totalMax: 22px;
+  --am-fs-d-totalFit: 18px;
+  --am-fs-d-totalUnit: 12px;
+  --am-ln-annotPad: calc(14px * var(--am-scale, 1));
+  --am-ln-segLine: calc(16px * var(--am-scale, 1));
+  --am-ln-whenHeight: calc(24px * var(--am-scale, 1));
+  --am-ln-limitsTick: calc(16px * var(--am-scale, 1));
+  --am-ln-treeBadge: calc(15px * var(--am-scale, 1));
+}
+.am-toolbar, .am-lightbox-header {
+  --am-fs-title: 24px;
+  --am-fs-stat: 17px;
+  --am-fs-lead: 15.5px;
+  --am-fs-heading: 15px;
+  --am-fs-body: 14px;
+  --am-fs-text: 13px;
+  --am-fs-code: 12.5px;
+  --am-fs-small: 12px;
+  --am-fs-fine: 11.5px;
+  --am-fs-label: 11px;
+  --am-fs-tick: 10px;
+}
+
 /* Answer me with HTML base — uses theme variables only, never hard-coded colors (theme tokens and decorations: themes/<name>.js). Exception: the var() fallbacks of diagrams (flow / sequence) equal the blueprint light tokens, guarded by a test. */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
   background: var(--bg); color: var(--ink);
-  font-family: var(--font-sans); font-size: 14px; line-height: 1.55;
+  font-family: var(--font-sans); font-size: var(--am-fs-body); line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 code, pre, kbd { font-family: var(--font-mono); }
@@ -243,14 +290,16 @@ code, pre, kbd { font-family: var(--font-mono); }
   position: fixed; top: 12px; inset-inline-end: 12px; z-index: 10; display: flex; gap: 6px;
 }
 .am-btn {
-  font: 12px/1 var(--font-sans); color: var(--ink); background: var(--paper);
+  font: var(--am-fs-small)/1 var(--font-sans); color: var(--ink); background: var(--paper);
   border: 1px solid var(--line-2); border-radius: var(--radius); padding: 7px 10px; cursor: pointer;
 }
 .am-btn:hover { border-color: var(--ink-3); }
 .am-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.am-toolbar .am-btn[aria-disabled="true"] { opacity: .5; cursor: default; }
+.am-toolbar .am-btn[aria-disabled="true"]:hover { border-color: var(--line-2); }
 /* Theme and mode lists: a label and a native select inside one button-like box */
 .am-pick {
-  display: flex; align-items: center; gap: 6px; font: 12px/1 var(--font-sans); color: var(--ink-2); background: var(--paper);
+  display: flex; align-items: center; gap: 6px; font: var(--am-fs-small)/1 var(--font-sans); color: var(--ink-2); background: var(--paper);
   border: 1px solid var(--line-2); border-radius: var(--radius); padding-block: 0; padding-inline: 10px 4px;
 }
 .am-pick:hover { border-color: var(--ink-3); }
@@ -262,9 +311,9 @@ code, pre, kbd { font-family: var(--font-mono); }
 
 /* ── Header ───────────────────────────────── */
 .am-head { margin: 0 0 20px; padding-inline-end: 300px; }
-.am-head h1 { margin: 0; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; }
+.am-head h1 { margin: 0; font-size: var(--am-fs-title); line-height: 1.25; letter-spacing: -0.01em; }
 .am-sub { margin: 4px 0 0; color: var(--ink-2); }
-.am-head-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 12px; color: var(--ink-2); }
+.am-head-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: var(--am-fs-small); color: var(--ink-2); }
 .am-head-meta b { font-family: var(--font-mono); font-weight: 400; color: var(--ink-3); margin-inline-end: 6px; }
 .am-intro { margin-top: 12px; max-width: 80ch; }
 
@@ -296,10 +345,10 @@ code, pre, kbd { font-family: var(--font-mono); }
 }
 .am-panel-id {
   display: flex; align-items: center; justify-content: center; min-width: 34px; padding: 0 8px;
-  background: var(--head-bg); color: var(--head-fg); font-weight: 600; font-size: 14px;
+  background: var(--head-bg); color: var(--head-fg); font-weight: 600; font-size: var(--am-fs-body);
 }
-.am-panel-head h2 { margin: 0; padding: 7px 12px; font-size: 15px; font-weight: 600; flex: 1; display: flex; align-items: center; }
-.am-panel-meta { align-self: center; padding: 0 12px; font: 11px/1.3 var(--font-mono); color: var(--ink-2); text-align: end; }
+.am-panel-head h2 { margin: 0; padding: 7px 12px; font-size: var(--am-fs-heading); font-weight: 600; flex: 1; display: flex; align-items: center; }
+.am-panel-meta { align-self: center; padding: 0 12px; font: var(--am-fs-label)/1.3 var(--font-mono); color: var(--ink-2); text-align: end; }
 .am-panel-body { padding: 14px 16px 16px; }
 .am-panel-body > * + * { margin-top: 12px; }
 
@@ -309,14 +358,14 @@ code, pre, kbd { font-family: var(--font-mono); }
 .am-md p { margin: 0 0 8px; }
 .am-md ul, .am-md ol { margin: 0 0 8px; padding-inline-start: 20px; }
 .am-md li + li { margin-top: 3px; }
-.am-md h3, .am-md h4 { margin: 14px 0 6px; font-size: 13px; }
+.am-md h3, .am-md h4 { margin: 14px 0 6px; font-size: var(--am-fs-text); }
 .am-md a { color: var(--accent); }
 .am-md blockquote { margin: 0 0 8px; padding: 2px 12px; border-inline-start: 3px solid var(--line-2); color: var(--ink-2); }
 .am-md :not(pre) > code { font-size: 0.9em; background: var(--fill); padding: 1px 5px; border-radius: 4px; }
 .am-md hr { border: 0; border-top: 1px solid var(--line-2); margin: 12px 0; }
-.am-md table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.am-md table { width: 100%; border-collapse: collapse; font-size: var(--am-fs-text); }
 .am-md th {
-  text-align: start; font: 11px/1.3 var(--font-mono); color: var(--ink-2); font-weight: 400;
+  text-align: start; font: var(--am-fs-label)/1.3 var(--font-mono); color: var(--ink-2); font-weight: 400;
   padding: 6px 10px; border-bottom: 1px solid var(--line-2);
 }
 /* th { text-align: start } outranks the align attribute from Markdown alignment, so restore right and center columns explicitly. */
@@ -329,19 +378,19 @@ code, pre, kbd { font-family: var(--font-mono); }
 .am-md img { max-width: 100%; max-height: 70vh; height: auto; }
 .am-figure { margin: 0; text-align: center; }
 .am-figure img { display: block; margin: 0 auto; border: 1px solid var(--line-2); border-radius: var(--radius); }
-.am-figure figcaption { margin-top: 6px; font-size: 12px; line-height: 1.4; color: var(--ink-2); }
+.am-figure figcaption { margin-top: 6px; font-size: var(--am-fs-small); line-height: 1.4; color: var(--ink-2); }
 .am-code {
   margin: 0; padding: 12px 14px; background: var(--fill); border: 1px solid var(--line-2);
-  border-radius: var(--radius); overflow-x: auto; font-size: 12.5px; line-height: 1.5;
+  border-radius: var(--radius); overflow-x: auto; font-size: var(--am-fs-code); line-height: 1.5;
 }
-/* Ask: a decision the reader makes; the suggested option starts selected */
+/* Ask: a decision the reader makes; the suggested option has a tag and starts unselected like the others */
 .am-ask { margin: 10px 0; padding: 10px 12px 8px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--fill); min-width: 0; }
 /* The question floats inside the box, so a long question wraps like text instead of riding on the border */
 .am-ask-q { float: left; width: 100%; padding: 0; margin-bottom: 4px; font-weight: 600; }
 /* Two columns: the control, then the label, tag and note, which wrap under the label and never under the control */
 .am-ask-opt { clear: both; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; align-items: baseline; padding: 5px 2px; cursor: pointer; }
 .am-ask-opt input { margin: 0; accent-color: var(--accent); position: relative; top: 2px; }
-.am-ask-tag { display: inline-block; font-size: 11px; line-height: 1.5; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 6px; white-space: nowrap; }
+.am-ask-tag { display: inline-block; font-size: var(--am-fs-label); line-height: 1.5; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 6px; white-space: nowrap; }
 .am-ask-note { display: block; color: var(--ink-2); }
 /* Comment box under each panel, and the Reply sheet */
 .am-comment-btn {
@@ -355,7 +404,7 @@ code, pre, kbd { font-family: var(--font-mono); }
 .am-panel--bare > .am-comment-btn { position: absolute; top: 4px; inset-inline-end: 0; }
 .am-comment { padding: 0 14px 12px; }
 .am-comment textarea, .am-reply textarea {
-  width: 100%; font: 13px/1.5 var(--font-sans); color: var(--ink); background: var(--paper);
+  width: 100%; font: var(--am-fs-text)/1.5 var(--font-sans); color: var(--ink); background: var(--paper);
   border: 1px solid var(--line-2); border-radius: var(--radius); padding: 8px 10px; resize: vertical;
 }
 .am-comment textarea:focus-visible, .am-reply textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -367,32 +416,32 @@ code, pre, kbd { font-family: var(--font-mono); }
 }
 .am-reply::backdrop { background: rgba(0,0,0,.35); }
 .am-reply-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 10px; }
-.am-reply-head span { color: var(--ink-2); font-size: 13px; }
-.am-reply textarea { font-family: var(--font-mono); font-size: 12.5px; }
+.am-reply-head span { color: var(--ink-2); font-size: var(--am-fs-text); }
+.am-reply textarea { font-family: var(--font-mono); font-size: var(--am-fs-code); }
 .am-reply-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
 .am-reply .am-btn:disabled { opacity: .5; cursor: default; }
 /* The sheet shows the reply drawn (src/runtime/reply-view.js), each line in its own direction; the Markdown that Copy copies sits under a fold. */
 .am-reply-view {
-  max-height: min(60vh, 26em); overflow: auto; padding: 10px 12px; font: 14px/1.6 var(--font-sans); color: var(--ink);
+  max-height: min(60vh, 26em); overflow: auto; padding: 10px 12px; font: var(--am-fs-body)/1.6 var(--font-sans); color: var(--ink);
   background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); overflow-wrap: anywhere;
 }
 .am-reply-view:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .am-reply-view > div { text-align: start; unicode-bidi: isolate; }
 .am-rv-gap { height: .5em; }
-.am-rv-h1 { font-weight: 700; font-size: 15px; }
+.am-rv-h1 { font-weight: 700; font-size: var(--am-fs-heading); }
 .am-rv-h2 { font-weight: 700; color: var(--ink-2); margin-top: 2px; }
 .am-rv-tag {
-  display: inline-block; min-width: 1.6em; padding: 0 4px; font-size: 12px; line-height: 1.5; text-align: center;
+  display: inline-block; min-width: 1.6em; padding: 0 4px; font-size: var(--am-fs-small); line-height: 1.5; text-align: center;
   color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius);
 }
 .am-rv-a { padding-inline-start: 1.6em; }
 .am-rv-a em { color: var(--ink-2); }
 .am-rv-quote { margin-inline-start: 1em; padding-inline-start: 10px; border-inline-start: 3px solid var(--line-2); color: var(--ink-2); white-space: pre-wrap; }
-.am-reply-raw summary { margin-top: 10px; margin-bottom: 6px; font-size: 12px; color: var(--ink-2); cursor: pointer; }
+.am-reply-raw summary { margin-top: 10px; margin-bottom: 6px; font-size: var(--am-fs-small); color: var(--ink-2); cursor: pointer; }
 /* The bar at the bottom of the page: counts and one-click copy, so the reader need not go to the Reply button at the top. */
 .am-reply-bar {
   position: fixed; inset-block-end: 16px; inset-inline: 0; margin-inline: auto; width: max-content; max-width: calc(100vw - 24px);
-  z-index: 10; display: flex; align-items: center; gap: 10px; padding-block: 8px; padding-inline: 14px 8px; font-size: 13px;
+  z-index: 10; display: flex; align-items: center; gap: 10px; padding-block: 8px; padding-inline: 14px 8px; font-size: var(--am-fs-text);
   color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 6px 24px rgba(0,0,0,.18);
 }
 .am-reply-bar[hidden] { display: none; }
@@ -406,12 +455,12 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 .am-codeblock { margin: 10px 0; min-width: 0; }
 .am-codeblock .am-code { border-top-left-radius: 0; border-top-right-radius: 0; padding: 10px 0; }
 .am-code-head {
-  display: flex; align-items: center; gap: 8px; padding: 5px 6px 5px 12px; font: 12px/1.3 var(--font-sans); color: var(--ink-2);
+  display: flex; align-items: center; gap: 8px; padding: 5px 6px 5px 12px; font: var(--am-fs-small)/1.3 var(--font-sans); color: var(--ink-2);
   background: var(--paper); border: 1px solid var(--line-2); border-bottom: 0; border-radius: var(--radius) var(--radius) 0 0;
 }
 .am-code-title { font-family: var(--font-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
 .am-code-lang { margin-left: auto; color: var(--ink-3); text-transform: lowercase; }
-.am-code-copy { font: 12px/1 var(--font-sans); color: var(--ink-2); background: transparent; border: 1px solid var(--line-2); border-radius: var(--radius); padding: 4px 8px; cursor: pointer; margin-left: auto; }
+.am-code-copy { font: var(--am-fs-small)/1 var(--font-sans); color: var(--ink-2); background: transparent; border: 1px solid var(--line-2); border-radius: var(--radius); padding: 4px 8px; cursor: pointer; margin-left: auto; }
 .am-code-lang + .am-code-copy { margin-left: 0; }
 .am-code-copy:hover { border-color: var(--ink-3); color: var(--ink); }
 .am-code-copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -447,33 +496,33 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 }
 .am-kv-cell { border-inline-end: var(--bw) solid var(--line); border-bottom: var(--bw) solid var(--line); padding: 6px 10px 8px; min-width: 0; }
 .am-kv-cell--wide { grid-column: 1 / -1; }
-.am-kv dt { font: 11px/1.4 var(--font-mono); color: var(--ink-2); }
-.am-kv dd { margin: 2px 0 0; font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
-.am-kv-cell--wide dd { font-size: 17px; font-weight: 600; }
+.am-kv dt { font: var(--am-fs-label)/1.4 var(--font-mono); color: var(--ink-2); }
+.am-kv dd { margin: 2px 0 0; font-size: var(--am-fs-body); font-weight: 500; overflow-wrap: anywhere; }
+.am-kv-cell--wide dd { font-size: var(--am-fs-stat); font-weight: 600; }
 
 /* ── timeline ────────────────────────────── */
 .am-timeline { list-style: none; margin: 0; padding: 0; }
 .am-timeline--h { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); padding-top: 4px; }
 .am-timeline--h li { position: relative; text-align: center; padding: 0 6px; }
 .am-timeline--h li::before {
-  content: ""; position: absolute; top: 31px; left: 0; right: 0; border-top: var(--bw) solid var(--line);
+  content: ""; position: absolute; top: calc(var(--am-ln-whenHeight) + 7px); left: 0; right: 0; border-top: var(--bw) solid var(--line);
 }
 .am-timeline--h li:first-child::before { inset-inline-start: 50%; }
 .am-timeline--h li:last-child::before { inset-inline-end: 50%; }
-.am-tl-when { display: block; font-size: 15px; font-weight: 500; height: 24px; }
+.am-tl-when { display: block; font-size: var(--am-fs-heading); font-weight: 500; height: var(--am-ln-whenHeight); }
 .am-tl-dot {
   position: relative; display: block; width: 11px; height: 11px; margin: 2px auto 8px;
   border: var(--bw) solid var(--line); border-radius: 50%; background: var(--paper);
 }
 .am-tl-item--hi .am-tl-dot { background: var(--hi-stroke, var(--accent)); border-color: var(--hi-stroke, var(--accent)); }
-.am-tl-title { display: block; font-size: 12.5px; font-weight: 500; }
-.am-tl-text { display: block; font-size: 12px; color: var(--ink-2); line-height: 1.45; }
+.am-tl-title { display: block; font-size: var(--am-fs-code); font-weight: 500; }
+.am-tl-text { display: block; font-size: var(--am-fs-small); color: var(--ink-2); line-height: 1.45; }
 .am-timeline--v li { position: relative; padding: 0 0 14px; padding-inline-start: 22px; }
 .am-timeline--v li::before { content: ""; position: absolute; inset-inline-start: 5px; top: 6px; bottom: -6px; border-inline-start: var(--bw) solid var(--line-2); }
 .am-timeline--v li:last-child::before { display: none; }
 .am-timeline--v .am-tl-dot { position: absolute; inset-inline-start: 0; top: 4px; margin: 0; }
-.am-timeline--v .am-tl-when { display: inline; height: auto; font: 12px var(--font-mono); color: var(--ink-2); margin-inline-end: 8px; }
-.am-timeline--v .am-tl-title { display: inline; font-size: 14px; }
+.am-timeline--v .am-tl-when { display: inline; height: auto; font: var(--am-fs-small) var(--font-mono); color: var(--ink-2); margin-inline-end: 8px; }
+.am-timeline--v .am-tl-title { display: inline; font-size: var(--am-fs-body); }
 .am-timeline--v .am-tl-text { margin-top: 2px; }
 /* .am-tl-wrap is the container (src/components/timeline.js): a horizontal timeline answers to the width it has, not to the width of the window, since a
    sheet puts panels two or three to a row. Below 560 px (about 90 px for each of the six items a timeline has by default) its dates
@@ -487,19 +536,19 @@ body.am-has-reply-bar { padding-block-end: 72px; }
   }
   .am-timeline--h li:last-child::before { display: none; }
   .am-timeline--h .am-tl-dot { position: absolute; inset-inline-start: 0; top: 4px; margin: 0; }
-  .am-timeline--h .am-tl-when { display: inline; height: auto; font: 12px var(--font-mono); color: var(--ink-2); margin-inline-end: 8px; }
-  .am-timeline--h .am-tl-title { display: inline; font-size: 14px; }
+  .am-timeline--h .am-tl-when { display: inline; height: auto; font: var(--am-fs-small) var(--font-mono); color: var(--ink-2); margin-inline-end: 8px; }
+  .am-timeline--h .am-tl-title { display: inline; font-size: var(--am-fs-body); }
   .am-timeline--h .am-tl-text { margin-top: 2px; }
 }
 
 /* ── annot sentence notes ──────────────────────── */
 .am-annot + .am-annot { border-top: 1px solid var(--line-2); padding-top: 12px; }
-.am-annot-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
-.am-annot-meta { font: 11px var(--font-mono); font-weight: 400; color: var(--ink-2); }
+.am-annot-head { display: flex; justify-content: space-between; gap: 12px; font-size: var(--am-fs-text); font-weight: 600; margin-bottom: 8px; }
+.am-annot-meta { font: var(--am-fs-label) var(--font-mono); font-weight: 400; color: var(--ink-2); }
 .am-annot-scroll { overflow-x: auto; }
 .am-annot-line {
-  position: relative; display: inline-block; white-space: pre; font: 14px/1.6 var(--font-mono);
-  padding-bottom: calc(var(--rows, 0) * 17px + 14px);
+  position: relative; display: inline-block; white-space: pre; font: var(--am-fs-body)/1.6 var(--font-mono);
+  padding-bottom: calc(var(--rows, 0) * (var(--am-ln-segLine) + 1px) + var(--am-ln-annotPad));
 }
 .am-annot-line--wrap { display: block; white-space: normal; padding-bottom: 10px; }
 .am-annot-line--wrap .am-seg { white-space: nowrap; }
@@ -509,30 +558,30 @@ body.am-has-reply-bar { padding-block-end: 72px; }
   border: 1px solid var(--accent); border-top: 0;
 }
 .am-seg-n {
-  position: absolute; inset-inline-start: 0; top: calc(100% + 8px + var(--row, 0) * 17px);
-  font: 11px/16px var(--font-sans); color: var(--accent); white-space: nowrap;
+  position: absolute; inset-inline-start: 0; top: calc(100% + 8px + var(--row, 0) * (var(--am-ln-segLine) + 1px));
+  font: var(--am-fs-label)/var(--am-ln-segLine) var(--font-sans); color: var(--accent); white-space: nowrap;
 }
 .am-seg--err { color: var(--err); }
 .am-seg--err::after { border-color: var(--err); }
 .am-seg--err .am-seg-n { color: var(--err); }
-.am-annot-caption { font-size: 12px; color: var(--ink-2); }
+.am-annot-caption { font-size: var(--am-fs-small); color: var(--ink-2); }
 
 /* ── limits bars ───────────────────────── */
 .am-lim + .am-lim { margin-top: 14px; }
-.am-lim-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; margin-bottom: 4px; }
-.am-lim-val { font: 12px var(--font-mono); color: var(--accent); white-space: nowrap; }
+.am-lim-head { display: flex; justify-content: space-between; gap: 12px; font-size: var(--am-fs-text); margin-bottom: 4px; }
+.am-lim-val { font: var(--am-fs-small) var(--font-mono); color: var(--accent); white-space: nowrap; }
 .am-lim-track { position: relative; height: 12px; border: 1px solid var(--line-2); background: var(--fill); border-radius: calc(var(--radius) / 2); }
 .am-lim-fill { position: absolute; inset-inline-start: 0; top: 0; bottom: 0; background: var(--accent-bg); border-inline-end: 1px solid var(--accent); }
 .am-lim-mark { position: absolute; top: -4px; bottom: -4px; border-left: 2px solid var(--accent); }
 .am-lim.is-over .am-lim-fill { background: var(--err-bg); border-inline-end-color: var(--err); }
 .am-lim.is-over .am-lim-val { color: var(--err); }
-.am-lim-ticks { position: relative; height: 16px; font: 10px/16px var(--font-mono); color: var(--ink-3); }
+.am-lim-ticks { position: relative; height: var(--am-ln-limitsTick); font: var(--am-fs-tick)/var(--am-ln-limitsTick) var(--font-mono); color: var(--ink-3); }
 .am-lim-ticks span { position: absolute; transform: translateX(-50%); }
 .am-lim-ticks span:first-child { transform: none; }
-.am-lim-note { font-size: 11px; color: var(--ink-2); margin-inline-start: 6px; }
+.am-lim-note { font-size: var(--am-fs-label); color: var(--ink-2); margin-inline-start: 6px; }
 
 /* ── tree ─────────────────────────── */
-.am-tree { font-size: 13px; }
+.am-tree { font-size: var(--am-fs-text); }
 .am-tree-root { display: flex; justify-content: center; position: relative; padding-bottom: 18px; }
 .am-tree-root::after { content: ""; position: absolute; bottom: 0; left: 50%; height: 18px; border-left: var(--bw) solid var(--line); }
 .am-tree-root--solo { padding-bottom: 12px; }
@@ -541,13 +590,13 @@ body.am-has-reply-bar { padding-block-end: 72px; }
   border: var(--node-width, var(--bw)) solid var(--node-stroke, var(--line)); background: var(--node-fill, var(--paper)); padding: 6px 14px; text-align: center;
   border-radius: var(--node-radius, var(--radius)); font-weight: 600; color: var(--node-text, inherit); filter: var(--node-shadow, none);
 }
-.am-tree-box small { display: block; font-weight: 400; color: var(--ink-2); font-size: 12px; }
+.am-tree-box small { display: block; font-weight: 400; color: var(--ink-2); font-size: var(--am-fs-small); }
 /* The root box and a highlighted box are emphasis: they take the highlight tokens. With none set the root box keeps its accent tint and a highlighted box looks like any other. */
 .am-tree-box--root, .am-tree-box--hi { border-color: var(--hi-stroke, var(--node-stroke, var(--line))); color: var(--hi-text, var(--node-text, inherit)); }
 .am-tree-box--root { background: var(--hi-fill, var(--accent-bg)); }
 .am-tree-box--hi { background: var(--hi-fill, var(--node-fill, var(--paper))); }
 .am-tree-box--root small, .am-tree-box--hi small { color: var(--hi-text, var(--ink-2)); }
-.am-tree-box--root { font-size: 15px; padding: 8px 28px; }
+.am-tree-box--root { font-size: var(--am-fs-heading); padding: 8px 28px; }
 .am-tree-cols { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); }
 .am-tree-col { position: relative; padding: 18px 8px 0; min-width: 0; }
 .am-tree-col::before { content: ""; position: absolute; top: 0; left: 0; right: 0; border-top: var(--bw) solid var(--line); }
@@ -561,16 +610,16 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 .am-tree-list li::before { content: ""; position: absolute; inset-inline-start: 0; top: 0.95em; width: 12px; border-top: 1px solid var(--ink-3); }
 .am-tree-list li::after { content: ""; position: absolute; inset-inline-start: 0; top: 0; bottom: 0; border-inline-start: 1px solid var(--ink-3); }
 .am-tree-list li:last-child::after { bottom: auto; height: 0.95em; }
-.am-tree-tag { font: 11px var(--font-mono); color: var(--ink-3); margin-inline-end: 4px; }
-.am-tree code { font: 12px var(--font-mono); }
-.am-tree-sub { display: block; font-size: 11.5px; color: var(--ink-2); }
+.am-tree-tag { font: var(--am-fs-label) var(--font-mono); color: var(--ink-3); margin-inline-end: 4px; }
+.am-tree code { font: var(--am-fs-small) var(--font-mono); }
+.am-tree-sub { display: block; font-size: var(--am-fs-fine); color: var(--ink-2); }
 .am-tree-hi > .am-tree-label { color: var(--accent); font-weight: 600; }
 
 /* ── Diagrams (flow / sequence) ───────────────── */
 .am-diagram { margin: 0; overflow-x: auto; text-align: center; }
 /* Embedded previews can lose html[data-theme]; the fallbacks keep diagrams readable, and defined theme variables still win. */
 .am-diagram svg { max-width: 100%; height: auto; font-family: var(--font-sans, sans-serif); }
-.am-diagram text { fill: var(--ink, #16181d); font-size: 13px; }
+.am-diagram text { fill: var(--ink, #16181d); font-size: var(--am-fs-d-node); }
 /* Diagram tokens (docs/reference.md, "Diagram tokens"): each painted part reads an optional token and falls back to the look it always had,
    so a theme that sets none of them draws the same diagram. Font family, size and weight are not tokens: diagram text is measured for the sans font. */
 .am-node-shape { fill: var(--node-fill, var(--paper, #ffffff)); stroke: var(--node-stroke, var(--line, #1d2026)); stroke-width: var(--node-width, var(--bw, 1.5px)); filter: var(--node-shadow, none); }
@@ -586,9 +635,9 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 .am-edge--dashed { stroke-dasharray: 5 4; }
 .am-arrow { fill: var(--edge-color, var(--ink-2, #4b5260)); }
 .am-edge-label rect { fill: var(--paper, #ffffff); }
-.am-diagram .am-edge-label text { fill: var(--edge-label, var(--accent, #1d5fbf)); font-size: 11.5px; }
+.am-diagram .am-edge-label text { fill: var(--edge-label, var(--accent, #1d5fbf)); font-size: var(--am-fs-d-edge); }
 .am-cluster { fill: var(--cluster-fill, var(--fill, #f3f5f8)); stroke: var(--cluster-stroke, var(--line-2, #d6dae1)); stroke-width: 1; stroke-dasharray: 4 3; }
-.am-diagram .am-cluster-label { fill: var(--ink-2, #4b5260); font: 11px var(--font-mono, monospace); }
+.am-diagram .am-cluster-label { fill: var(--ink-2, #4b5260); font: var(--am-fs-d-cluster) var(--font-mono, monospace); }
 /* The PK / FK / UK marks of an entity follow the node text, and the highlighted text in a highlighted entity, so they stay readable on the theme's fills. */
 .am-diagram .am-er-key { fill: var(--node-text, var(--ink-2, #4b5260)); }
 .am-diagram .am-node--hi .am-er-key { fill: var(--hi-text, var(--ink-2, #4b5260)); }
@@ -597,7 +646,7 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 .am-actor { fill: var(--actor-fill, var(--node-fill, var(--paper, #ffffff))); stroke: var(--actor-stroke, var(--node-stroke, var(--line, #1d2026))); stroke-width: var(--node-width, var(--bw, 1.5px)); filter: var(--node-shadow, none); rx: var(--node-radius, 2px); }
 .am-diagram .am-actor-text { fill: var(--actor-text, var(--node-text, var(--ink, #16181d))); }
 .am-note { fill: var(--note-fill, var(--warn-bg, #fdf3e2)); stroke: var(--note-stroke, var(--warn, #a8620a)); stroke-width: var(--note-width, 1); rx: var(--note-radius, 2px); }
-.am-diagram .am-step { fill: var(--ink-3, #8b929e); font: 10px var(--font-mono, monospace); }
+.am-diagram .am-step { fill: var(--ink-3, #8b929e); font: var(--am-fs-d-step) var(--font-mono, monospace); }
 
 .am-diagram-expand {
   /* In flow and sticky: it sits at the end edge (right on a left-to-right page) and stays in view when the diagram scrolls sideways.
@@ -640,7 +689,7 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 .am-lightbox-title {
   display: inline-flex; align-items: center; gap: 8px;
   color: rgba(255, 255, 255, 0.92);
-  font: 13px/1 var(--font-sans, sans-serif); font-weight: 500;
+  font: var(--am-fs-text)/1 var(--font-sans, sans-serif); font-weight: 500;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
   pointer-events: auto;
   overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60vw;
@@ -655,7 +704,7 @@ body.am-has-reply-bar { padding-block-end: 72px; }
   border: var(--bw, 1px) solid var(--line-2);
   border-radius: 50%;
   color: var(--ink);
-  font-size: 15px; line-height: 1;
+  font-size: var(--am-fs-heading); line-height: 1;
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
@@ -694,12 +743,49 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 }
 
 /* ── doc template ────────────────────────── */
-.am-doc { max-width: 1120px; margin: 0 auto; padding: 40px 28px 64px; }
-.am-doc-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; align-items: start; }
-.am-doc-layout--notoc { grid-template-columns: minmax(0, 1fr); max-width: 860px; }
-.am-toc { position: sticky; top: 24px; font-size: 13px; }
-.am-toc a { display: block; color: var(--ink-2); text-decoration: none; padding: 4px 0; padding-inline-start: 10px; border-inline-start: 2px solid var(--line-2); }
-.am-toc a:hover { color: var(--ink); border-inline-start-color: var(--accent); }
+.am-doc { max-width: 916px; margin: 0 auto; padding: 40px 28px 64px; }
+.am-doc-layout { position: relative; }
+/* The outline rail: a zero-height sticky strip whose child hangs 8px outside the body on the chosen side. "start" and "end" are
+   logical, so the rail mirrors on a right-to-left page. data-flow says which way the label and the list open: "out" away from the
+   body, "in" over it (src/runtime/outline.js picks it from the room left in the viewport; the markup starts with "in"). */
+/* Above panels and the diagram expand button (2), below the fixed toolbar and reply bar (10). */
+.am-toc { position: sticky; top: 72px; height: 0; z-index: 5; font-size: var(--am-fs-text); }
+.am-outline { position: absolute; top: 0; inset-inline-start: calc(100% + 8px); }
+.am-toc[data-side="start"] .am-outline { inset-inline-start: auto; inset-inline-end: calc(100% + 8px); }
+.am-outline > summary { display: block; width: 16px; list-style: none; cursor: pointer; border-radius: 4px; }
+.am-outline > summary::-webkit-details-marker { display: none; }
+.am-outline > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.am-ticks { display: flex; flex-direction: column; max-height: calc(100vh - 100px); }
+.am-tick { position: relative; display: block; font-style: normal; flex: 0 1 9px; min-height: 2px; }
+.am-tick::before { content: ""; position: absolute; inset-inline: 3px; top: 50%; height: 2px; margin-top: -1px; border-radius: 1px; background: var(--ink-3); opacity: .55; }
+.am-tick:hover::before, .am-tick.is-peek::before { background: var(--ink); opacity: 1; }
+.am-tick.is-current::before { inset-inline: 0; height: 3px; margin-top: -1.5px; background: var(--accent); opacity: 1; }
+.am-tick::after {
+  content: attr(data-title); display: none; position: absolute; top: 50%; transform: translateY(-50%); z-index: 1; pointer-events: none;
+  max-width: min(240px, calc(100vw - 48px)); overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  padding: 3px 8px; font-size: var(--am-fs-small); color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 4px 16px rgba(0, 0, 0, .12);
+}
+.am-tick:hover::after, .am-tick.is-peek::after { display: block; }
+.am-outline[open] .am-tick::after { display: none; }
+.am-outline-list {
+  position: absolute; top: -6px; z-index: 2; margin: 0; padding: 6px; list-style: none;
+  width: min(240px, calc(100vw - 48px)); max-height: calc(100vh - 96px); overflow-y: auto;
+  background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 6px 24px rgba(0, 0, 0, .14);
+}
+.am-outline-list a { display: block; padding: 5px 8px; color: var(--ink-2); text-decoration: none; border-radius: 4px; border-inline-start: 2px solid transparent; }
+.am-outline-list a:hover { color: var(--ink); background: var(--line-2); }
+.am-outline-list a[aria-current="true"] { color: var(--ink); font-weight: 600; border-inline-start-color: var(--accent); }
+.am-outline-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+/* Opens toward inline-end: end rail flowing out, start rail flowing in. Otherwise toward inline-start. */
+.am-toc[data-side="end"][data-flow="out"] .am-tick::after, .am-toc[data-side="start"][data-flow="in"] .am-tick::after,
+.am-toc[data-side="end"][data-flow="out"] .am-outline-list, .am-toc[data-side="start"][data-flow="in"] .am-outline-list { inset-inline-start: calc(100% + 6px); }
+.am-toc[data-side="start"][data-flow="out"] .am-tick::after, .am-toc[data-side="end"][data-flow="in"] .am-tick::after,
+.am-toc[data-side="start"][data-flow="out"] .am-outline-list, .am-toc[data-side="end"][data-flow="in"] .am-outline-list { inset-inline-end: calc(100% + 6px); }
+@media (prefers-reduced-motion: no-preference) {
+  .am-outline[open] .am-outline-list { animation: am-outline-in .14s ease-out; }
+  .am-tick::before { transition: inset-inline .12s, height .12s, opacity .12s; }
+}
+@keyframes am-outline-in { from { opacity: 0; } to { opacity: 1; } }
 .am-doc-body > .am-panel + .am-panel { margin-top: 20px; }
 
 /* ── Responsive and print ─────────────────────────── */
@@ -710,11 +796,20 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 }
 @media (max-width: 760px) {
   .am-sheet, .am-doc { padding: 56px 12px 24px; }
+  /* The toolbar holds more controls than a phone fits on one row. It scrolls sideways in place, so Theme and Mode stay reachable
+     and the page keeps the 56px top padding for one row. The rings focus draws outside a button are clipped by that scroll box. */
+  .am-toolbar { max-width: calc(100vw - 24px); overflow-x: auto; scrollbar-width: none; }
+  .am-toolbar::-webkit-scrollbar { display: none; }
+  .am-toolbar > * { flex: none; }
+  .am-toolbar .am-btn:focus-visible, .am-toolbar .am-pick:focus-within { outline-offset: -2px; }
   .am-head { padding-inline-end: 0; }
   .am-grid { grid-template-columns: minmax(0, 1fr); }
   .am-grid > .am-panel.am-span-wide { grid-column: auto !important; }
-  .am-doc-layout { grid-template-columns: minmax(0, 1fr); }
-  .am-toc { position: static; }
+  /* The rail hugs the viewport edge inside a strip of its own, so it never covers text and never pushes the body down. */
+  .am-doc-layout--rail-end { padding-inline-end: 18px; }
+  .am-doc-layout--rail-start { padding-inline-start: 18px; }
+  .am-toc[data-side="end"] .am-outline { inset-inline-start: auto; inset-inline-end: -17px; }
+  .am-toc[data-side="start"] .am-outline { inset-inline-end: auto; inset-inline-start: -17px; }
   .am-tree-cols { grid-template-columns: minmax(0, 1fr); }
   /* Tables and diagrams keep their size: the wrapper scrolls horizontally when they overflow. A cell is never narrower than about
      two short words, so a phone does not stack them one per line. On wider screens the sheet layout (src/runtime/layout-dom.js)
@@ -724,11 +819,11 @@ body.am-has-reply-bar { padding-block-end: 72px; }
   .am-lightbox-header { top: 8px; left: 12px; right: 12px; }
   .am-lightbox-stage { top: 46px; bottom: 12px; left: 12px; right: 12px; border-radius: max(var(--radius), 10px); }
 }
-.am-colophon { margin: 0 0 8px; font: 11px var(--font-mono); color: var(--ink-3); }
+.am-colophon { margin: 0 0 8px; font: var(--am-fs-label) var(--font-mono); color: var(--ink-3); }
 .am-colophon a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
 @media print {
-  .am-toolbar, .am-diagram-expand, .am-lightbox, .am-code-copy, .am-comment-btn, .am-comment, .am-reply, .am-reply-bar { display: none !important; }
+  .am-toolbar, .am-diagram-expand, .am-lightbox, .am-code-copy, .am-toc, .am-comment-btn, .am-comment, .am-reply, .am-reply-bar { display: none !important; }
   body { background: var(--paper); }
   .am-panel { break-inside: avoid; box-shadow: none; }
 }
@@ -748,6 +843,8 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 .am-btn--remark-clear { color: var(--err); }
 .am-btn--remark-clear.is-armed { background: var(--err-bg); border-color: var(--err); }
 .am-remark-hover { outline: 1px dashed var(--ink-3); outline-offset: 2px; cursor: pointer; }
+[data-am-pick]:focus { outline: none; }
+[data-am-pick]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 :is(.am-mark, .am-remark-kind)[data-kind="suggestion"] { --mark: var(--warn); --mark-bg: var(--warn-bg); }
 :is(.am-mark, .am-remark-kind)[data-kind="keep"] { --mark: var(--ok); --mark-bg: var(--ok-bg); }
 :is(.am-mark, .am-remark-kind)[data-kind="question"] { --mark: var(--accent); --mark-bg: var(--accent-bg); }
@@ -756,7 +853,7 @@ body.am-has-reply-bar { padding-block-end: 72px; }
 /* The note chip sits inside the marked block (a table takes it as its caption, a list item puts it before its sub-list), so lists and
    grids keep their children. */
 .am-mark-note {
-  display: block; margin-block-start: 4px; font: 12px/1.5 var(--font-sans); letter-spacing: normal; text-transform: none;
+  display: block; margin-block-start: 4px; font: var(--am-fs-small)/1.5 var(--font-sans); letter-spacing: normal; text-transform: none;
   color: var(--ink-2); white-space: pre-wrap; caption-side: bottom; text-align: start;
 }
 .am-mark-note b { color: var(--ink); font-weight: 600; }
@@ -769,44 +866,16 @@ table.am-mark { background: none; }
 }
 .am-remark-pop[hidden] { display: none; }
 .am-remark-kinds { display: flex; gap: 6px; flex-wrap: wrap; }
-.am-remark-kind { font: 12px/1 var(--font-sans); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line-2); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+.am-remark-kind { font: var(--am-fs-small)/1 var(--font-sans); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line-2); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
 .am-remark-kind:hover { border-color: var(--ink-3); }
 .am-remark-kind[aria-pressed="true"] { color: var(--ink); border-color: var(--mark); background: var(--mark-bg); }
 .am-remark-kind:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.am-remark-pop textarea { font: 13px/1.5 var(--font-sans); color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 6px 8px; resize: vertical; }
+.am-remark-pop textarea { font: var(--am-fs-text)/1.5 var(--font-sans); color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 6px 8px; resize: vertical; }
 .am-remark-actions { display: flex; gap: 6px; }
 .am-remark-actions .am-btn:disabled { opacity: .5; cursor: default; }
+.am-remark-need { align-self: center; color: var(--ink-3); font-size: var(--am-fs-small); }
+.am-remark-kind::before { content: attr(data-n); margin-inline-end: 5px; color: var(--ink-3); font-family: var(--font-mono); font-size: var(--am-fs-label); }
 @media print { .am-remark-pop { display: none !important; } }
-
-
-/* New-version button and popover (src/render.js adds this file only to a page that has the button). The popover sits under the
-   toolbar and stays hidden unless open, so a browser without native popovers never shows it. */
-.am-btn--update { color: var(--ok); border-color: var(--ok); white-space: nowrap; }
-.am-update { display: none; }
-.am-update:popover-open {
-  display: block; position: fixed; inset-block: 52px auto; inset-inline: auto 12px; margin: 0; width: min(380px, calc(100vw - 24px));
-  padding: 14px 16px; font-size: 13px; color: var(--ink); background: var(--paper);
-  border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 12px 40px rgba(0,0,0,.25);
-}
-.am-update p { margin: 0 0 8px; }
-.am-update-title { font-weight: 600; color: var(--ok); }
-.am-update-label { color: var(--ink-2); font-size: 12px; }
-.am-update-notes { margin: 0 0 12px; padding-inline-start: 18px; }
-.am-update-notes li { margin: 2px 0; }
-.am-update-notes code { font-size: 12px; }
-.am-update-row { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; }
-.am-update-row > :first-child {
-  flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; font-size: 12px; padding: 6px 8px;
-  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
-}
-.am-update a { color: var(--accent); font-size: 12px; }
-/* A phone has no room for the words: the button keeps only its dot, and its aria-label still names the version. */
-@media (max-width: 760px) {
-  .am-btn--update .am-update-text { display: none; }
-}
-@media print {
-  .am-update { display: none !important; }
-}
 
 
 html[data-theme="blueprint"] .am-frame { border: 1px solid var(--line); padding: 30px; }
@@ -814,14 +883,14 @@ html[data-theme="blueprint"] .am-frame::before {
   content: ""; position: absolute; inset: 18px; border: 1px solid var(--line); pointer-events: none;
 }
 html[data-theme="blueprint"] .am-ruler {
-  display: flex; position: absolute; font: 10px/1 var(--font-mono); color: var(--ink-3);
+  display: flex; position: absolute; font: var(--am-fs-tick)/1 var(--font-mono); color: var(--ink-3);
 }
 @media (max-width: 760px) {
   html[data-theme="blueprint"] .am-frame { padding: 0; border: 0; }
   html[data-theme="blueprint"] .am-frame::before, html[data-theme="blueprint"] .am-ruler { display: none; }
 }
 
-html[data-theme="shadcn"] .am-panel-id { border-radius: 6px; min-width: 24px; height: 24px; margin: 9px 0 9px 14px; font-size: 12px; }
+html[data-theme="shadcn"] .am-panel-id { border-radius: 6px; min-width: 24px; height: 24px; margin: 9px 0 9px 14px; font-size: var(--am-fs-small); }
 html[data-theme="shadcn"] .am-panel-head { border-bottom-width: 1px; }
 html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var(--radius); overflow: hidden; }
 
@@ -830,17 +899,16 @@ html[data-theme="paper"]:lang(ja)[data-mode] { --font-serif: "Iowan Old Style", 
 html[data-theme="paper"]:lang(he)[data-mode] { --font-serif: "Iowan Old Style", Palatino, Georgia, "Noto Serif Hebrew", "Frank Ruehl CLM", David, "Times New Roman", serif; }
 html[data-theme="paper"] .am-head h1, html[data-theme="paper"] .am-panel-head h2, html[data-theme="paper"] .am-md, html[data-theme="paper"] .am-intro, html[data-theme="paper"] .am-callout { font-family: var(--font-serif); }
 html[data-theme="paper"] .am-head h1 { font-weight: 600; letter-spacing: 0; }
-html[data-theme="paper"] .am-md p, html[data-theme="paper"] .am-md li, html[data-theme="paper"] .am-md blockquote, html[data-theme="paper"] .am-intro { font-size: 15.5px; line-height: 1.75; }
+html[data-theme="paper"] .am-md p, html[data-theme="paper"] .am-md li, html[data-theme="paper"] .am-md blockquote, html[data-theme="paper"] .am-intro { font-size: var(--am-fs-lead); line-height: 1.75; }
 html[data-theme="paper"] .am-md p { margin-bottom: 12px; }
 html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 </style>
 <link href="data:," rel="icon"/></head>
 <body id="top">
 
-
 <main class="am-sheet">
 <header class="am-head"><h1>项目周报</h1><p class="am-sub">2026年10月26日至10月30日</p><div class="am-intro am-md"><div class="am-md"><p>HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV3量程及治具验证仍受阻，嵌入式资源冲突影响EV和TS1208进度。</p>
-<p>资料截至：2026-10-30 16:21:24（北京时间）。下周范围：11月2日至11月8日。</p>
+<p>资料截至：2026-10-30 17:11:52（北京时间）。下周范围：11月2日至11月8日。</p>
 <p><a href="#panel-A">本周进度</a> · <a href="#panel-B">下周计划</a> · <a href="#panel-C">需要协助</a> · <a href="#panel-D">项目目录</a> · <a href="#panel-E">项目明细</a></p>
 </div></div></header>
 <div class="am-frame">
@@ -849,10 +917,10 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <section class="am-panel" id="panel-A">
 <header class="am-panel-head"><span class="am-panel-id">A</span><h2>本周进度</h2></header>
 <div class="am-panel-body"><div class="am-md"><ul>
-<li><strong>交付</strong>：HBD末批19套织物垫已发货。RS-XY的3个视触觉夹爪样品已制作，最新记录仍在等待彩盒，尚未登记实发。</li>
-<li><strong>DV3</strong>：图纸、固件和SOP版本归档及本轮设计变更确认已完成。小指腹量程异常经电镜检查仍无根因结论；治具交付后因压块晃动、缺少轴承返厂，当前仍不满足研发需求。手掌时漂尚未通过，放大凸点碳膜已到样，待测试。</li>
+<li><strong>交付</strong>：HBD末批19套织物垫及RS-XY的3个视触觉夹爪样品均已发货。</li>
+<li><strong>DV3</strong>：此前25对订单已交付完毕，新200对交期正在规划；25对不计作本周新增交付。版本归档及设计变更确认已完成。量程异常仍无根因结论，研发暂无新方案；治具问题仍在，正在协调新供应商10/30到场讨论。手掌时漂尚未通过，放大凸点碳膜已到样待测。</li>
 <li><strong>新款视触觉</strong>：指尖因耐用性问题更换硅胶并重新训练，非定制相机样品预计11/4左右提供。六维力模型正在验证，深度和滑移检测列入下一阶段；形貌重建仍为研究。</li>
-<li><strong>触觉手套</strong>：融合上位机初版已提供，织物仍需修改，姿态供应商尚待确定。TS1208板卡已收到，调试因逆向和温补任务延期；近期又出现2件掉线异常，样品已交李斌分析。</li>
+<li><strong>触觉手套</strong>：融合上位机初版已提供，织物已收到但仍需改进，下周到供应商现场讨论。姿态方案倾向YJ，QN方案仍有问题，尚未最终选定。TS1208板卡调试因逆向和温补任务延期；近期又出现2件掉线异常，样品已交李斌分析。</li>
 <li><strong>采集卡</strong>：3232标定算法已完成，V2.0效果通过内部测试，小型化版本已发板，预计11/11左右回料。6464本周已归档，现有防串扰方案可用，统一评价标准仍未形成。</li>
 <li><strong>汽车座椅、EV</strong>：汽车座椅温补算法已由嵌入式提供，等待材料部门确定下一步。EV样品遇到软件Bug，本周受嵌入式资源限制，修复节点推迟到下周确认。</li>
 <li><strong>客户需求变化</strong>：O30客户正在考虑视触觉方案，压阻方案推进放缓，后续装配测试等待新版结构件齐套。</li>
@@ -862,11 +930,11 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <section class="am-panel" id="panel-B">
 <header class="am-panel-head"><span class="am-panel-id">B</span><h2>下周计划</h2></header>
 <div class="am-panel-body"><div class="am-md"><ul>
-<li><strong>DV3，11/2—11/6</strong>：按现有节点完成FPC防串扰电路验证和PI碳膜工艺验证，推进竞品逆向及DOE。硬件防串扰行动整体期限为11/6。小指腹根因分析原目标11/1，尚无结论；治具返修及手掌碳膜测试需补齐新的输出节点。</li>
+<li><strong>DV3，11/2—11/6</strong>：按现有节点完成FPC防串扰电路验证和PI碳膜工艺验证，推进竞品逆向及DOE。硬件防串扰行动整体期限11/6。跟进新治具供应商讨论结果及量程排查方案，明确新200对交期；具体日期尚未承诺。</li>
 <li><strong>新款视触觉</strong>：先跟进预计11/4左右的非定制相机指尖样品，同步开展深度检测训练和滑移方案研究。定制相机指尖节点保留11/10。新款夹爪整体期限11/10、样品节点11/15的差异需核对。</li>
-<li><strong>触觉手套、EV</strong>：明确姿态供应商及织物改善后，继续细化上位机和采集验证。手套SDK整体目标11/3，最新记录尚未启动。EV在11/2所在周先确认Bug修复节点，不将行动日期写成已承诺修复完成日。</li>
-<li><strong>汽车座椅、DOE2</strong>：汽车座椅由材料部门确认温补验证安排；行动期限11/2。DOE2行动期限同为11/2，但本周未登记新进展，需先确认电阻板及二次采样验证结果。</li>
-<li><strong>交付跟进</strong>：核实3个夹爪样品实际发货；41对配套交付按既有计划推进，11/14供应商制板贴片、11/17起分批发货、11/20末批交付，均为后续计划。</li>
+<li><strong>触觉手套、EV</strong>：11/2—11/8前往织物供应商现场讨论改进，具体日期待定；继续确认姿态方案并细化上位机和采集验证。手套SDK目标11/3，最新记录尚未启动。EV下周先确认Bug修复节点。</li>
+<li><strong>汽车座椅、DOE2</strong>：材料部门确认汽车座椅温补验证安排，行动期限11/2。DOE2本周暂无新结果，11/2跟进客户反馈，不承诺当天形成验证结论。</li>
+<li><strong>后续交付</strong>：41对夹爪配套按既有计划推进，11/14供应商制板贴片、11/17起分批发货、11/20末批交付，均为计划。DV3新200对另行明确交期。</li>
 </ul>
 </div></div>
 </section>
@@ -874,9 +942,9 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <header class="am-panel-head"><span class="am-panel-id">C</span><h2>需要协助</h2></header>
 <div class="am-panel-body"><div class="am-md"><ul>
 <li><strong>明确嵌入式优先级</strong>：EV Bug、TS1208调试与逆向、温补任务存在资源冲突，已出现延期。需协调任务顺序和可投入资源，再确认各项交付节点。</li>
-<li><strong>解决DV3验证瓶颈</strong>：量程异常仍无根因结论，治具返修后仍不达标。需协调研发、结构与供应商的排查及整改节奏，给出可检查的结果和验证时间；当前没有足够依据承诺客户验收时间。</li>
-<li><strong>对齐出样和验收安排</strong>：视触觉指尖原10/30展示节点与预计11/4出样存在差异；手套织物行动已完成，但最新物流记录仅为预计到货。需确认实际结果，再同步业务展示及整机验证安排。</li>
-<li><strong>落实材料侧下一步</strong>：汽车座椅算法已提供，需要材料部门明确样品、测试安排和结果时间。DOE2需补齐本周结果及11/2节点的实际输出。</li>
+<li><strong>解决DV3验证瓶颈</strong>：量程异常研发暂无新方案，需协调排查及验证资源；治具问题需跟进新供应商讨论，明确整改方案和验证节奏。两项会影响新200对排期判断，客户性能验收状态尚未补充。</li>
+<li><strong>对齐出样和集成安排</strong>：视触觉指尖原10/30展示节点与预计11/4出样存在差异，需同步业务预期。手套织物仍需改进、姿态方案未最终选定，需协调供应商现场讨论并明确整机验证安排。</li>
+<li><strong>落实材料侧下一步</strong>：汽车座椅算法已提供，需要材料部门明确样品、测试安排和结果时间。DOE2按11/2跟进客户反馈安排推进。</li>
 </ul>
 </div></div>
 </section>
@@ -886,7 +954,7 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <p>全部内容展开，支持浏览器查找、目录跳转、离线阅读和打印。主责、当前执行人和节点负责人分别保留。</p>
 <h3><a href="#project-f34eb0cb">RS-QN-Revo3-DV3</a></h3>
 <p>负责人：杨丽民。正式状态：进行中。</p>
-<p>版本及变更确认已完成，量程、手掌时漂和治具一致性仍阻碍稳定验证。</p>
+<p>此前25对订单已交付，新200对交期正在计划。量程、手掌时漂和治具问题继续跟踪。</p>
 <p>未结行动8条（搁置2条），未关闭问题5个。</p>
 <h3><a href="#project-814c8b05">RS-LXQS-O30-指尖</a></h3>
 <p>负责人：余庚。正式状态：进行中。</p>
@@ -898,7 +966,7 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <p>未结行动3条（搁置1条），未关闭问题1个。</p>
 <h3><a href="#project-4b614707">TS-MD-260801-触觉手套</a></h3>
 <p>负责人：余庚。正式状态：进行中。</p>
-<p>上位机初版已提供，织物改善及姿态方案待落实；板卡和SDK影响集成。</p>
+<p>上位机初版已提供，织物已收但需改进。姿态倾向YJ，QN方案仍有问题，尚未最终选定。</p>
 <p>未结行动5条（搁置1条），未关闭问题2个。</p>
 <h3><a href="#project-ebbe3620">RS-QN-2.0-EV</a></h3>
 <p>负责人：杨丽民。正式状态：进行中。</p>
@@ -918,11 +986,11 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <p>未结行动2条（搁置1条），未关闭问题0个。</p>
 <h3><a href="#project-42579e02">RS-XY-261020-夹爪</a></h3>
 <p>负责人：杨丽民。正式状态：待启动。</p>
-<p>3个样品已制作，等待包装及实际发货确认；41对传感器按计划组织。</p>
+<p>3个样品已发货；41对传感器按计划组织。</p>
 <p>未结行动2条（搁置0条），未关闭问题1个。</p>
 <h3><a href="#project-9a058dc2">PS-VSNX-DOE2-超高密度</a></h3>
 <p>负责人：余庚。正式状态：进行中。</p>
-<p>二次采样等待电阻板复核，技术结论未更新。</p>
+<p>本周暂无新结果，11/2跟进客户反馈。</p>
 <p>未结行动1条（搁置0条），未关闭问题0个。</p>
 <p><strong>本周归档：6464防串扰项目</strong></p>
 <p>10/28正式归档。双电源V0.1调试完成；现有V1.1电压反馈、V2.0电流反馈和3232V2.0架构均有可用方案。电流反馈方案功耗超过400mA，需按工况选择。统一性能评价标准未形成，不能把归档写为所有验证完成。</p>
@@ -931,24 +999,26 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <section class="am-panel" id="panel-E">
 <header class="am-panel-head"><span class="am-panel-id">E</span><h2>项目明细</h2></header>
 <div class="am-panel-body"><div class="am-md"><p>本周范围为10/26至资料截止时刻。以下日志日期为录入日期，实际发生日期另有记录时单独说明。计划、完成、实际发货与客户验收分别表达。</p>
-<p>逾期按10/30判断：未完成且未搁置、日期早于10/30才算逾期。整体逾期2条，节点逾期0个。今日到期及日期差异分别提示，搁置旧日期不计逾期。</p>
+<p>日期按10/30判断：正式未完成且未搁置的行动，整体期限已过2条，节点逾期0个。其中3件夹爪样品已确认发货，行动尚未结项，实发日期未补，不据此认定实际交付延期。今日到期不算逾期，搁置旧日期不计。</p>
 <h3 id="project-f34eb0cb">RS-QN-Revo3-DV3</h3>
 <p>项目负责人：杨丽民。正式状态：进行中。</p>
-<p>**当前进度：**版本及变更确认已完成，量程、手掌时漂和治具一致性仍阻碍稳定验证。</p>
-<p>最新进展录入：2026-10-30 15:23:07（北京时间）。</p>
+<p>**当前进度：**此前25对订单已交付，新200对交期正在计划。量程、手掌时漂和治具问题继续跟踪。</p>
+<p>最新进展录入：2026-10-30 17:09:47（北京时间）。</p>
 <p><strong>本周进展</strong></p>
 <ul>
+<li><p>10/30补充确认：此前25对订单已交付完毕，具体交付日期未补，不计作本周新增交付。新200对正在计划交期，未给出承诺日期。</p>
+</li>
 <li><p>10/26登记出货标签增加出货日期已执行；10/27完成图纸、固件与SOP版本归档。</p>
 </li>
 <li><p>1小时对外时漂报告行动10/26记为完成，但最新结论为V1.0.3-BETA2手掌时漂未通过，仍需优化算法。</p>
 </li>
-<li><p>10/27日志记载治具于前一日交付，因压块晃动、缺少轴承返厂。10/30仍不符合研发需求，一致性存在瓶颈。</p>
+<li><p>治具10/26交付后因压块晃动、缺少轴承返厂，问题仍在。正在协调新供应商10/30到场讨论，尚未补充讨论结果。</p>
 </li>
 <li><p>10/28二次标定行动完成。其对夹具一致性、单点触发力有一定改善，区域准确性未明显改善，生产导入受压强标定设备限制。</p>
 </li>
-<li><p>10/30放大凸点碳膜已到样，待测试。电镜尚未发现小指腹异常样品差异，根因仍无结论。</p>
+<li><p>10/30放大凸点碳膜已到样待测。电镜未发现异常样品差异，量程根因仍无结论，研发暂无新方案。</p>
 </li>
-<li><p>FPC防串扰电路已采购打板。竞品电子及嵌入式逆向、工艺实践准备进行中。设计变更行动10/30记为完成，最新文字为已确认变更情况，未据此推定全部性能指标通过。</p>
+<li><p>FPC防串扰电路已采购打板。竞品逆向及工艺实践准备进行中。设计变更行动已完成，未据此推定全部性能指标通过。</p>
 </li>
 </ul>
 <p><strong>未关闭问题（5个）</strong></p>
@@ -1071,10 +1141,10 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 </li>
 </ul>
 </li>
-<li><p>最新进展录入：2026-10-30 14:17:58。</p>
+<li><p>最新进展录入：2026-10-30 17:09:47。</p>
 </li>
 </ul>
-<p>目前治具仍不符合研发需求，且目前治具一致性存在瓶颈，可能成为风险</p>
+<p>治具问题仍然存在，正在协调新的供应商，计划2026年10月30日到场讨论；尚未提供讨论结果。</p>
 <ul>
 <li>完成标准（正式字段原文）：</li>
 </ul>
@@ -1125,10 +1195,10 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 </li>
 <li><p>当前节点：未登记。</p>
 </li>
-<li><p>最新进展录入：2026-10-30 15:22:15。</p>
+<li><p>最新进展录入：2026-10-30 17:09:47。</p>
 </li>
 </ul>
-<p>目前电镜也看不出来差异，尚无结论，属于风险较大的问题</p>
+<p>量程异常仍存在，研发目前暂无新方案；根因分析尚无新的结论。</p>
 <ul>
 <li>完成标准（正式字段原文）：</li>
 </ul>
@@ -1201,15 +1271,15 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <p>本项不列为正在推进的承诺。</p>
 <p><strong>节点差异与后续计划</strong></p>
 <ul>
-<li><p>本周实发数量和客户性能验收结果未登记，不能由旧累计数量推算。</p>
+<li><p>25对是此前订单交付事实，不是本周新增发货量；客户性能验收状态仍未补充。</p>
 </li>
-<li><p>治具节点标为已完成，但最新验证未达研发需求，总行动仍等待反馈。</p>
+<li><p>治具节点标为已完成，但问题仍在，总行动仍等待反馈。</p>
 </li>
 <li><p>小指腹问题字段保留历史2pcs，10/19项目记录已累计3pcs；本周没有新的异常数量统计。</p>
 </li>
 <li><p>11/1为小指腹量程根因分析现有期限；11/2为FPC电路及PI碳膜工艺验证节点。硬件防串扰整体期限11/6。</p>
 </li>
-<li><p>治具返修和放大凸点碳膜测试尚需确定下一结果时间。</p>
+<li><p>跟进新治具供应商讨论及量程排查方案，明确新200对交期。碳膜测试的下一结果时间尚未给出。</p>
 </li>
 </ul>
 <p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
@@ -1387,17 +1457,17 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
 <h3 id="project-4b614707">TS-MD-260801-触觉手套</h3>
 <p>项目负责人：余庚。正式状态：进行中。</p>
-<p>**当前进度：**上位机初版已提供，织物改善及姿态方案待落实；板卡和SDK影响集成。</p>
-<p>最新进展录入：2026-10-30 15:36:14（北京时间）。</p>
+<p>**当前进度：**上位机初版已提供，织物已收但需改进。姿态倾向YJ，QN方案仍有问题，尚未最终选定。</p>
+<p>最新进展录入：2026-10-30 17:09:47（北京时间）。</p>
 <p><strong>本周进展</strong></p>
 <ul>
 <li><p>10/27 TS1208板卡已收到待调试。10/30记录因逆向及温补算法任务延期，未登记调试完成。</p>
 </li>
 <li><p>10/28记录近期又出现2pcs掉线异常，样品已给李斌。</p>
 </li>
-<li><p>10/30融合上位机初版已提供，待确定姿态供应商后细化，织物部分仍需修改。</p>
+<li><p>融合上位机初版已提供，方案确定后继续细化。10/30补充姿态方案倾向YJ，QN仍有问题，不能写成供应商已选定。</p>
 </li>
-<li><p>织物第二次打样行动10/30记为完成；最新10/29物流文字仍为当晚发货、预计10/30收到。实际收样及效果尚未明确记录。</p>
+<li><p>织物第二次打样已完成。10/30补充确认样品已收到，仍需改进，计划下周到供应商现场讨论。</p>
 </li>
 <li><p>独立SDK行动10/29最新进展为尚未开始开发，与融合行动中的上位机适配节点分开保留。</p>
 </li>
@@ -1508,10 +1578,10 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 </li>
 </ul>
 </li>
-<li><p>最新进展录入：2026-10-30 15:36:14。</p>
+<li><p>最新进展录入：2026-10-30 17:09:47。</p>
 </li>
 </ul>
-<p>目前已经提供一个初版的上位机软件，确定方案（姿态供应商）后再细化。织物部分仍需要修改</p>
+<p>织物样品已收到，仍需要改进，计划2026年11月2日至11月8日前往供应商现场讨论。姿态方案目前倾向YJ，QN方案仍有问题，尚未最终确定供应商。</p>
 <ul>
 <li>完成标准（正式字段原文）：</li>
 </ul>
@@ -1546,9 +1616,9 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 </li>
 <li><p>融合行动的上位机SDK适配节点已完成，独立SDK行动尚未开发；适配完成不能替代独立SDK全部范围。</p>
 </li>
-<li><p>织物行动完成与未登记实际收样的文字差异保留。</p>
+<li><p>YJ、QN按用户提供的简称保留，未扩展为正式供应商全称；倾向方案不等于最终选定。</p>
 </li>
-<li><p>先确认织物实际到货与改善效果、姿态供应商，再明确采集验证和样机交付时间。</p>
+<li><p>11/2—11/8到供应商现场讨论织物改进，具体日期未定。继续确认姿态方案，明确采集验证和样机交付时间。</p>
 </li>
 <li><p>SDK整体期限11/3，需确认开发安排。TS1208调试及掉线分析仍需结果。</p>
 </li>
@@ -1892,13 +1962,13 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
 <h3 id="project-42579e02">RS-XY-261020-夹爪</h3>
 <p>项目负责人：杨丽民。正式状态：待启动。</p>
-<p>**当前进度：**3个样品已制作，等待包装及实际发货确认；41对传感器按计划组织。</p>
-<p>最新进展录入：2026-10-29 11:10:31（北京时间）。</p>
+<p>**当前进度：**3个样品已发货；41对传感器按计划组织。</p>
+<p>最新进展录入：2026-10-30 17:09:47（北京时间）。</p>
 <p><strong>本周进展</strong></p>
 <ul>
-<li><p>10/28记录当日制作样品、次日做检测报告；产品提供节点已完成。</p>
+<li><p>10/28记录制作样品并安排检测报告，产品提供节点已完成。</p>
 </li>
-<li><p>10/28最新交付进展仍为彩盒未到，预计周五10/30到达，尚未登记实发。</p>
+<li><p>10/30补充确认3个夹爪样品已发货。具体实发日期和物流凭证未补，原等彩盒记录保留为历史。</p>
 </li>
 <li><p>夹持表面改善行动10/29完成，结论为不需要修改；夹持不稳问题仍为OPEN。</p>
 </li>
@@ -1930,17 +2000,17 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <ul>
 <li><p>主责：杨丽民。当前执行人：未指定。正式状态：等待反馈。</p>
 </li>
-<li><p>整体期限：2026-10-29。整体逾期。</p>
+<li><p>整体期限：2026-10-29。正式行动未结且期限已过；实发已确认，实际交付日期未补。</p>
 </li>
 <li><p>节点（含已完成节点，按看板顺序）：</p>
 <ul>
 <li>提供视触觉夹爪产品；负责人王国庆；2026-10-28；已完成。</li>
 </ul>
 </li>
-<li><p>最新进展录入：2026-10-28 15:26:38。</p>
+<li><p>最新进展录入：2026-10-30 17:09:47。</p>
 </li>
 </ul>
-<p>彩盒还没到，要到周五</p>
+<p>3个视触觉夹爪样品已发货，具体发货日期及物流凭证未补充。</p>
 <ul>
 <li>完成标准（正式字段原文）：</li>
 </ul>
@@ -1987,13 +2057,13 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <p>未登记。</p>
 <p><strong>节点差异与后续计划</strong></p>
 <ul>
-<li><p>正式项目状态仍为待启动，样品相关行动已推进；按正式字段保留差异。</p>
+<li><p>正式项目状态仍为待启动，样品已发货；按正式字段保留差异。</p>
 </li>
-<li><p>3个样品行动整体期限10/29，当前已逾期，不能以制作节点完成替代实发。</p>
+<li><p>3个样品已确认实发，但总行动仍等待反馈、整体日期为10/29。实发日期未补，不据此认定实际交付延期。</p>
 </li>
 <li><p>夹持表面无需修改不等于夹持问题已关闭。</p>
 </li>
-<li><p>核对3件样品包装、报告与实际发货。</p>
+<li><p>跟进3件样品后续反馈，补齐交付记录。</p>
 </li>
 <li><p>41对总交付11/20：供应商制板贴片11/14、物料转入11/16；4批10、10、10、11对，按11/17至11/20发货。</p>
 </li>
@@ -2001,10 +2071,12 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
 <h3 id="project-9a058dc2">PS-VSNX-DOE2-超高密度</h3>
 <p>项目负责人：余庚。正式状态：进行中。</p>
-<p>**当前进度：**二次采样等待电阻板复核，技术结论未更新。</p>
-<p>最新进展录入：2026-10-14 14:20:34（北京时间）。</p>
+<p>**当前进度：**本周暂无新结果，11/2跟进客户反馈。</p>
+<p>最新进展录入：2026-10-30 17:09:47（北京时间）。</p>
 <p><strong>本周进展</strong></p>
-<p>本周未登记新进展。</p>
+<ul>
+<li>10/30补充确认本周暂无新结果。不能把本次状态确认写成新的技术验证成果。</li>
+</ul>
 <p><strong>未关闭问题（0个）</strong></p>
 <p>未登记未关闭问题。</p>
 <p><strong>开放风险</strong></p>
@@ -2030,10 +2102,10 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 </li>
 </ul>
 </li>
-<li><p>最新进展录入：2026-10-14 14:20:34。</p>
+<li><p>最新进展录入：2026-10-30 17:09:47。</p>
 </li>
 </ul>
-<p>目前看来，二次采样可能会没什么用，还在验证的过程中，需要等电阻板到了之后，再次出一个新的结论</p>
+<p>本周暂无新结果。2026年11月2日跟进客户反馈，不将该日期解释为验证结论交付日。</p>
 <ul>
 <li>完成标准（正式字段原文）：</li>
 </ul>
@@ -2042,9 +2114,9 @@ html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
 <p>未登记。</p>
 <p><strong>节点差异与后续计划</strong></p>
 <ul>
-<li><p>最新行动进展录于10/14，本周未登记新进展。全部旧节点已完成，正式总行动仍进行中。</p>
+<li><p>原10/14二次采样及电阻板记录保留为历史。全部旧节点已完成，正式总行动仍进行中。</p>
 </li>
-<li><p>现行动整体期限11/2。先确认电阻板状态、实际试验及可输出结论，不能将旧节点完成当成本周新成果。</p>
+<li><p>11/2跟进客户反馈，该节点不代表承诺当天提交验证结论。</p>
 </li>
 </ul>
 <p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
@@ -2065,34 +2137,34 @@ subtitle: 2026年10月26日至10月30日
 
 HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV3量程及治具验证仍受阻，嵌入式资源冲突影响EV和TS1208进度。
 
-资料截至：2026-10-30 16:21:24（北京时间）。下周范围：11月2日至11月8日。
+资料截至：2026-10-30 17:11:52（北京时间）。下周范围：11月2日至11月8日。
 
 [本周进度](#panel-A) · [下周计划](#panel-B) · [需要协助](#panel-C) · [项目目录](#panel-D) · [项目明细](#panel-E)
 
 ## A 本周进度
 
-- **交付**：HBD末批19套织物垫已发货。RS-XY的3个视触觉夹爪样品已制作，最新记录仍在等待彩盒，尚未登记实发。
-- **DV3**：图纸、固件和SOP版本归档及本轮设计变更确认已完成。小指腹量程异常经电镜检查仍无根因结论；治具交付后因压块晃动、缺少轴承返厂，当前仍不满足研发需求。手掌时漂尚未通过，放大凸点碳膜已到样，待测试。
+- **交付**：HBD末批19套织物垫及RS-XY的3个视触觉夹爪样品均已发货。
+- **DV3**：此前25对订单已交付完毕，新200对交期正在规划；25对不计作本周新增交付。版本归档及设计变更确认已完成。量程异常仍无根因结论，研发暂无新方案；治具问题仍在，正在协调新供应商10/30到场讨论。手掌时漂尚未通过，放大凸点碳膜已到样待测。
 - **新款视触觉**：指尖因耐用性问题更换硅胶并重新训练，非定制相机样品预计11/4左右提供。六维力模型正在验证，深度和滑移检测列入下一阶段；形貌重建仍为研究。
-- **触觉手套**：融合上位机初版已提供，织物仍需修改，姿态供应商尚待确定。TS1208板卡已收到，调试因逆向和温补任务延期；近期又出现2件掉线异常，样品已交李斌分析。
+- **触觉手套**：融合上位机初版已提供，织物已收到但仍需改进，下周到供应商现场讨论。姿态方案倾向YJ，QN方案仍有问题，尚未最终选定。TS1208板卡调试因逆向和温补任务延期；近期又出现2件掉线异常，样品已交李斌分析。
 - **采集卡**：3232标定算法已完成，V2.0效果通过内部测试，小型化版本已发板，预计11/11左右回料。6464本周已归档，现有防串扰方案可用，统一评价标准仍未形成。
 - **汽车座椅、EV**：汽车座椅温补算法已由嵌入式提供，等待材料部门确定下一步。EV样品遇到软件Bug，本周受嵌入式资源限制，修复节点推迟到下周确认。
 - **客户需求变化**：O30客户正在考虑视触觉方案，压阻方案推进放缓，后续装配测试等待新版结构件齐套。
 
 ## B 下周计划
 
-- **DV3，11/2—11/6**：按现有节点完成FPC防串扰电路验证和PI碳膜工艺验证，推进竞品逆向及DOE。硬件防串扰行动整体期限为11/6。小指腹根因分析原目标11/1，尚无结论；治具返修及手掌碳膜测试需补齐新的输出节点。
+- **DV3，11/2—11/6**：按现有节点完成FPC防串扰电路验证和PI碳膜工艺验证，推进竞品逆向及DOE。硬件防串扰行动整体期限11/6。跟进新治具供应商讨论结果及量程排查方案，明确新200对交期；具体日期尚未承诺。
 - **新款视触觉**：先跟进预计11/4左右的非定制相机指尖样品，同步开展深度检测训练和滑移方案研究。定制相机指尖节点保留11/10。新款夹爪整体期限11/10、样品节点11/15的差异需核对。
-- **触觉手套、EV**：明确姿态供应商及织物改善后，继续细化上位机和采集验证。手套SDK整体目标11/3，最新记录尚未启动。EV在11/2所在周先确认Bug修复节点，不将行动日期写成已承诺修复完成日。
-- **汽车座椅、DOE2**：汽车座椅由材料部门确认温补验证安排；行动期限11/2。DOE2行动期限同为11/2，但本周未登记新进展，需先确认电阻板及二次采样验证结果。
-- **交付跟进**：核实3个夹爪样品实际发货；41对配套交付按既有计划推进，11/14供应商制板贴片、11/17起分批发货、11/20末批交付，均为后续计划。
+- **触觉手套、EV**：11/2—11/8前往织物供应商现场讨论改进，具体日期待定；继续确认姿态方案并细化上位机和采集验证。手套SDK目标11/3，最新记录尚未启动。EV下周先确认Bug修复节点。
+- **汽车座椅、DOE2**：材料部门确认汽车座椅温补验证安排，行动期限11/2。DOE2本周暂无新结果，11/2跟进客户反馈，不承诺当天形成验证结论。
+- **后续交付**：41对夹爪配套按既有计划推进，11/14供应商制板贴片、11/17起分批发货、11/20末批交付，均为计划。DV3新200对另行明确交期。
 
 ## C 需要协助
 
 - **明确嵌入式优先级**：EV Bug、TS1208调试与逆向、温补任务存在资源冲突，已出现延期。需协调任务顺序和可投入资源，再确认各项交付节点。
-- **解决DV3验证瓶颈**：量程异常仍无根因结论，治具返修后仍不达标。需协调研发、结构与供应商的排查及整改节奏，给出可检查的结果和验证时间；当前没有足够依据承诺客户验收时间。
-- **对齐出样和验收安排**：视触觉指尖原10/30展示节点与预计11/4出样存在差异；手套织物行动已完成，但最新物流记录仅为预计到货。需确认实际结果，再同步业务展示及整机验证安排。
-- **落实材料侧下一步**：汽车座椅算法已提供，需要材料部门明确样品、测试安排和结果时间。DOE2需补齐本周结果及11/2节点的实际输出。
+- **解决DV3验证瓶颈**：量程异常研发暂无新方案，需协调排查及验证资源；治具问题需跟进新供应商讨论，明确整改方案和验证节奏。两项会影响新200对排期判断，客户性能验收状态尚未补充。
+- **对齐出样和集成安排**：视触觉指尖原10/30展示节点与预计11/4出样存在差异，需同步业务预期。手套织物仍需改进、姿态方案未最终选定，需协调供应商现场讨论并明确整机验证安排。
+- **落实材料侧下一步**：汽车座椅算法已提供，需要材料部门明确样品、测试安排和结果时间。DOE2按11/2跟进客户反馈安排推进。
 
 ## D 项目目录
 
@@ -2104,7 +2176,7 @@ HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV
 
 负责人：杨丽民。正式状态：进行中。
 
-版本及变更确认已完成，量程、手掌时漂和治具一致性仍阻碍稳定验证。
+此前25对订单已交付，新200对交期正在计划。量程、手掌时漂和治具问题继续跟踪。
 
 未结行动8条（搁置2条），未关闭问题5个。
 
@@ -2128,7 +2200,7 @@ HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV
 
 负责人：余庚。正式状态：进行中。
 
-上位机初版已提供，织物改善及姿态方案待落实；板卡和SDK影响集成。
+上位机初版已提供，织物已收但需改进。姿态倾向YJ，QN方案仍有问题，尚未最终选定。
 
 未结行动5条（搁置1条），未关闭问题2个。
 
@@ -2168,7 +2240,7 @@ HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV
 
 负责人：杨丽民。正式状态：待启动。
 
-3个样品已制作，等待包装及实际发货确认；41对传感器按计划组织。
+3个样品已发货；41对传感器按计划组织。
 
 未结行动2条（搁置0条），未关闭问题1个。
 
@@ -2176,7 +2248,7 @@ HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV
 
 负责人：余庚。正式状态：进行中。
 
-二次采样等待电阻板复核，技术结论未更新。
+本周暂无新结果，11/2跟进客户反馈。
 
 未结行动1条（搁置0条），未关闭问题0个。
 
@@ -2188,29 +2260,31 @@ HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV
 
 本周范围为10/26至资料截止时刻。以下日志日期为录入日期，实际发生日期另有记录时单独说明。计划、完成、实际发货与客户验收分别表达。
 
-逾期按10/30判断：未完成且未搁置、日期早于10/30才算逾期。整体逾期2条，节点逾期0个。今日到期及日期差异分别提示，搁置旧日期不计逾期。
+日期按10/30判断：正式未完成且未搁置的行动，整体期限已过2条，节点逾期0个。其中3件夹爪样品已确认发货，行动尚未结项，实发日期未补，不据此认定实际交付延期。今日到期不算逾期，搁置旧日期不计。
 
 ### RS-QN-Revo3-DV3
 
 项目负责人：杨丽民。正式状态：进行中。
 
-**当前进度：**版本及变更确认已完成，量程、手掌时漂和治具一致性仍阻碍稳定验证。
+**当前进度：**此前25对订单已交付，新200对交期正在计划。量程、手掌时漂和治具问题继续跟踪。
 
-最新进展录入：2026-10-30 15:23:07（北京时间）。
+最新进展录入：2026-10-30 17:09:47（北京时间）。
 
 **本周进展**
+
+- 10/30补充确认：此前25对订单已交付完毕，具体交付日期未补，不计作本周新增交付。新200对正在计划交期，未给出承诺日期。
 
 - 10/26登记出货标签增加出货日期已执行；10/27完成图纸、固件与SOP版本归档。
 
 - 1小时对外时漂报告行动10/26记为完成，但最新结论为V1.0.3-BETA2手掌时漂未通过，仍需优化算法。
 
-- 10/27日志记载治具于前一日交付，因压块晃动、缺少轴承返厂。10/30仍不符合研发需求，一致性存在瓶颈。
+- 治具10/26交付后因压块晃动、缺少轴承返厂，问题仍在。正在协调新供应商10/30到场讨论，尚未补充讨论结果。
 
 - 10/28二次标定行动完成。其对夹具一致性、单点触发力有一定改善，区域准确性未明显改善，生产导入受压强标定设备限制。
 
-- 10/30放大凸点碳膜已到样，待测试。电镜尚未发现小指腹异常样品差异，根因仍无结论。
+- 10/30放大凸点碳膜已到样待测。电镜未发现异常样品差异，量程根因仍无结论，研发暂无新方案。
 
-- FPC防串扰电路已采购打板。竞品电子及嵌入式逆向、工艺实践准备进行中。设计变更行动10/30记为完成，最新文字为已确认变更情况，未据此推定全部性能指标通过。
+- FPC防串扰电路已采购打板。竞品逆向及工艺实践准备进行中。设计变更行动已完成，未据此推定全部性能指标通过。
 
 **未关闭问题（5个）**
 
@@ -2328,9 +2402,9 @@ HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV
 
   - 完成测试架及治具改造出图；负责人王健善；2026-10-16；已完成。
 
-- 最新进展录入：2026-10-30 14:17:58。
+- 最新进展录入：2026-10-30 17:09:47。
 
-目前治具仍不符合研发需求，且目前治具一致性存在瓶颈，可能成为风险
+治具问题仍然存在，正在协调新的供应商，计划2026年10月30日到场讨论；尚未提供讨论结果。
 
 - 完成标准（正式字段原文）：
 
@@ -2380,9 +2454,9 @@ HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV
 
 - 当前节点：未登记。
 
-- 最新进展录入：2026-10-30 15:22:15。
+- 最新进展录入：2026-10-30 17:09:47。
 
-目前电镜也看不出来差异，尚无结论，属于风险较大的问题
+量程异常仍存在，研发目前暂无新方案；根因分析尚无新的结论。
 
 - 完成标准（正式字段原文）：
 
@@ -2454,15 +2528,15 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
 **节点差异与后续计划**
 
-- 本周实发数量和客户性能验收结果未登记，不能由旧累计数量推算。
+- 25对是此前订单交付事实，不是本周新增发货量；客户性能验收状态仍未补充。
 
-- 治具节点标为已完成，但最新验证未达研发需求，总行动仍等待反馈。
+- 治具节点标为已完成，但问题仍在，总行动仍等待反馈。
 
 - 小指腹问题字段保留历史2pcs，10/19项目记录已累计3pcs；本周没有新的异常数量统计。
 
 - 11/1为小指腹量程根因分析现有期限；11/2为FPC电路及PI碳膜工艺验证节点。硬件防串扰整体期限11/6。
 
-- 治具返修和放大凸点碳膜测试尚需确定下一结果时间。
+- 跟进新治具供应商讨论及量程排查方案，明确新200对交期。碳膜测试的下一结果时间尚未给出。
 
 [返回项目目录](#panel-D) · [返回顶部](#top)
 
@@ -2652,9 +2726,9 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
 项目负责人：余庚。正式状态：进行中。
 
-**当前进度：**上位机初版已提供，织物改善及姿态方案待落实；板卡和SDK影响集成。
+**当前进度：**上位机初版已提供，织物已收但需改进。姿态倾向YJ，QN方案仍有问题，尚未最终选定。
 
-最新进展录入：2026-10-30 15:36:14（北京时间）。
+最新进展录入：2026-10-30 17:09:47（北京时间）。
 
 **本周进展**
 
@@ -2662,9 +2736,9 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
 - 10/28记录近期又出现2pcs掉线异常，样品已给李斌。
 
-- 10/30融合上位机初版已提供，待确定姿态供应商后细化，织物部分仍需修改。
+- 融合上位机初版已提供，方案确定后继续细化。10/30补充姿态方案倾向YJ，QN仍有问题，不能写成供应商已选定。
 
-- 织物第二次打样行动10/30记为完成；最新10/29物流文字仍为当晚发货、预计10/30收到。实际收样及效果尚未明确记录。
+- 织物第二次打样已完成。10/30补充确认样品已收到，仍需改进，计划下周到供应商现场讨论。
 
 - 独立SDK行动10/29最新进展为尚未开始开发，与融合行动中的上位机适配节点分开保留。
 
@@ -2772,9 +2846,9 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
   - 采集验证与样机交付；负责人田浩；2026-10-30；待处理，节点今日到期。
 
-- 最新进展录入：2026-10-30 15:36:14。
+- 最新进展录入：2026-10-30 17:09:47。
 
-目前已经提供一个初版的上位机软件，确定方案（姿态供应商）后再细化。织物部分仍需要修改
+织物样品已收到，仍需要改进，计划2026年11月2日至11月8日前往供应商现场讨论。姿态方案目前倾向YJ，QN方案仍有问题，尚未最终确定供应商。
 
 - 完成标准（正式字段原文）：
 
@@ -2810,9 +2884,9 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
 - 融合行动的上位机SDK适配节点已完成，独立SDK行动尚未开发；适配完成不能替代独立SDK全部范围。
 
-- 织物行动完成与未登记实际收样的文字差异保留。
+- YJ、QN按用户提供的简称保留，未扩展为正式供应商全称；倾向方案不等于最终选定。
 
-- 先确认织物实际到货与改善效果、姿态供应商，再明确采集验证和样机交付时间。
+- 11/2—11/8到供应商现场讨论织物改进，具体日期未定。继续确认姿态方案，明确采集验证和样机交付时间。
 
 - SDK整体期限11/3，需确认开发安排。TS1208调试及掉线分析仍需结果。
 
@@ -3184,15 +3258,15 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
 项目负责人：杨丽民。正式状态：待启动。
 
-**当前进度：**3个样品已制作，等待包装及实际发货确认；41对传感器按计划组织。
+**当前进度：**3个样品已发货；41对传感器按计划组织。
 
-最新进展录入：2026-10-29 11:10:31（北京时间）。
+最新进展录入：2026-10-30 17:09:47（北京时间）。
 
 **本周进展**
 
-- 10/28记录当日制作样品、次日做检测报告；产品提供节点已完成。
+- 10/28记录制作样品并安排检测报告，产品提供节点已完成。
 
-- 10/28最新交付进展仍为彩盒未到，预计周五10/30到达，尚未登记实发。
+- 10/30补充确认3个夹爪样品已发货。具体实发日期和物流凭证未补，原等彩盒记录保留为历史。
 
 - 夹持表面改善行动10/29完成，结论为不需要修改；夹持不稳问题仍为OPEN。
 
@@ -3226,15 +3300,15 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
 - 主责：杨丽民。当前执行人：未指定。正式状态：等待反馈。
 
-- 整体期限：2026-10-29。整体逾期。
+- 整体期限：2026-10-29。正式行动未结且期限已过；实发已确认，实际交付日期未补。
 
 - 节点（含已完成节点，按看板顺序）：
 
   - 提供视触觉夹爪产品；负责人王国庆；2026-10-28；已完成。
 
-- 最新进展录入：2026-10-28 15:26:38。
+- 最新进展录入：2026-10-30 17:09:47。
 
-彩盒还没到，要到周五
+3个视触觉夹爪样品已发货，具体发货日期及物流凭证未补充。
 
 - 完成标准（正式字段原文）：
 
@@ -3282,13 +3356,13 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
 **节点差异与后续计划**
 
-- 正式项目状态仍为待启动，样品相关行动已推进；按正式字段保留差异。
+- 正式项目状态仍为待启动，样品已发货；按正式字段保留差异。
 
-- 3个样品行动整体期限10/29，当前已逾期，不能以制作节点完成替代实发。
+- 3个样品已确认实发，但总行动仍等待反馈、整体日期为10/29。实发日期未补，不据此认定实际交付延期。
 
 - 夹持表面无需修改不等于夹持问题已关闭。
 
-- 核对3件样品包装、报告与实际发货。
+- 跟进3件样品后续反馈，补齐交付记录。
 
 - 41对总交付11/20：供应商制板贴片11/14、物料转入11/16；4批10、10、10、11对，按11/17至11/20发货。
 
@@ -3298,13 +3372,13 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
 项目负责人：余庚。正式状态：进行中。
 
-**当前进度：**二次采样等待电阻板复核，技术结论未更新。
+**当前进度：**本周暂无新结果，11/2跟进客户反馈。
 
-最新进展录入：2026-10-14 14:20:34（北京时间）。
+最新进展录入：2026-10-30 17:09:47（北京时间）。
 
 **本周进展**
 
-本周未登记新进展。
+- 10/30补充确认本周暂无新结果。不能把本次状态确认写成新的技术验证成果。
 
 **未关闭问题（0个）**
 
@@ -3334,9 +3408,9 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
   - 新时序验证；负责人刘俊；2026-10-10；已完成。
 
-- 最新进展录入：2026-10-14 14:20:34。
+- 最新进展录入：2026-10-30 17:09:47。
 
-目前看来，二次采样可能会没什么用，还在验证的过程中，需要等电阻板到了之后，再次出一个新的结论
+本周暂无新结果。2026年11月2日跟进客户反馈，不将该日期解释为验证结论交付日。
 
 - 完成标准（正式字段原文）：
 
@@ -3348,9 +3422,9 @@ FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
 
 **节点差异与后续计划**
 
-- 最新行动进展录于10/14，本周未登记新进展。全部旧节点已完成，正式总行动仍进行中。
+- 原10/14二次采样及电阻板记录保留为历史。全部旧节点已完成，正式总行动仍进行中。
 
-- 现行动整体期限11/2。先确认电阻板状态、实际试验及可输出结论，不能将旧节点完成当成本周新成果。
+- 11/2跟进客户反馈，该节点不代表承诺当天提交验证结论。
 
 [返回项目目录](#panel-D) · [返回顶部](#top)
 

@@ -1,0 +1,3360 @@
+<!DOCTYPE html>
+
+<html data-mode="light" data-style="80" data-theme="paper" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="default-src 'none'; script-src 'sha256-qwC2biNEcgyecbiltRqW7IRXKbRzrNXGQNfjQpxbiXs=' 'sha256-vjQfZ+oX05M1l9ERqRkMpxLi1EZh23JhiYF5QAjG6aA='; style-src 'unsafe-inline'; img-src data:; font-src data:; media-src data:; connect-src 'self'; form-action 'none'; base-uri 'none'" http-equiv="Content-Security-Policy"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Answer me with HTML 0.5.5" name="generator"/>
+<title>项目周报</title>
+<style>
+html[data-theme="blueprint"], html[data-theme="blueprint"][data-mode="light"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --radius: 0px;
+  --shadow: none;
+  --bw: 1.5px;
+  --head-font: var(--font-sans);
+  --bg: #f6f6f3;
+  --paper: #ffffff;
+  --ink: #16181d;
+  --ink-2: #4b5260;
+  --ink-3: #8b929e;
+  --line: #1d2026;
+  --line-2: #d6dae1;
+  --fill: #f3f5f8;
+  --accent: #1d5fbf;
+  --accent-bg: #e4ecf8;
+  --ok: #1d5fbf;
+  --ok-bg: #e4ecf8;
+  --err: #c62828;
+  --err-bg: #fbeaea;
+  --warn: #a8620a;
+  --warn-bg: #fdf3e2;
+  --head-bg: #16181d;
+  --head-fg: #ffffff;
+}
+html[data-theme="blueprint"][data-mode="dark"] {
+  --bg: #081322;
+  --paper: #0d1c31;
+  --ink: #e6edf7;
+  --ink-2: #a9b8cc;
+  --ink-3: #6b7f99;
+  --line: #c9d6e8;
+  --line-2: #23385a;
+  --fill: #12253f;
+  --accent: #6ea8ff;
+  --accent-bg: #16305a;
+  --ok: #6ea8ff;
+  --ok-bg: #16305a;
+  --err: #ff7070;
+  --err-bg: #3b1620;
+  --warn: #f0b14a;
+  --warn-bg: #3a2a10;
+  --head-bg: #e6edf7;
+  --head-fg: #081322;
+}
+@media (prefers-color-scheme: dark) {
+html[data-theme="blueprint"][data-mode="auto"] {
+  --bg: #081322;
+  --paper: #0d1c31;
+  --ink: #e6edf7;
+  --ink-2: #a9b8cc;
+  --ink-3: #6b7f99;
+  --line: #c9d6e8;
+  --line-2: #23385a;
+  --fill: #12253f;
+  --accent: #6ea8ff;
+  --accent-bg: #16305a;
+  --ok: #6ea8ff;
+  --ok-bg: #16305a;
+  --err: #ff7070;
+  --err-bg: #3b1620;
+  --warn: #f0b14a;
+  --warn-bg: #3a2a10;
+  --head-bg: #e6edf7;
+  --head-fg: #081322;
+}
+}
+
+html[data-theme="shadcn"], html[data-theme="shadcn"][data-mode="light"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --radius: 8px;
+  --shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+  --bw: 1px;
+  --head-font: var(--font-sans);
+  --bg: #fafafa;
+  --paper: #ffffff;
+  --ink: #09090b;
+  --ink-2: #71717a;
+  --ink-3: #a1a1aa;
+  --line: #e4e4e7;
+  --line-2: #f0f0f2;
+  --fill: #f4f4f5;
+  --accent: #2563eb;
+  --accent-bg: #eff6ff;
+  --ok: #16a34a;
+  --ok-bg: #f0fdf4;
+  --err: #dc2626;
+  --err-bg: #fef2f2;
+  --warn: #d97706;
+  --warn-bg: #fffbeb;
+  --head-bg: #18181b;
+  --head-fg: #fafafa;
+}
+html[data-theme="shadcn"][data-mode="dark"] {
+  --bg: #09090b;
+  --paper: #121215;
+  --ink: #fafafa;
+  --ink-2: #a1a1aa;
+  --ink-3: #71717a;
+  --line: #27272a;
+  --line-2: #1c1c1f;
+  --fill: #18181b;
+  --accent: #60a5fa;
+  --accent-bg: #172554;
+  --ok: #4ade80;
+  --ok-bg: #052e16;
+  --err: #f87171;
+  --err-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+  --head-bg: #fafafa;
+  --head-fg: #18181b;
+}
+@media (prefers-color-scheme: dark) {
+html[data-theme="shadcn"][data-mode="auto"] {
+  --bg: #09090b;
+  --paper: #121215;
+  --ink: #fafafa;
+  --ink-2: #a1a1aa;
+  --ink-3: #71717a;
+  --line: #27272a;
+  --line-2: #1c1c1f;
+  --fill: #18181b;
+  --accent: #60a5fa;
+  --accent-bg: #172554;
+  --ok: #4ade80;
+  --ok-bg: #052e16;
+  --err: #f87171;
+  --err-bg: #450a0a;
+  --warn: #fbbf24;
+  --warn-bg: #451a03;
+  --head-bg: #fafafa;
+  --head-fg: #18181b;
+}
+}
+
+html[data-theme="paper"], html[data-theme="paper"][data-mode="light"] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "JetBrains Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Songti SC", "STSong", "Noto Serif CJK SC", "Source Han Serif SC", serif;
+  --radius: 2px;
+  --shadow: none;
+  --bw: 1px;
+  --head-font: var(--font-serif);
+  --bg: #f5f2ea;
+  --paper: #fdfbf6;
+  --ink: #1f1c17;
+  --ink-2: #57514a;
+  --ink-3: #8c867b;
+  --line: #cbc3b4;
+  --line-2: #e5dfd3;
+  --fill: #f3eee4;
+  --accent: #8c2f1e;
+  --accent-bg: #f5e5df;
+  --ok: #2e6a3b;
+  --ok-bg: #e4efe5;
+  --err: #a3251b;
+  --err-bg: #f7e3e0;
+  --warn: #7f5300;
+  --warn-bg: #f6ecd6;
+  --head-bg: #1f1c17;
+  --head-fg: #fdfbf6;
+}
+html[data-theme="paper"][data-mode="dark"] {
+  --bg: #15130f;
+  --paper: #1c1a15;
+  --ink: #ebe5d8;
+  --ink-2: #b5ad9e;
+  --ink-3: #7b7467;
+  --line: #4a443a;
+  --line-2: #2d2a24;
+  --fill: #242119;
+  --accent: #e59a7d;
+  --accent-bg: #3a2219;
+  --ok: #8cc79a;
+  --ok-bg: #1c3122;
+  --err: #f0928a;
+  --err-bg: #3a1d1a;
+  --warn: #e3b866;
+  --warn-bg: #352a13;
+  --head-bg: #ebe5d8;
+  --head-fg: #15130f;
+}
+@media (prefers-color-scheme: dark) {
+html[data-theme="paper"][data-mode="auto"] {
+  --bg: #15130f;
+  --paper: #1c1a15;
+  --ink: #ebe5d8;
+  --ink-2: #b5ad9e;
+  --ink-3: #7b7467;
+  --line: #4a443a;
+  --line-2: #2d2a24;
+  --fill: #242119;
+  --accent: #e59a7d;
+  --accent-bg: #3a2219;
+  --ok: #8cc79a;
+  --ok-bg: #1c3122;
+  --err: #f0928a;
+  --err-bg: #3a1d1a;
+  --warn: #e3b866;
+  --warn-bg: #352a13;
+  --head-bg: #ebe5d8;
+  --head-fg: #15130f;
+}
+}
+
+html:lang(zh-Hant)[data-theme][data-mode], html:lang(zh-TW)[data-theme][data-mode], html:lang(zh-HK)[data-theme][data-mode], html:lang(zh-MO)[data-theme][data-mode] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Heiti TC", "Microsoft JhengHei", "Noto Sans CJK TC", "Noto Sans TC", "PingFang SC", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html:lang(ja)[data-theme][data-mode] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", "Yu Gothic", Meiryo, "Noto Sans CJK JP", "Noto Sans JP", "PingFang SC", "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+html:lang(he)[data-theme][data-mode] {
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans Hebrew", "Arial Hebrew", Arial, Roboto, "Helvetica Neue", sans-serif;
+}
+
+/* Answer me with HTML base — uses theme variables only, never hard-coded colors (theme tokens and decorations: themes/<name>.js). Exception: the var() fallbacks of diagrams (flow / sequence) equal the blueprint light tokens, guarded by a test. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-sans); font-size: 14px; line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+code, pre, kbd { font-family: var(--font-mono); }
+
+/* ── Toolbar ─────────────────────────────── */
+.am-toolbar {
+  position: fixed; top: 12px; inset-inline-end: 12px; z-index: 10; display: flex; gap: 6px;
+}
+.am-btn {
+  font: 12px/1 var(--font-sans); color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-2); border-radius: var(--radius); padding: 7px 10px; cursor: pointer;
+}
+.am-btn:hover { border-color: var(--ink-3); }
+.am-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+/* Theme and mode lists: a label and a native select inside one button-like box */
+.am-pick {
+  display: flex; align-items: center; gap: 6px; font: 12px/1 var(--font-sans); color: var(--ink-2); background: var(--paper);
+  border: 1px solid var(--line-2); border-radius: var(--radius); padding-block: 0; padding-inline: 10px 4px;
+}
+.am-pick:hover { border-color: var(--ink-3); }
+.am-pick:focus-within { outline: 2px solid var(--accent); outline-offset: 2px; }
+.am-pick select {
+  font: inherit; color: var(--ink); background: transparent; border: 0; padding: 6px 2px; cursor: pointer; outline: none;
+}
+.am-pick option { color: var(--ink); background: var(--paper); }
+
+/* ── Header ───────────────────────────────── */
+.am-head { margin: 0 0 20px; padding-inline-end: 300px; }
+.am-head h1 { margin: 0; font-size: 24px; line-height: 1.25; letter-spacing: -0.01em; }
+.am-sub { margin: 4px 0 0; color: var(--ink-2); }
+.am-head-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: 10px; font-size: 12px; color: var(--ink-2); }
+.am-head-meta b { font-family: var(--font-mono); font-weight: 400; color: var(--ink-3); margin-inline-end: 6px; }
+.am-intro { margin-top: 12px; max-width: 80ch; }
+
+/* ── sheet template ────────────────────────── */
+.am-sheet { max-width: 1680px; margin: 0 auto; padding: 32px 28px 40px; }
+.am-frame { position: relative; }
+.am-grid {
+  display: grid; grid-template-columns: repeat(var(--cols, 3), minmax(0, 1fr));
+  gap: 20px; align-items: start;
+}
+.am-ruler { display: none; }
+.am-ruler span { flex: 1; display: flex; align-items: center; justify-content: center; }
+.am-ruler--top, .am-ruler--bottom { left: 18px; right: 18px; height: 18px; }
+.am-ruler--top { top: 0; }
+.am-ruler--bottom { bottom: 0; }
+.am-ruler--left, .am-ruler--right { top: 18px; bottom: 18px; width: 18px; flex-direction: column; }
+.am-ruler--left { left: 0; }
+.am-ruler--right { right: 0; }
+.am-ruler--top span + span, .am-ruler--bottom span + span { border-inline-start: 1px solid var(--line); }
+.am-ruler--left span + span, .am-ruler--right span + span { border-top: 1px solid var(--line); }
+
+/* ── Panels ───────────────────────────────── */
+.am-panel {
+  background: var(--paper); border: var(--bw) solid var(--line); border-radius: var(--radius);
+  box-shadow: var(--shadow); min-width: 0; overflow: hidden;
+}
+.am-panel-head {
+  display: flex; align-items: stretch; gap: 0; border-bottom: var(--bw) solid var(--line); min-height: 34px;
+}
+.am-panel-id {
+  display: flex; align-items: center; justify-content: center; min-width: 34px; padding: 0 8px;
+  background: var(--head-bg); color: var(--head-fg); font-weight: 600; font-size: 14px;
+}
+.am-panel-head h2 { margin: 0; padding: 7px 12px; font-size: 15px; font-weight: 600; flex: 1; display: flex; align-items: center; }
+.am-panel-meta { align-self: center; padding: 0 12px; font: 11px/1.3 var(--font-mono); color: var(--ink-2); text-align: end; }
+.am-panel-body { padding: 14px 16px 16px; }
+.am-panel-body > * + * { margin-top: 12px; }
+
+/* ── Markdown body ───────────────────────── */
+.am-md > :first-child { margin-top: 0; }
+.am-md > :last-child { margin-bottom: 0; }
+.am-md p { margin: 0 0 8px; }
+.am-md ul, .am-md ol { margin: 0 0 8px; padding-inline-start: 20px; }
+.am-md li + li { margin-top: 3px; }
+.am-md h3, .am-md h4 { margin: 14px 0 6px; font-size: 13px; }
+.am-md a { color: var(--accent); }
+.am-md blockquote { margin: 0 0 8px; padding: 2px 12px; border-inline-start: 3px solid var(--line-2); color: var(--ink-2); }
+.am-md :not(pre) > code { font-size: 0.9em; background: var(--fill); padding: 1px 5px; border-radius: 4px; }
+.am-md hr { border: 0; border-top: 1px solid var(--line-2); margin: 12px 0; }
+.am-md table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.am-md th {
+  text-align: start; font: 11px/1.3 var(--font-mono); color: var(--ink-2); font-weight: 400;
+  padding: 6px 10px; border-bottom: 1px solid var(--line-2);
+}
+/* th { text-align: start } outranks the align attribute from Markdown alignment, so restore right and center columns explicitly. */
+.am-md th[align="right"] { text-align: right; }
+.am-md th[align="center"] { text-align: center; }
+.am-md td { padding: 7px 10px; border-bottom: 1px solid var(--line-2); vertical-align: top; }
+.am-md tbody tr:nth-child(even) td { background: var(--fill); }
+.am-table-wrap { overflow-x: auto; }
+/* Images scale down to the panel and never past 70% of the window height, keeping their shape. */
+.am-md img { max-width: 100%; max-height: 70vh; height: auto; }
+.am-figure { margin: 0; text-align: center; }
+.am-figure img { display: block; margin: 0 auto; border: 1px solid var(--line-2); border-radius: var(--radius); }
+.am-figure figcaption { margin-top: 6px; font-size: 12px; line-height: 1.4; color: var(--ink-2); }
+.am-code {
+  margin: 0; padding: 12px 14px; background: var(--fill); border: 1px solid var(--line-2);
+  border-radius: var(--radius); overflow-x: auto; font-size: 12.5px; line-height: 1.5;
+}
+/* Ask: a decision the reader makes; the suggested option starts selected */
+.am-ask { margin: 10px 0; padding: 10px 12px 8px; border: 1px solid var(--line-2); border-radius: var(--radius); background: var(--fill); min-width: 0; }
+/* The question floats inside the box, so a long question wraps like text instead of riding on the border */
+.am-ask-q { float: left; width: 100%; padding: 0; margin-bottom: 4px; font-weight: 600; }
+/* Two columns: the control, then the label, tag and note, which wrap under the label and never under the control */
+.am-ask-opt { clear: both; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; align-items: baseline; padding: 5px 2px; cursor: pointer; }
+.am-ask-opt input { margin: 0; accent-color: var(--accent); position: relative; top: 2px; }
+.am-ask-tag { display: inline-block; font-size: 11px; line-height: 1.5; color: var(--accent); border: 1px solid var(--accent); border-radius: 999px; padding: 0 6px; white-space: nowrap; }
+.am-ask-note { display: block; color: var(--ink-2); }
+/* Comment box under each panel, and the Reply sheet */
+.am-comment-btn {
+  display: flex; flex-shrink: 0; align-self: center; margin-block: 0; margin-inline: auto 6px; color: var(--ink-3); background: transparent;
+  border: 1px solid transparent; border-radius: var(--radius); padding: 3px; cursor: pointer;
+}
+.am-panel-meta + .am-comment-btn { margin-inline-start: 0; }
+.am-panel:hover .am-comment-btn, .am-comment-btn:focus-visible, .am-comment-btn[aria-expanded="true"] { border-color: var(--line-2); color: var(--ink-2); }
+.am-panel .am-comment-btn.am-comment-btn--on { color: var(--accent); border-color: var(--accent); }
+.am-panel--bare { position: relative; }
+.am-panel--bare > .am-comment-btn { position: absolute; top: 4px; inset-inline-end: 0; }
+.am-comment { padding: 0 14px 12px; }
+.am-comment textarea, .am-reply textarea {
+  width: 100%; font: 13px/1.5 var(--font-sans); color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-2); border-radius: var(--radius); padding: 8px 10px; resize: vertical;
+}
+.am-comment textarea:focus-visible, .am-reply textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.am-btn--reply { color: var(--paper); background: var(--ink); border-color: var(--ink); }
+.am-btn--reply:hover { opacity: .88; }
+.am-reply {
+  width: min(640px, calc(100vw - 32px)); padding: 16px; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 12px 40px rgba(0,0,0,.25);
+}
+.am-reply::backdrop { background: rgba(0,0,0,.35); }
+.am-reply-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; margin-bottom: 10px; }
+.am-reply-head span { color: var(--ink-2); font-size: 13px; }
+.am-reply textarea { font-family: var(--font-mono); font-size: 12.5px; }
+.am-reply-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 10px; }
+.am-reply .am-btn:disabled { opacity: .5; cursor: default; }
+/* The sheet shows the reply drawn (src/runtime/reply-view.js), each line in its own direction; the Markdown that Copy copies sits under a fold. */
+.am-reply-view {
+  max-height: min(60vh, 26em); overflow: auto; padding: 10px 12px; font: 14px/1.6 var(--font-sans); color: var(--ink);
+  background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); overflow-wrap: anywhere;
+}
+.am-reply-view:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.am-reply-view > div { text-align: start; unicode-bidi: isolate; }
+.am-rv-gap { height: .5em; }
+.am-rv-h1 { font-weight: 700; font-size: 15px; }
+.am-rv-h2 { font-weight: 700; color: var(--ink-2); margin-top: 2px; }
+.am-rv-tag {
+  display: inline-block; min-width: 1.6em; padding: 0 4px; font-size: 12px; line-height: 1.5; text-align: center;
+  color: var(--ink-2); border: 1px solid var(--line-2); border-radius: var(--radius);
+}
+.am-rv-a { padding-inline-start: 1.6em; }
+.am-rv-a em { color: var(--ink-2); }
+.am-rv-quote { margin-inline-start: 1em; padding-inline-start: 10px; border-inline-start: 3px solid var(--line-2); color: var(--ink-2); white-space: pre-wrap; }
+.am-reply-raw summary { margin-top: 10px; margin-bottom: 6px; font-size: 12px; color: var(--ink-2); cursor: pointer; }
+/* The bar at the bottom of the page: counts and one-click copy, so the reader need not go to the Reply button at the top. */
+.am-reply-bar {
+  position: fixed; inset-block-end: 16px; inset-inline: 0; margin-inline: auto; width: max-content; max-width: calc(100vw - 24px);
+  z-index: 10; display: flex; align-items: center; gap: 10px; padding-block: 8px; padding-inline: 14px 8px; font-size: 13px;
+  color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 6px 24px rgba(0,0,0,.18);
+}
+.am-reply-bar[hidden] { display: none; }
+.am-reply-bar-count { color: var(--ink-2); }
+.am-reply-bar .am-btn { flex: none; white-space: nowrap; }
+body.am-has-reply-bar { padding-block-end: 72px; }
+@media (max-width: 480px) {
+  .am-reply-bar { inset-inline: 12px; width: auto; justify-content: space-between; }
+}
+/* Code block: a header (title or path:lines, language, copy), then one span per line; numbered blocks show the line number in a gutter */
+.am-codeblock { margin: 10px 0; min-width: 0; }
+.am-codeblock .am-code { border-top-left-radius: 0; border-top-right-radius: 0; padding: 10px 0; }
+.am-code-head {
+  display: flex; align-items: center; gap: 8px; padding: 5px 6px 5px 12px; font: 12px/1.3 var(--font-sans); color: var(--ink-2);
+  background: var(--paper); border: 1px solid var(--line-2); border-bottom: 0; border-radius: var(--radius) var(--radius) 0 0;
+}
+.am-code-title { font-family: var(--font-mono); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.am-code-lang { margin-left: auto; color: var(--ink-3); text-transform: lowercase; }
+.am-code-copy { font: 12px/1 var(--font-sans); color: var(--ink-2); background: transparent; border: 1px solid var(--line-2); border-radius: var(--radius); padding: 4px 8px; cursor: pointer; margin-left: auto; }
+.am-code-lang + .am-code-copy { margin-left: 0; }
+.am-code-copy:hover { border-color: var(--ink-3); color: var(--ink); }
+.am-code-copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.am-code code { display: block; min-width: max-content; }
+.am-ln { display: block; padding: 0 14px; min-height: 1.5em; white-space: pre; }
+.am-ln--hl { background: var(--accent-bg); box-shadow: inset 3px 0 0 var(--accent); }
+.am-code--num .am-ln::before {
+  content: attr(data-n); display: inline-block; width: 3.5ch; margin-right: 12px; text-align: right; color: var(--ink-3);
+  user-select: none; -webkit-user-select: none;
+}
+
+/* ── Status badges ok / no / warn ──────────────── */
+.am-status { white-space: nowrap; font-weight: 500; }
+.am-status--ok { color: var(--ok); }
+.am-status--no { color: var(--err); }
+.am-status--warn { color: var(--warn); }
+.am-status-icon { display: inline-block; width: 1.1em; font-weight: 700; }
+
+/* ── callout ─────────────────────────────── */
+.am-callout {
+  border: 1px solid var(--line-2); border-inline-start: 3px solid var(--accent); background: var(--accent-bg);
+  padding: 10px 14px; border-radius: var(--radius);
+}
+.am-callout--ok { border-inline-start-color: var(--ok); background: var(--ok-bg); }
+.am-callout--warn { border-inline-start-color: var(--warn); background: var(--warn-bg); }
+.am-callout--err { border-inline-start-color: var(--err); background: var(--err-bg); }
+.am-callout-title { font-weight: 600; margin-bottom: 4px; }
+
+/* ── kv title block ─────────────────────────── */
+.am-kv {
+  display: grid; grid-template-columns: repeat(var(--kv-cols, 2), minmax(0, 1fr)); margin: 0;
+  border-top: var(--bw) solid var(--line); border-inline-start: var(--bw) solid var(--line);
+}
+.am-kv-cell { border-inline-end: var(--bw) solid var(--line); border-bottom: var(--bw) solid var(--line); padding: 6px 10px 8px; min-width: 0; }
+.am-kv-cell--wide { grid-column: 1 / -1; }
+.am-kv dt { font: 11px/1.4 var(--font-mono); color: var(--ink-2); }
+.am-kv dd { margin: 2px 0 0; font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
+.am-kv-cell--wide dd { font-size: 17px; font-weight: 600; }
+
+/* ── timeline ────────────────────────────── */
+.am-timeline { list-style: none; margin: 0; padding: 0; }
+.am-timeline--h { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); padding-top: 4px; }
+.am-timeline--h li { position: relative; text-align: center; padding: 0 6px; }
+.am-timeline--h li::before {
+  content: ""; position: absolute; top: 31px; left: 0; right: 0; border-top: var(--bw) solid var(--line);
+}
+.am-timeline--h li:first-child::before { inset-inline-start: 50%; }
+.am-timeline--h li:last-child::before { inset-inline-end: 50%; }
+.am-tl-when { display: block; font-size: 15px; font-weight: 500; height: 24px; }
+.am-tl-dot {
+  position: relative; display: block; width: 11px; height: 11px; margin: 2px auto 8px;
+  border: var(--bw) solid var(--line); border-radius: 50%; background: var(--paper);
+}
+.am-tl-item--hi .am-tl-dot { background: var(--hi-stroke, var(--accent)); border-color: var(--hi-stroke, var(--accent)); }
+.am-tl-title { display: block; font-size: 12.5px; font-weight: 500; }
+.am-tl-text { display: block; font-size: 12px; color: var(--ink-2); line-height: 1.45; }
+.am-timeline--v li { position: relative; padding: 0 0 14px; padding-inline-start: 22px; }
+.am-timeline--v li::before { content: ""; position: absolute; inset-inline-start: 5px; top: 6px; bottom: -6px; border-inline-start: var(--bw) solid var(--line-2); }
+.am-timeline--v li:last-child::before { display: none; }
+.am-timeline--v .am-tl-dot { position: absolute; inset-inline-start: 0; top: 4px; margin: 0; }
+.am-timeline--v .am-tl-when { display: inline; height: auto; font: 12px var(--font-mono); color: var(--ink-2); margin-inline-end: 8px; }
+.am-timeline--v .am-tl-title { display: inline; font-size: 14px; }
+.am-timeline--v .am-tl-text { margin-top: 2px; }
+/* .am-tl-wrap is the container (src/components/timeline.js): a horizontal timeline answers to the width it has, not to the width of the window, since a
+   sheet puts panels two or three to a row. Below 560 px (about 90 px for each of the six items a timeline has by default) its dates
+   wrap and the dots cover them, so it lays out like timeline v: line and dots at the start, text beside them. */
+.am-tl-wrap { container-type: inline-size; }
+@container (max-width: 560px) {
+  .am-timeline--h { display: block; padding-top: 0; }
+  .am-timeline--h li { text-align: start; padding: 0 0 14px; padding-inline-start: 22px; }
+  .am-timeline--h li::before, .am-timeline--h li:first-child::before {
+    top: 6px; bottom: -6px; inset-inline-start: 5px; inset-inline-end: auto; border-top: 0; border-inline-start: var(--bw) solid var(--line-2);
+  }
+  .am-timeline--h li:last-child::before { display: none; }
+  .am-timeline--h .am-tl-dot { position: absolute; inset-inline-start: 0; top: 4px; margin: 0; }
+  .am-timeline--h .am-tl-when { display: inline; height: auto; font: 12px var(--font-mono); color: var(--ink-2); margin-inline-end: 8px; }
+  .am-timeline--h .am-tl-title { display: inline; font-size: 14px; }
+  .am-timeline--h .am-tl-text { margin-top: 2px; }
+}
+
+/* ── annot sentence notes ──────────────────────── */
+.am-annot + .am-annot { border-top: 1px solid var(--line-2); padding-top: 12px; }
+.am-annot-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+.am-annot-meta { font: 11px var(--font-mono); font-weight: 400; color: var(--ink-2); }
+.am-annot-scroll { overflow-x: auto; }
+.am-annot-line {
+  position: relative; display: inline-block; white-space: pre; font: 14px/1.6 var(--font-mono);
+  padding-bottom: calc(var(--rows, 0) * 17px + 14px);
+}
+.am-annot-line--wrap { display: block; white-space: normal; padding-bottom: 10px; }
+.am-annot-line--wrap .am-seg { white-space: nowrap; }
+.am-seg { position: relative; }
+.am-seg::after {
+  content: ""; position: absolute; left: 1px; right: 1px; top: calc(100% + 1px); height: 5px;
+  border: 1px solid var(--accent); border-top: 0;
+}
+.am-seg-n {
+  position: absolute; inset-inline-start: 0; top: calc(100% + 8px + var(--row, 0) * 17px);
+  font: 11px/16px var(--font-sans); color: var(--accent); white-space: nowrap;
+}
+.am-seg--err { color: var(--err); }
+.am-seg--err::after { border-color: var(--err); }
+.am-seg--err .am-seg-n { color: var(--err); }
+.am-annot-caption { font-size: 12px; color: var(--ink-2); }
+
+/* ── limits bars ───────────────────────── */
+.am-lim + .am-lim { margin-top: 14px; }
+.am-lim-head { display: flex; justify-content: space-between; gap: 12px; font-size: 13px; margin-bottom: 4px; }
+.am-lim-val { font: 12px var(--font-mono); color: var(--accent); white-space: nowrap; }
+.am-lim-track { position: relative; height: 12px; border: 1px solid var(--line-2); background: var(--fill); border-radius: calc(var(--radius) / 2); }
+.am-lim-fill { position: absolute; inset-inline-start: 0; top: 0; bottom: 0; background: var(--accent-bg); border-inline-end: 1px solid var(--accent); }
+.am-lim-mark { position: absolute; top: -4px; bottom: -4px; border-left: 2px solid var(--accent); }
+.am-lim.is-over .am-lim-fill { background: var(--err-bg); border-inline-end-color: var(--err); }
+.am-lim.is-over .am-lim-val { color: var(--err); }
+.am-lim-ticks { position: relative; height: 16px; font: 10px/16px var(--font-mono); color: var(--ink-3); }
+.am-lim-ticks span { position: absolute; transform: translateX(-50%); }
+.am-lim-ticks span:first-child { transform: none; }
+.am-lim-note { font-size: 11px; color: var(--ink-2); margin-inline-start: 6px; }
+
+/* ── tree ─────────────────────────── */
+.am-tree { font-size: 13px; }
+.am-tree-root { display: flex; justify-content: center; position: relative; padding-bottom: 18px; }
+.am-tree-root::after { content: ""; position: absolute; bottom: 0; left: 50%; height: 18px; border-left: var(--bw) solid var(--line); }
+.am-tree-root--solo { padding-bottom: 12px; }
+.am-tree-root--solo::after { display: none; }
+.am-tree-box {
+  border: var(--node-width, var(--bw)) solid var(--node-stroke, var(--line)); background: var(--node-fill, var(--paper)); padding: 6px 14px; text-align: center;
+  border-radius: var(--node-radius, var(--radius)); font-weight: 600; color: var(--node-text, inherit); filter: var(--node-shadow, none);
+}
+.am-tree-box small { display: block; font-weight: 400; color: var(--ink-2); font-size: 12px; }
+/* The root box and a highlighted box are emphasis: they take the highlight tokens. With none set the root box keeps its accent tint and a highlighted box looks like any other. */
+.am-tree-box--root, .am-tree-box--hi { border-color: var(--hi-stroke, var(--node-stroke, var(--line))); color: var(--hi-text, var(--node-text, inherit)); }
+.am-tree-box--root { background: var(--hi-fill, var(--accent-bg)); }
+.am-tree-box--hi { background: var(--hi-fill, var(--node-fill, var(--paper))); }
+.am-tree-box--root small, .am-tree-box--hi small { color: var(--hi-text, var(--ink-2)); }
+.am-tree-box--root { font-size: 15px; padding: 8px 28px; }
+.am-tree-cols { display: grid; grid-template-columns: repeat(var(--n, 1), minmax(0, 1fr)); }
+.am-tree-col { position: relative; padding: 18px 8px 0; min-width: 0; }
+.am-tree-col::before { content: ""; position: absolute; top: 0; left: 0; right: 0; border-top: var(--bw) solid var(--line); }
+.am-tree-col:first-child::before { inset-inline-start: 50%; }
+.am-tree-col:last-child::before { inset-inline-end: 50%; }
+.am-tree-col::after { content: ""; position: absolute; top: 0; left: 50%; height: 18px; border-left: var(--bw) solid var(--line); }
+.am-tree-list, .am-tree-list ul { list-style: none; margin: 0; padding: 0; }
+.am-tree-col > .am-tree-list { margin: 8px 0 0; margin-inline-start: 14px; }
+.am-tree-list ul { margin-inline-start: 16px; }
+.am-tree-list li { position: relative; padding: 3px 0; padding-inline-start: 18px; }
+.am-tree-list li::before { content: ""; position: absolute; inset-inline-start: 0; top: 0.95em; width: 12px; border-top: 1px solid var(--ink-3); }
+.am-tree-list li::after { content: ""; position: absolute; inset-inline-start: 0; top: 0; bottom: 0; border-inline-start: 1px solid var(--ink-3); }
+.am-tree-list li:last-child::after { bottom: auto; height: 0.95em; }
+.am-tree-tag { font: 11px var(--font-mono); color: var(--ink-3); margin-inline-end: 4px; }
+.am-tree code { font: 12px var(--font-mono); }
+.am-tree-sub { display: block; font-size: 11.5px; color: var(--ink-2); }
+.am-tree-hi > .am-tree-label { color: var(--accent); font-weight: 600; }
+
+/* ── Diagrams (flow / sequence) ───────────────── */
+.am-diagram { margin: 0; overflow-x: auto; text-align: center; }
+/* Embedded previews can lose html[data-theme]; the fallbacks keep diagrams readable, and defined theme variables still win. */
+.am-diagram svg { max-width: 100%; height: auto; font-family: var(--font-sans, sans-serif); }
+.am-diagram text { fill: var(--ink, #16181d); font-size: 13px; }
+/* Diagram tokens (docs/reference.md, "Diagram tokens"): each painted part reads an optional token and falls back to the look it always had,
+   so a theme that sets none of them draws the same diagram. Font family, size and weight are not tokens: diagram text is measured for the sans font. */
+.am-node-shape { fill: var(--node-fill, var(--paper, #ffffff)); stroke: var(--node-stroke, var(--line, #1d2026)); stroke-width: var(--node-width, var(--bw, 1.5px)); filter: var(--node-shadow, none); }
+/* A cylinder is two shapes (body, then cap): only the body casts the shadow. */
+.am-node-shape ~ .am-node-shape { filter: none; }
+/* The corner radius is an SVG attribute (the fallback for Safari before 17.4, which ignores a CSS rx); the default here equals the attribute. A pill and a diamond keep their shape. */
+.am-node--rect .am-node-shape, .am-node--er .am-node-shape { rx: var(--node-radius, 3px); }
+.am-node--hi .am-node-shape { fill: var(--hi-fill, var(--accent-bg, #e4ecf8)); stroke: var(--hi-stroke, var(--accent, #1d5fbf)); }
+.am-diagram .am-node-text { fill: var(--node-text, var(--ink, #16181d)); }
+.am-node--hi text { fill: var(--hi-text, var(--accent, #1d5fbf)); font-weight: 600; }
+.am-diagram .am-node--hi .am-node-text { fill: var(--hi-text, var(--accent, #1d5fbf)); }
+.am-edge { fill: none; stroke: var(--edge-color, var(--ink-2, #4b5260)); stroke-width: var(--edge-width, 1.3); }
+.am-edge--dashed { stroke-dasharray: 5 4; }
+.am-arrow { fill: var(--edge-color, var(--ink-2, #4b5260)); }
+.am-edge-label rect { fill: var(--paper, #ffffff); }
+.am-diagram .am-edge-label text { fill: var(--edge-label, var(--accent, #1d5fbf)); font-size: 11.5px; }
+.am-cluster { fill: var(--cluster-fill, var(--fill, #f3f5f8)); stroke: var(--cluster-stroke, var(--line-2, #d6dae1)); stroke-width: 1; stroke-dasharray: 4 3; }
+.am-diagram .am-cluster-label { fill: var(--ink-2, #4b5260); font: 11px var(--font-mono, monospace); }
+/* The PK / FK / UK marks of an entity follow the node text, and the highlighted text in a highlighted entity, so they stay readable on the theme's fills. */
+.am-diagram .am-er-key { fill: var(--node-text, var(--ink-2, #4b5260)); }
+.am-diagram .am-node--hi .am-er-key { fill: var(--hi-text, var(--ink-2, #4b5260)); }
+.am-lifeline { stroke: var(--lifeline-color, var(--ink-3, #8b929e)); stroke-width: 1; stroke-dasharray: 4 4; }
+/* An actor (and the box of a divider) looks like a node unless the theme sets the actor tokens. */
+.am-actor { fill: var(--actor-fill, var(--node-fill, var(--paper, #ffffff))); stroke: var(--actor-stroke, var(--node-stroke, var(--line, #1d2026))); stroke-width: var(--node-width, var(--bw, 1.5px)); filter: var(--node-shadow, none); rx: var(--node-radius, 2px); }
+.am-diagram .am-actor-text { fill: var(--actor-text, var(--node-text, var(--ink, #16181d))); }
+.am-note { fill: var(--note-fill, var(--warn-bg, #fdf3e2)); stroke: var(--note-stroke, var(--warn, #a8620a)); stroke-width: var(--note-width, 1); rx: var(--note-radius, 2px); }
+.am-diagram .am-step { fill: var(--ink-3, #8b929e); font: 10px var(--font-mono, monospace); }
+
+.am-diagram-expand {
+  /* In flow and sticky: it sits at the end edge (right on a left-to-right page) and stays in view when the diagram scrolls sideways.
+     It takes its own row above the drawing, so it never covers a node at the top-right corner of the drawing. */
+  position: sticky; inset-inline-start: calc(100% - 36px); z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; padding: 0; margin: 0 0 4px; margin-inline: auto 8px;
+  color: var(--ink-2); background: var(--paper);
+  border: var(--bw, 1px) solid var(--line-2); border-radius: var(--radius);
+  cursor: pointer; opacity: 0.72;
+  transition: opacity 0.15s, color 0.15s, border-color 0.15s, background 0.15s;
+}
+.am-diagram:hover .am-diagram-expand,
+.am-diagram-expand:focus-visible { opacity: 1; }
+.am-diagram-expand:hover {
+  opacity: 1; color: var(--ink); border-color: var(--accent); background: var(--fill);
+}
+.am-diagram-expand:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* ── Diagram Lightbox and Pan-Zoom Viewer ─────────── */
+.am-lightbox {
+  position: fixed; inset: 0; z-index: 1000;
+  display: flex; flex-direction: column;
+  touch-action: none;
+}
+.am-lightbox[hidden] { display: none !important; }
+
+.am-lightbox-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.am-lightbox-header {
+  position: absolute; top: 12px; left: 24px; right: 24px; height: 36px;
+  display: flex; align-items: center; justify-content: space-between;
+  z-index: 10; pointer-events: none;
+}
+.am-lightbox-title {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: rgba(255, 255, 255, 0.92);
+  font: 13px/1 var(--font-sans, sans-serif); font-weight: 500;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 60vw;
+}
+.am-lightbox-title svg { stroke: rgba(255, 255, 255, 0.85); flex-shrink: 0; }
+.am-lightbox-actions {
+  display: flex; align-items: center; gap: 8px; pointer-events: auto;
+}
+.am-lightbox-close {
+  width: 32px; height: 32px;
+  background: var(--paper);
+  border: var(--bw, 1px) solid var(--line-2);
+  border-radius: 50%;
+  color: var(--ink);
+  font-size: 15px; line-height: 1;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition: background 0.15s, color 0.15s, transform 0.15s, border-color 0.15s;
+}
+.am-lightbox-close:hover {
+  color: var(--accent); border-color: var(--accent); background: var(--fill); transform: scale(1.05);
+}
+.am-lightbox-close:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.am-lightbox-stage {
+  position: absolute;
+  top: 54px; bottom: 20px; left: 24px; right: 24px;
+  background: var(--paper);
+  border: var(--bw, 1px) solid var(--line-2);
+  border-radius: max(var(--radius), 14px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.am-lightbox-stage.am-panning { cursor: grabbing; }
+
+.am-lightbox-canvas {
+  position: absolute; left: 0; top: 0;
+  transform-origin: 0 0;
+  will-change: transform;
+  pointer-events: none;
+}
+.am-lightbox-canvas svg {
+  max-width: none !important;
+  max-height: none !important;
+  display: block;
+  font-family: var(--font-sans, sans-serif);
+}
+
+/* ── doc template ────────────────────────── */
+.am-doc { max-width: 1120px; margin: 0 auto; padding: 40px 28px 64px; }
+.am-doc-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 32px; align-items: start; }
+.am-doc-layout--notoc { grid-template-columns: minmax(0, 1fr); max-width: 860px; }
+.am-toc { position: sticky; top: 24px; font-size: 13px; }
+.am-toc a { display: block; color: var(--ink-2); text-decoration: none; padding: 4px 0; padding-inline-start: 10px; border-inline-start: 2px solid var(--line-2); }
+.am-toc a:hover { color: var(--ink); border-inline-start-color: var(--accent); }
+.am-doc-body > .am-panel + .am-panel { margin-top: 20px; }
+
+/* ── Responsive and print ─────────────────────────── */
+@media (max-width: 1100px) {
+  .am-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .am-grid > .am-panel { grid-column: auto !important; }
+  .am-grid > .am-panel.am-span-wide { grid-column: 1 / -1 !important; }
+}
+@media (max-width: 760px) {
+  .am-sheet, .am-doc { padding: 56px 12px 24px; }
+  .am-head { padding-inline-end: 0; }
+  .am-grid { grid-template-columns: minmax(0, 1fr); }
+  .am-grid > .am-panel.am-span-wide { grid-column: auto !important; }
+  .am-doc-layout { grid-template-columns: minmax(0, 1fr); }
+  .am-toc { position: static; }
+  .am-tree-cols { grid-template-columns: minmax(0, 1fr); }
+  /* Tables and diagrams keep their size: the wrapper scrolls horizontally when they overflow. A cell is never narrower than about
+     two short words, so a phone does not stack them one per line. On wider screens the sheet layout (src/runtime/layout-dom.js)
+     gives a table panel the width its columns read well at. */
+  .am-md th, .am-md td { min-width: 8em; }
+  .am-diagram svg { max-width: none; }
+  .am-lightbox-header { top: 8px; left: 12px; right: 12px; }
+  .am-lightbox-stage { top: 46px; bottom: 12px; left: 12px; right: 12px; border-radius: max(var(--radius), 10px); }
+}
+.am-colophon { margin: 0 0 8px; font: 11px var(--font-mono); color: var(--ink-3); }
+.am-colophon a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
+
+@media print {
+  .am-toolbar, .am-diagram-expand, .am-lightbox, .am-code-copy, .am-comment-btn, .am-comment, .am-reply, .am-reply-bar { display: none !important; }
+  body { background: var(--paper); }
+  .am-panel { break-inside: avoid; box-shadow: none; }
+}
+/* Printed on paper narrower than three columns, the two-column grid left a hole beside every panel next to a full-width one
+   (a wide table, a wide diagram): one panel per row instead. */
+@media print and (max-width: 1100px) {
+  .am-grid { grid-template-columns: minmax(0, 1fr); }
+  .am-grid > .am-panel { grid-column: auto !important; }
+}
+.am-panel--bare { border: 0; background: transparent; box-shadow: none; }
+.am-panel--bare > .am-panel-body { padding: 0; }
+.am-panel--bare .am-kv { background: var(--paper); }
+
+/* Remark mode: block marks with a note, collected into the Reply copy (src/runtime/remark.js). Each kind borrows a status colour of
+   the theme, so a mark reads in light and dark mode on every theme. */
+.am-btn--remark.is-on { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.am-btn--remark-clear { color: var(--err); }
+.am-btn--remark-clear.is-armed { background: var(--err-bg); border-color: var(--err); }
+.am-remark-hover { outline: 1px dashed var(--ink-3); outline-offset: 2px; cursor: pointer; }
+:is(.am-mark, .am-remark-kind)[data-kind="suggestion"] { --mark: var(--warn); --mark-bg: var(--warn-bg); }
+:is(.am-mark, .am-remark-kind)[data-kind="keep"] { --mark: var(--ok); --mark-bg: var(--ok-bg); }
+:is(.am-mark, .am-remark-kind)[data-kind="question"] { --mark: var(--accent); --mark-bg: var(--accent-bg); }
+:is(.am-mark, .am-remark-kind)[data-kind="concern"] { --mark: var(--err); --mark-bg: var(--err-bg); }
+.am-mark { border-inline-start: 3px solid var(--mark); padding-inline-start: 10px; background: var(--mark-bg); border-radius: 1px; }
+/* The note chip sits inside the marked block (a table takes it as its caption, a list item puts it before its sub-list), so lists and
+   grids keep their children. */
+.am-mark-note {
+  display: block; margin-block-start: 4px; font: 12px/1.5 var(--font-sans); letter-spacing: normal; text-transform: none;
+  color: var(--ink-2); white-space: pre-wrap; caption-side: bottom; text-align: start;
+}
+.am-mark-note b { color: var(--ink); font-weight: 600; }
+caption.am-mark-note { display: table-caption; }
+/* Table rows have their own backgrounds, so a tint on the table would show on every other row only: the bar marks a table. */
+table.am-mark { background: none; }
+.am-remark-pop {
+  position: absolute; z-index: 40; width: min(264px, calc(100vw - 16px)); padding: 8px; display: grid; gap: 6px;
+  color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 6px 24px rgba(0, 0, 0, .14);
+}
+.am-remark-pop[hidden] { display: none; }
+.am-remark-kinds { display: flex; gap: 6px; flex-wrap: wrap; }
+.am-remark-kind { font: 12px/1 var(--font-sans); color: var(--ink-2); background: var(--paper); border: 1px solid var(--line-2); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+.am-remark-kind:hover { border-color: var(--ink-3); }
+.am-remark-kind[aria-pressed="true"] { color: var(--ink); border-color: var(--mark); background: var(--mark-bg); }
+.am-remark-kind:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.am-remark-pop textarea { font: 13px/1.5 var(--font-sans); color: var(--ink); background: var(--paper); border: 1px solid var(--line-2); border-radius: var(--radius); padding: 6px 8px; resize: vertical; }
+.am-remark-actions { display: flex; gap: 6px; }
+.am-remark-actions .am-btn:disabled { opacity: .5; cursor: default; }
+@media print { .am-remark-pop { display: none !important; } }
+
+
+/* New-version button and popover (src/render.js adds this file only to a page that has the button). The popover sits under the
+   toolbar and stays hidden unless open, so a browser without native popovers never shows it. */
+.am-btn--update { color: var(--ok); border-color: var(--ok); white-space: nowrap; }
+.am-update { display: none; }
+.am-update:popover-open {
+  display: block; position: fixed; inset-block: 52px auto; inset-inline: auto 12px; margin: 0; width: min(380px, calc(100vw - 24px));
+  padding: 14px 16px; font-size: 13px; color: var(--ink); background: var(--paper);
+  border: 1px solid var(--line-2); border-radius: var(--radius); box-shadow: 0 12px 40px rgba(0,0,0,.25);
+}
+.am-update p { margin: 0 0 8px; }
+.am-update-title { font-weight: 600; color: var(--ok); }
+.am-update-label { color: var(--ink-2); font-size: 12px; }
+.am-update-notes { margin: 0 0 12px; padding-inline-start: 18px; }
+.am-update-notes li { margin: 2px 0; }
+.am-update-notes code { font-size: 12px; }
+.am-update-row { display: flex; align-items: center; gap: 8px; margin: 0 0 12px; }
+.am-update-row > :first-child {
+  flex: 1; min-width: 0; overflow-x: auto; white-space: nowrap; font-size: 12px; padding: 6px 8px;
+  background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+}
+.am-update a { color: var(--accent); font-size: 12px; }
+/* A phone has no room for the words: the button keeps only its dot, and its aria-label still names the version. */
+@media (max-width: 760px) {
+  .am-btn--update .am-update-text { display: none; }
+}
+@media print {
+  .am-update { display: none !important; }
+}
+
+
+html[data-theme="blueprint"] .am-frame { border: 1px solid var(--line); padding: 30px; }
+html[data-theme="blueprint"] .am-frame::before {
+  content: ""; position: absolute; inset: 18px; border: 1px solid var(--line); pointer-events: none;
+}
+html[data-theme="blueprint"] .am-ruler {
+  display: flex; position: absolute; font: 10px/1 var(--font-mono); color: var(--ink-3);
+}
+@media (max-width: 760px) {
+  html[data-theme="blueprint"] .am-frame { padding: 0; border: 0; }
+  html[data-theme="blueprint"] .am-frame::before, html[data-theme="blueprint"] .am-ruler { display: none; }
+}
+
+html[data-theme="shadcn"] .am-panel-id { border-radius: 6px; min-width: 24px; height: 24px; margin: 9px 0 9px 14px; font-size: 12px; }
+html[data-theme="shadcn"] .am-panel-head { border-bottom-width: 1px; }
+html[data-theme="shadcn"] .am-kv { border-color: var(--line); border-radius: var(--radius); overflow: hidden; }
+
+html[data-theme="paper"]:lang(zh-Hant)[data-mode], html[data-theme="paper"]:lang(zh-TW)[data-mode], html[data-theme="paper"]:lang(zh-HK)[data-mode], html[data-theme="paper"]:lang(zh-MO)[data-mode] { --font-serif: "Iowan Old Style", Palatino, Georgia, "Songti TC", "PMingLiU", "MingLiU", "Noto Serif CJK TC", "Noto Serif TC", "Source Han Serif TC", "Songti SC", serif; }
+html[data-theme="paper"]:lang(ja)[data-mode] { --font-serif: "Iowan Old Style", Palatino, Georgia, "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif CJK JP", "Noto Serif JP", "Songti SC", serif; }
+html[data-theme="paper"]:lang(he)[data-mode] { --font-serif: "Iowan Old Style", Palatino, Georgia, "Noto Serif Hebrew", "Frank Ruehl CLM", David, "Times New Roman", serif; }
+html[data-theme="paper"] .am-head h1, html[data-theme="paper"] .am-panel-head h2, html[data-theme="paper"] .am-md, html[data-theme="paper"] .am-intro, html[data-theme="paper"] .am-callout { font-family: var(--font-serif); }
+html[data-theme="paper"] .am-head h1 { font-weight: 600; letter-spacing: 0; }
+html[data-theme="paper"] .am-md p, html[data-theme="paper"] .am-md li, html[data-theme="paper"] .am-md blockquote, html[data-theme="paper"] .am-intro { font-size: 15.5px; line-height: 1.75; }
+html[data-theme="paper"] .am-md p { margin-bottom: 12px; }
+html[data-theme="paper"] .am-md table { font-family: var(--font-sans); }
+</style>
+<link href="data:," rel="icon"/></head>
+<body id="top">
+
+
+<main class="am-sheet">
+<header class="am-head"><h1>项目周报</h1><p class="am-sub">2026年10月26日至10月30日</p><div class="am-intro am-md"><div class="am-md"><p>HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV3量程及治具验证仍受阻，嵌入式资源冲突影响EV和TS1208进度。</p>
+<p>资料截至：2026-10-30 16:21:24（北京时间）。下周范围：11月2日至11月8日。</p>
+<p><a href="#panel-A">本周进度</a> · <a href="#panel-B">下周计划</a> · <a href="#panel-C">需要协助</a> · <a href="#panel-D">项目目录</a> · <a href="#panel-E">项目明细</a></p>
+</div></div></header>
+<div class="am-frame">
+<div aria-hidden="true" class="am-ruler am-ruler--top"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div aria-hidden="true" class="am-ruler am-ruler--bottom"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div><div aria-hidden="true" class="am-ruler am-ruler--left"><span>A</span><span>B</span><span>C</span><span>D</span></div><div aria-hidden="true" class="am-ruler am-ruler--right"><span>A</span><span>B</span><span>C</span><span>D</span></div>
+<div class="am-grid" style="--cols: 1">
+<section class="am-panel" id="panel-A">
+<header class="am-panel-head"><span class="am-panel-id">A</span><h2>本周进度</h2></header>
+<div class="am-panel-body"><div class="am-md"><ul>
+<li><strong>交付</strong>：HBD末批19套织物垫已发货。RS-XY的3个视触觉夹爪样品已制作，最新记录仍在等待彩盒，尚未登记实发。</li>
+<li><strong>DV3</strong>：图纸、固件和SOP版本归档及本轮设计变更确认已完成。小指腹量程异常经电镜检查仍无根因结论；治具交付后因压块晃动、缺少轴承返厂，当前仍不满足研发需求。手掌时漂尚未通过，放大凸点碳膜已到样，待测试。</li>
+<li><strong>新款视触觉</strong>：指尖因耐用性问题更换硅胶并重新训练，非定制相机样品预计11/4左右提供。六维力模型正在验证，深度和滑移检测列入下一阶段；形貌重建仍为研究。</li>
+<li><strong>触觉手套</strong>：融合上位机初版已提供，织物仍需修改，姿态供应商尚待确定。TS1208板卡已收到，调试因逆向和温补任务延期；近期又出现2件掉线异常，样品已交李斌分析。</li>
+<li><strong>采集卡</strong>：3232标定算法已完成，V2.0效果通过内部测试，小型化版本已发板，预计11/11左右回料。6464本周已归档，现有防串扰方案可用，统一评价标准仍未形成。</li>
+<li><strong>汽车座椅、EV</strong>：汽车座椅温补算法已由嵌入式提供，等待材料部门确定下一步。EV样品遇到软件Bug，本周受嵌入式资源限制，修复节点推迟到下周确认。</li>
+<li><strong>客户需求变化</strong>：O30客户正在考虑视触觉方案，压阻方案推进放缓，后续装配测试等待新版结构件齐套。</li>
+</ul>
+</div></div>
+</section>
+<section class="am-panel" id="panel-B">
+<header class="am-panel-head"><span class="am-panel-id">B</span><h2>下周计划</h2></header>
+<div class="am-panel-body"><div class="am-md"><ul>
+<li><strong>DV3，11/2—11/6</strong>：按现有节点完成FPC防串扰电路验证和PI碳膜工艺验证，推进竞品逆向及DOE。硬件防串扰行动整体期限为11/6。小指腹根因分析原目标11/1，尚无结论；治具返修及手掌碳膜测试需补齐新的输出节点。</li>
+<li><strong>新款视触觉</strong>：先跟进预计11/4左右的非定制相机指尖样品，同步开展深度检测训练和滑移方案研究。定制相机指尖节点保留11/10。新款夹爪整体期限11/10、样品节点11/15的差异需核对。</li>
+<li><strong>触觉手套、EV</strong>：明确姿态供应商及织物改善后，继续细化上位机和采集验证。手套SDK整体目标11/3，最新记录尚未启动。EV在11/2所在周先确认Bug修复节点，不将行动日期写成已承诺修复完成日。</li>
+<li><strong>汽车座椅、DOE2</strong>：汽车座椅由材料部门确认温补验证安排；行动期限11/2。DOE2行动期限同为11/2，但本周未登记新进展，需先确认电阻板及二次采样验证结果。</li>
+<li><strong>交付跟进</strong>：核实3个夹爪样品实际发货；41对配套交付按既有计划推进，11/14供应商制板贴片、11/17起分批发货、11/20末批交付，均为后续计划。</li>
+</ul>
+</div></div>
+</section>
+<section class="am-panel" id="panel-C">
+<header class="am-panel-head"><span class="am-panel-id">C</span><h2>需要协助</h2></header>
+<div class="am-panel-body"><div class="am-md"><ul>
+<li><strong>明确嵌入式优先级</strong>：EV Bug、TS1208调试与逆向、温补任务存在资源冲突，已出现延期。需协调任务顺序和可投入资源，再确认各项交付节点。</li>
+<li><strong>解决DV3验证瓶颈</strong>：量程异常仍无根因结论，治具返修后仍不达标。需协调研发、结构与供应商的排查及整改节奏，给出可检查的结果和验证时间；当前没有足够依据承诺客户验收时间。</li>
+<li><strong>对齐出样和验收安排</strong>：视触觉指尖原10/30展示节点与预计11/4出样存在差异；手套织物行动已完成，但最新物流记录仅为预计到货。需确认实际结果，再同步业务展示及整机验证安排。</li>
+<li><strong>落实材料侧下一步</strong>：汽车座椅算法已提供，需要材料部门明确样品、测试安排和结果时间。DOE2需补齐本周结果及11/2节点的实际输出。</li>
+</ul>
+</div></div>
+</section>
+<section class="am-panel" id="panel-D">
+<header class="am-panel-head"><span class="am-panel-id">D</span><h2>项目目录</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>本期覆盖10个在途项目，28条未结行动（含8条搁置），13个未关闭问题。正式台账未登记开放风险。本周归档的6464另列结果。</p>
+<p>全部内容展开，支持浏览器查找、目录跳转、离线阅读和打印。主责、当前执行人和节点负责人分别保留。</p>
+<h3><a href="#project-f34eb0cb">RS-QN-Revo3-DV3</a></h3>
+<p>负责人：杨丽民。正式状态：进行中。</p>
+<p>版本及变更确认已完成，量程、手掌时漂和治具一致性仍阻碍稳定验证。</p>
+<p>未结行动8条（搁置2条），未关闭问题5个。</p>
+<h3><a href="#project-814c8b05">RS-LXQS-O30-指尖</a></h3>
+<p>负责人：余庚。正式状态：进行中。</p>
+<p>客户考虑转用视触觉，压阻方案放缓，等待结构件齐套后的装配测试。</p>
+<p>未结行动1条（搁置1条），未关闭问题0个。</p>
+<h3><a href="#project-12a6c521">VS-MD-1.0-DBL1</a></h3>
+<p>负责人：杨丽民。正式状态：进行中。</p>
+<p>新指尖更换硅胶并重新训练；相机、夹爪和多维感知能力仍在开发。</p>
+<p>未结行动3条（搁置1条），未关闭问题1个。</p>
+<h3><a href="#project-4b614707">TS-MD-260801-触觉手套</a></h3>
+<p>负责人：余庚。正式状态：进行中。</p>
+<p>上位机初版已提供，织物改善及姿态方案待落实；板卡和SDK影响集成。</p>
+<p>未结行动5条（搁置1条），未关闭问题2个。</p>
+<h3><a href="#project-ebbe3620">RS-QN-2.0-EV</a></h3>
+<p>负责人：杨丽民。正式状态：进行中。</p>
+<p>样品软件Bug未解决，等待嵌入式资源；试产搁置。</p>
+<p>未结行动4条（搁置1条），未关闭问题1个。</p>
+<h3><a href="#project-e3001042">TS-HBD-1.0-座椅柔性织物垫</a></h3>
+<p>负责人：余庚。正式状态：进行中。</p>
+<p>末批19套已发货；遗留ADC问题状态及受环境影响的复现仍需跟踪。</p>
+<p>未结行动1条（搁置1条），未关闭问题3个。</p>
+<h3><a href="#project-24e9bfed">TS-MD-3232-STD-V2.0</a></h3>
+<p>负责人：余庚。正式状态：进行中。</p>
+<p>标定算法完成，V2.0通过内部测试；小型化版本已发板。</p>
+<p>未结行动1条（搁置0条），未关闭问题0个。</p>
+<h3><a href="#project-1572218e">PS-SJ-260904-汽车座椅感应</a></h3>
+<p>负责人：陈德川。正式状态：进行中。</p>
+<p>嵌入式已提供温补算法，等待材料部门确认后续测试计划。</p>
+<p>未结行动2条（搁置1条），未关闭问题0个。</p>
+<h3><a href="#project-42579e02">RS-XY-261020-夹爪</a></h3>
+<p>负责人：杨丽民。正式状态：待启动。</p>
+<p>3个样品已制作，等待包装及实际发货确认；41对传感器按计划组织。</p>
+<p>未结行动2条（搁置0条），未关闭问题1个。</p>
+<h3><a href="#project-9a058dc2">PS-VSNX-DOE2-超高密度</a></h3>
+<p>负责人：余庚。正式状态：进行中。</p>
+<p>二次采样等待电阻板复核，技术结论未更新。</p>
+<p>未结行动1条（搁置0条），未关闭问题0个。</p>
+<p><strong>本周归档：6464防串扰项目</strong></p>
+<p>10/28正式归档。双电源V0.1调试完成；现有V1.1电压反馈、V2.0电流反馈和3232V2.0架构均有可用方案。电流反馈方案功耗超过400mA，需按工况选择。统一性能评价标准未形成，不能把归档写为所有验证完成。</p>
+</div></div>
+</section>
+<section class="am-panel" id="panel-E">
+<header class="am-panel-head"><span class="am-panel-id">E</span><h2>项目明细</h2></header>
+<div class="am-panel-body"><div class="am-md"><p>本周范围为10/26至资料截止时刻。以下日志日期为录入日期，实际发生日期另有记录时单独说明。计划、完成、实际发货与客户验收分别表达。</p>
+<p>逾期按10/30判断：未完成且未搁置、日期早于10/30才算逾期。整体逾期2条，节点逾期0个。今日到期及日期差异分别提示，搁置旧日期不计逾期。</p>
+<h3 id="project-f34eb0cb">RS-QN-Revo3-DV3</h3>
+<p>项目负责人：杨丽民。正式状态：进行中。</p>
+<p>**当前进度：**版本及变更确认已完成，量程、手掌时漂和治具一致性仍阻碍稳定验证。</p>
+<p>最新进展录入：2026-10-30 15:23:07（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<ul>
+<li><p>10/26登记出货标签增加出货日期已执行；10/27完成图纸、固件与SOP版本归档。</p>
+</li>
+<li><p>1小时对外时漂报告行动10/26记为完成，但最新结论为V1.0.3-BETA2手掌时漂未通过，仍需优化算法。</p>
+</li>
+<li><p>10/27日志记载治具于前一日交付，因压块晃动、缺少轴承返厂。10/30仍不符合研发需求，一致性存在瓶颈。</p>
+</li>
+<li><p>10/28二次标定行动完成。其对夹具一致性、单点触发力有一定改善，区域准确性未明显改善，生产导入受压强标定设备限制。</p>
+</li>
+<li><p>10/30放大凸点碳膜已到样，待测试。电镜尚未发现小指腹异常样品差异，根因仍无结论。</p>
+</li>
+<li><p>FPC防串扰电路已采购打板。竞品电子及嵌入式逆向、工艺实践准备进行中。设计变更行动10/30记为完成，最新文字为已确认变更情况，未据此推定全部性能指标通过。</p>
+</li>
+</ul>
+<p><strong>未关闭问题（5个）</strong></p>
+<h4 id="ISS-9C753E1F">大指腹SN误记录为小指腹（ISS-9C753E1F）</h4>
+<ul>
+<li><p>负责人：杨丽民。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：生产过程中，大指腹SN被错误记录为小指腹SN，客户读取SN时发现异常。影响批次、数量、实际发生日期及根因待确认。</p>
+</li>
+<li><p>根因记录：未登记</p>
+</li>
+<li><p>措施：未登记</p>
+</li>
+<li><p>当前判断与待验证：影响批次、数量、根因及措施未登记；本周未登记新进展。</p>
+</li>
+<li><p>问题最新进展录入：未登记。字段更新：2026-10-22 18:06:29。</p>
+</li>
+</ul>
+<h4 id="ISS-51255A27">单点按压引发远端或行列误响应[串点][非关键]（ISS-51255A27）</h4>
+<ul>
+<li><p>负责人：杨丽民。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：单点触发力测试中，按压一个点，远端触点或整行、整列会误响应。响应范围与加载位置不一致。</p>
+</li>
+<li><p>根因记录：待确认。</p>
+</li>
+<li><p>措施：1. 软件优化：先提供测试结论，再据结论安排实装。 2. 碳膜物理隔离：分割各触感点以实现物理隔离。用户反馈该方案验证通过，本批不导入，仅保留为后续改善方案。</p>
+</li>
+<li><p>当前判断与待验证：正式标题已标注非关键。软件验证行动完成不等于此问题关闭；本批不导入碳膜物理隔离方案。</p>
+</li>
+<li><p>问题最新进展录入：未登记。字段更新：2026-10-20 10:28:04。</p>
+</li>
+</ul>
+<h4 id="ISS-DB6C5C68">治具不防呆（ISS-DB6C5C68）</h4>
+<ul>
+<li><p>负责人：杨丽民。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：客户使用时将治具反向放置，造成加载位置错误及部分力值偏低。10月12日现场排查确认，当前治具放置位缺少防呆设计。</p>
+</li>
+<li><p>根因记录：治具放置位缺少防呆设计，允许反向放置。</p>
+</li>
+<li><p>措施：临时措施：使用3D打印定位板及油漆笔定位。 长期措施：采用硬防呆设计，导向柱由4根改为2根并增加轴承；完成3台治具改造及验证，根据改善效果评估是否导入生产。</p>
+</li>
+<li><p>当前判断与待验证：长期治具行动最新10/30仍不符合研发需求，不能以节点完成认定已解决。</p>
+</li>
+<li><p>问题最新进展录入：2026-10-15 16:56:28。字段更新：2026-10-19 14:57:34。</p>
+</li>
+<li><p>已关联未结行动：<a href="#ACT-65B64907">完成治具长期改造及验证（ACT-65B64907）</a>。</p>
+</li>
+</ul>
+<h4 id="ISS-1B1E6B26">老化后小指腹ADC量程上限降低（ISS-1B1E6B26）</h4>
+<ul>
+<li><p>负责人：杨丽民。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：产品装手并老化后，发现2pcs小指腹ADC量程上限降低。具体样品、老化条件及降低幅度待补充。</p>
+</li>
+<li><p>根因记录：待确认。</p>
+</li>
+<li><p>措施：开展内部老化复现，记录样品、测试条件及ADC量程变化，依据数据继续定位原因。</p>
+</li>
+<li><p>当前判断与待验证：问题字段仍为历史2pcs，10/19项目日志累计3pcs。10/30电镜未见差异，根因分析尚无结论。</p>
+</li>
+<li><p>问题最新进展录入：2026-10-16 16:59:56。字段更新：2026-10-19 14:57:06。</p>
+</li>
+<li><p>已关联未结行动：<a href="#ACT-ED70B34C">提供小指腹量程异常根因分析（ACT-ED70B34C）</a>。</p>
+</li>
+</ul>
+<h4 id="ISS-1A216C49">带载时漂与首件表现不一致（ISS-1A216C49）</h4>
+<ul>
+<li><p>负责人：杨丽民。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：客户反馈部分产品在500g负载下保持10分钟，力值漂移超过1N，与首件表现不一致。 历史反馈：研发曾评估波动与DV2相近、符合技术规格要求；客户认为未满足实际工况及市场要求。</p>
+</li>
+<li><p>根因记录：碳膜或双面胶规格导致的漂移</p>
+</li>
+<li><p>措施：1. 指腹采用算法优化，并配合固件调整及测试。 2. 手掌验证碳膜厚度、工艺与凸点放大，双面胶材料、硬度及点胶，贴胶工艺和气泡控制，并评估压块改善效果。 3. 高压消泡仅作研发研究方向，不作为本批已确定的导入措施。 4. 算法、材料及治具改善分别评估，不以方案提交替代效果验证。</p>
+</li>
+<li><p>当前判断与待验证：1小时报告行动完成但手掌时漂未通过；放大凸点碳膜10/30到样待测。根因字段为材料方向，改善结论尚未验证。</p>
+</li>
+<li><p>问题最新进展录入：2026-10-16 16:59:55。字段更新：2026-10-16 16:59:55。</p>
+</li>
+<li><p>已关联未结行动：<a href="#ACT-FC8AAC24">改善手掌时漂材料与贴胶工艺（ACT-FC8AAC24）</a>。</p>
+</li>
+</ul>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（6条）</strong></p>
+<h4 id="ACT-C928BBA0">输出竞品拆机分析并开展DOE验证（ACT-C928BBA0）</h4>
+<ul>
+<li><p>主责：杨丽民。当前执行人：李斌。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-02。未到期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li>汇总四专业竞品拆机报告及改善建议；负责人杨丽民；2026-10-30；待处理，节点今日到期。</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-30 15:23:07。</p>
+</li>
+</ul>
+<p>电子及嵌入式正在逆向，工艺已经准备实践测试</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>提交覆盖嵌入式、电子、工艺、传感器四个专业的拆机分析报告，明确产品启示与改善建议；完成对应DOE验证并形成可追溯数据与结论。拆机报告提交为阶段输出，整项完成需包含DOE结果。</p>
+<h4 id="ACT-65B64907">完成治具长期改造及验证（ACT-65B64907）</h4>
+<ul>
+<li><p>主责：杨丽民。当前执行人：杨丽民。正式状态：等待反馈。</p>
+</li>
+<li><p>整体期限：2026-10-30。今日到期，不算逾期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li><p>完成3台治具改造；负责人王健善；2026-10-23；已完成。</p>
+</li>
+<li><p>输出治具验证结论；负责人杨丽民；2026-10-28；已完成。</p>
+</li>
+<li><p>完成测试架及治具改造出图；负责人王健善；2026-10-16；已完成。</p>
+</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-30 14:17:58。</p>
+</li>
+</ul>
+<p>目前治具仍不符合研发需求，且目前治具一致性存在瓶颈，可能成为风险</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>完成3台治具改造，提交验证数据及结论，明确改善效果及是否适合导入生产。</p>
+<h4 id="ACT-44909C94">验证PI碳膜工艺可行性（ACT-44909C94）</h4>
+<ul>
+<li><p>主责：陈德川。当前执行人：未指定。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-02。未到期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-10-29 12:06:43。</p>
+</li>
+</ul>
+<p>正参考MX拆机得到的工艺思路开展PI碳膜工艺研究，计划2026年11月2日完成验证。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>输出PI碳膜工艺验证记录与结论，包含工艺方案、样品、试验条件、测试数据和对比结果，明确可行性、改善价值及遗留项。</p>
+<h4 id="ACT-FC8AAC24">改善手掌时漂材料与贴胶工艺（ACT-FC8AAC24）</h4>
+<ul>
+<li><p>主责：杨丽民。当前执行人：陈德川。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-10-29。整体逾期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li><p>完成凸点放大碳膜打样；负责人罗茜茜；2026-10-23；已完成。</p>
+</li>
+<li><p>碳膜相关验证（供应商配合）；负责人杨丽民；2026-10-22；已完成。</p>
+</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-30 14:28:59。</p>
+</li>
+</ul>
+<p>凸点放大后的碳膜样品已到了，需测试</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>提交测试数据及改善结论，包含方案、样品、测试条件和改善前后对比，明确改善效果及遗留项。</p>
+<h4 id="ACT-ED70B34C">提供小指腹量程异常根因分析（ACT-ED70B34C）</h4>
+<ul>
+<li><p>主责：陈德川。当前执行人：杨丽民。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-01。未到期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-10-30 15:22:15。</p>
+</li>
+</ul>
+<p>目前电镜也看不出来差异，尚无结论，属于风险较大的问题</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>提交小指腹量程异常根因分析，说明根因结论及支撑证据，明确尚待验证的事项。</p>
+<h4 id="ACT-F0D3BDEE">验证DV3硬件防串扰方案并推进后续板卡设计（ACT-F0D3BDEE）</h4>
+<ul>
+<li><p>主责：张荣俊。当前执行人：未指定。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-06。未到期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li>完成FPC防串扰电路验证；负责人张荣俊；2026-11-02；待处理。</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-29 12:06:38。</p>
+</li>
+</ul>
+<p>FPC防串扰电路已采购打板，计划2026年11月2日完成验证。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>未登记</p>
+<p><strong>搁置行动（2条）</strong></p>
+<h4 id="ACT-06D906F9">核实INA826供货来源并落实下一批物料纠正措施（ACT-06D906F9）</h4>
+<ul>
+<li><p>主责：贾刘云。当前执行人：未指定。正式状态：搁置。</p>
+</li>
+<li><p>整体期限：2026-09-20。搁置，历史日期不计逾期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-09-17 17:55:53。</p>
+</li>
+</ul>
+<p>9/11已发送正式P0预警，要求补齐来源证明、供应商协议和书面责任。该历史进展录于9/17。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>供应商书面说明、受影响采购批次及数量可追溯；异常批次处置和下一批供货来源方案明确；下一批到料来源/批号凭证经采购与质量核对，纠正措施执行有记录。仅供应商口头承诺不视为完成。</p>
+<ul>
+<li><p>搁置原因：未登记。</p>
+</li>
+<li><p>恢复条件：未登记。历史期限不计活动行动逾期。</p>
+</li>
+</ul>
+<p>本项不列为正在推进的承诺。</p>
+<h4 id="ACT-E9099C48">复现局部轻压ADC突升并验证DV3算法适配（ACT-E9099C48）</h4>
+<ul>
+<li><p>主责：杨丽民。当前执行人：未指定。正式状态：搁置。</p>
+</li>
+<li><p>整体期限：未登记。搁置，历史日期不计逾期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-09-23 17:50:45。</p>
+</li>
+</ul>
+<p>等待有产品出现该问题</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>形成稳定复现与根因结论，或提交覆盖样品、位置、装配、载荷、版本、次数及边界值的排除性测试记录；验证DV3算法在局部受力场景满足准确度要求。</p>
+<ul>
+<li><p>搁置原因：等待出现该异常的产品。</p>
+</li>
+<li><p>恢复条件：取得可复现的产品后再验证；恢复时间未登记。</p>
+</li>
+</ul>
+<p>本项不列为正在推进的承诺。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>本周实发数量和客户性能验收结果未登记，不能由旧累计数量推算。</p>
+</li>
+<li><p>治具节点标为已完成，但最新验证未达研发需求，总行动仍等待反馈。</p>
+</li>
+<li><p>小指腹问题字段保留历史2pcs，10/19项目记录已累计3pcs；本周没有新的异常数量统计。</p>
+</li>
+<li><p>11/1为小指腹量程根因分析现有期限；11/2为FPC电路及PI碳膜工艺验证节点。硬件防串扰整体期限11/6。</p>
+</li>
+<li><p>治具返修和放大凸点碳膜测试尚需确定下一结果时间。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+<h3 id="project-814c8b05">RS-LXQS-O30-指尖</h3>
+<p>项目负责人：余庚。正式状态：进行中。</p>
+<p>**当前进度：**客户考虑转用视触觉，压阻方案放缓，等待结构件齐套后的装配测试。</p>
+<p>最新进展录入：2026-10-28 15:39:29（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<ul>
+<li><p>10/28项目日志记录客户考虑更换视触觉方案，压阻项目在客户内部进度放缓。</p>
+</li>
+<li><p>客户待新版结构件齐套后提供少量装配测试，数量和时间未登记。</p>
+</li>
+</ul>
+<p><strong>未关闭问题（0个）</strong></p>
+<p>未登记未关闭问题。</p>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（0条）</strong></p>
+<p>未登记。</p>
+<p><strong>搁置行动（1条）</strong></p>
+<h4 id="ACT-96424FB3">验证完全固化后30万次按压不脱落（ACT-96424FB3）</h4>
+<ul>
+<li><p>主责：陈嘉濠。当前执行人：未指定。正式状态：搁置。</p>
+</li>
+<li><p>整体期限：2026-10-28。搁置，历史日期不计逾期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li><p>测试样品制作；负责人姚鹤；2026-10-09；待处理，搁置历史日期不计逾期。</p>
+</li>
+<li><p>启动测试；负责人陈嘉濠；2026-10-13；待处理，搁置历史日期不计逾期。</p>
+</li>
+<li><p>测试结果；负责人陈嘉濠；2026-10-28；待处理，搁置历史日期不计逾期。</p>
+</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-08 12:00:23。</p>
+</li>
+</ul>
+<p>客户拟变更结构ID和胶皮。待新版结构及胶皮提供后，再做可靠性测试。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>完全固化后，30万次按压不脱落。</p>
+<ul>
+<li><p>搁置原因：等待客户新版结构及胶皮。</p>
+</li>
+<li><p>恢复条件：取得新版结构和胶皮后再测试；恢复时间未登记。</p>
+</li>
+</ul>
+<p>本项不列为正在推进的承诺。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>客户考虑转方案不等于已确认终止压阻项目。</p>
+</li>
+<li><p>等待客户结构件和试装安排，不另造交付日期。30万次按压验证保持搁置。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+<h3 id="project-12a6c521">VS-MD-1.0-DBL1</h3>
+<p>项目负责人：杨丽民。正式状态：进行中。</p>
+<p>**当前进度：**新指尖更换硅胶并重新训练；相机、夹爪和多维感知能力仍在开发。</p>
+<p>最新进展录入：2026-10-30 16:01:44（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<ul>
+<li><p>10/27决定先做3个样品，因2个镜头损坏，其中1个供业务宣传；原5套总范围仍保留。</p>
+</li>
+<li><p>10/28项目日志明确现阶段聚焦六维力、深度和滑移检测，形貌重建仍在研究。六维力模型正在消融实验和网络修改，拟用云算力加快验证。</p>
+</li>
+<li><p>10/30指尖耐用性不足，已换硅胶重新训练。非定制相机样品预计11/4左右提供，尚未完成。</p>
+</li>
+</ul>
+<p><strong>未关闭问题（1个）</strong></p>
+<h4 id="ISS-FC25F640">老款夹爪模型需逐件数采训练（ISS-FC25F640）</h4>
+<ul>
+<li><p>负责人：杨丽民。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：老款夹爪需逐件数采、训练及修正才能满足出货要求。同批模型尚不能直接复用。</p>
+</li>
+<li><p>根因记录：跨产品复用受限的具体原因待确认。</p>
+</li>
+<li><p>措施：未登记</p>
+</li>
+<li><p>当前判断与待验证：逐件训练可用不等于模型跨产品复用问题已解决。</p>
+</li>
+<li><p>问题最新进展录入：未登记。字段更新：2026-10-15 17:20:38。</p>
+</li>
+</ul>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（2条）</strong></p>
+<h4 id="ACT-7E37556B">新款视触觉指尖5套（ACT-7E37556B）</h4>
+<ul>
+<li><p>主责：李文轩。当前执行人：未指定。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-10。未到期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li><p>交付1件新指尖样品及上位机；负责人李文轩；2026-10-20；已完成。</p>
+</li>
+<li><p>业务展示电源供电方案（24V）；负责人张荣俊；2026-10-19；已完成。</p>
+</li>
+<li><p>提供业务展示样品；负责人杨丽民；2026-10-30；待处理，节点今日到期。</p>
+</li>
+<li><p>完成新款指尖（定制相机）样品；负责人王国庆；2026-11-10；进行中。</p>
+</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-30 16:01:44。</p>
+</li>
+</ul>
+<p>指尖耐用性不足，已更换硅胶并重新训练。非定制相机样品预计11/4左右提供。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>完成5套样品制作并交付算法开展采集训练，提供配套上位机及交付记录。阶段样品交付不代表整项完成。</p>
+<h4 id="ACT-F01ADF43">新款视触觉夹爪（ACT-F01ADF43）</h4>
+<ul>
+<li><p>主责：王国庆。当前执行人：未指定。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-10。未到期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li>完成新款夹爪样品；负责人王国庆；2026-11-15；待处理。</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-19 15:17:22。</p>
+</li>
+</ul>
+<p>10/19记录拟整理结构件并外发供应商，相机共用。原预计11/10左右提供首个夹爪。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>未登记</p>
+<p><strong>搁置行动（1条）</strong></p>
+<h4 id="ACT-9DD055AB">制定夹爪老化试验方案（ACT-9DD055AB）</h4>
+<ul>
+<li><p>主责：李文轩。当前执行人：未指定。正式状态：搁置。</p>
+</li>
+<li><p>整体期限：2026-10-22。搁置，历史日期不计逾期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-10-19 15:52:19。</p>
+</li>
+</ul>
+<p>资源不足，暂时搁置</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>输出夹爪老化试验方案，明确试验对象、条件、方法、评价指标及记录要求。</p>
+<ul>
+<li><p>搁置原因：资源不足。</p>
+</li>
+<li><p>恢复条件：恢复条件及时间未登记。</p>
+</li>
+</ul>
+<p>本项不列为正在推进的承诺。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>业务展示样品当前节点仍为10/30，与最新预计11/4出样存在差异。</p>
+</li>
+<li><p>新款夹爪行动整体期限11/10，样品节点11/15；10/19旧日志的“本周”不作为本周新增结果。</p>
+</li>
+<li><p>老化试验方案因资源不足搁置，不作为正在推进的承诺。</p>
+</li>
+<li><p>跟进预计11/4的非定制相机样品，下一阶段开展深度检测训练并同步研究滑移方案。</p>
+</li>
+<li><p>定制相机指尖节点11/10；新款夹爪样品节点11/15。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+<h3 id="project-4b614707">TS-MD-260801-触觉手套</h3>
+<p>项目负责人：余庚。正式状态：进行中。</p>
+<p>**当前进度：**上位机初版已提供，织物改善及姿态方案待落实；板卡和SDK影响集成。</p>
+<p>最新进展录入：2026-10-30 15:36:14（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<ul>
+<li><p>10/27 TS1208板卡已收到待调试。10/30记录因逆向及温补算法任务延期，未登记调试完成。</p>
+</li>
+<li><p>10/28记录近期又出现2pcs掉线异常，样品已给李斌。</p>
+</li>
+<li><p>10/30融合上位机初版已提供，待确定姿态供应商后细化，织物部分仍需修改。</p>
+</li>
+<li><p>织物第二次打样行动10/30记为完成；最新10/29物流文字仍为当晚发货、预计10/30收到。实际收样及效果尚未明确记录。</p>
+</li>
+<li><p>独立SDK行动10/29最新进展为尚未开始开发，与融合行动中的上位机适配节点分开保留。</p>
+</li>
+</ul>
+<p><strong>未关闭问题（2个）</strong></p>
+<h4 id="ISS-64771663">1208采集板闪灯无信号、重烧后恢复（根因待查）（ISS-64771663）</h4>
+<ul>
+<li><p>负责人：李文轩。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：现场1208采集板闪灯无信号，重烧后恢复，影响连接和生产测试。历史曾称“固件丢失”，但该根因尚未验证。</p>
+</li>
+<li><p>根因记录：尚未确认。</p>
+</li>
+<li><p>措施：梳理历史和当前样品状态，复现并收集证据。初步分析后再确定验证和整改安排。</p>
+</li>
+<li><p>当前判断与待验证：近期新增2pcs异常，样品已交李斌。正式问题主责李文轩，当前分析行动主责李斌，分别保留。</p>
+</li>
+<li><p>问题最新进展录入：2026-09-07 20:40:29。字段更新：2026-10-10 15:25:12。</p>
+</li>
+<li><p>已关联未结行动：<a href="#ACT-987EA32F">分析1208采集板会掉线并再也无法连接（ACT-987EA32F）</a>。</p>
+</li>
+</ul>
+<h4 id="ISS-7C59E21D">模切醋酸布无法稳定覆盖电极走线（ISS-7C59E21D）</h4>
+<ul>
+<li><p>负责人：未登记。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：醋酸布有弹性和粘性，人工贴装易偏斜。现尺寸不能稳定覆盖电极走线，可能造成绝缘覆盖不足。</p>
+</li>
+<li><p>根因记录：当前判断为尺寸余量不足，材料弹性、粘性和人工贴装偏差共同造成覆盖不足，尚待验证。</p>
+</li>
+<li><p>措施：临时手工补贴未覆盖区域；后续扩大模切尺寸并验证实际贴装覆盖效果。</p>
+</li>
+<li><p>当前判断与待验证：负责人未登记。本周未登记覆盖效果验证结果。</p>
+</li>
+<li><p>问题最新进展录入：未登记。字段更新：2026-09-01 17:06:57。</p>
+</li>
+</ul>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（4条）</strong></p>
+<h4 id="ACT-3194B593">开发SDK（ACT-3194B593）</h4>
+<ul>
+<li><p>主责：李文轩。当前执行人：未指定。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-03。未到期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li>明确需求；负责人李文轩；2026-10-22；已完成。</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-29 11:09:34。</p>
+</li>
+</ul>
+<p>尚未开始开发</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>完成SDK开发并交付可用版本，具体功能范围以需求确认结果为准。</p>
+<h4 id="ACT-28A137B7">开发TS1208采集卡（ACT-28A137B7）</h4>
+<ul>
+<li><p>主责：张荣俊。当前执行人：李斌。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-10-30。今日到期，不算逾期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li>设计 PCBA；负责人张荣俊；2026-10-16；已完成。</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-30 15:35:26。</p>
+</li>
+</ul>
+<p>由于逆向及温补算法延期</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>完成TS1208采集卡设计制作、调试及测试，形成可用采集卡和设计版本、调试测试记录；设计发版节点完成不等于整项完成。具体功能、性能及验证指标在对应阶段明确，不推测。</p>
+<h4 id="ACT-987EA32F">分析1208采集板会掉线并再也无法连接（ACT-987EA32F）</h4>
+<ul>
+<li><p>主责：李斌。当前执行人：未指定。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-10-30。今日到期，不算逾期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-10-28 14:39:36。</p>
+</li>
+</ul>
+<p>近期又出现2pcs，不良样品已经给李斌</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>形成初步分析记录，至少包含历史发生情况、当前样品状态、复现情况、证据、可能原因和下一步验证安排。</p>
+<h4 id="ACT-38D9B437">开发姿态与触觉融合数采手套（ACT-38D9B437）</h4>
+<ul>
+<li><p>主责：田浩。当前执行人：李文轩。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-10-30。今日到期，不算逾期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li><p>方案选型；负责人田浩；2026-10-16；已完成。</p>
+</li>
+<li><p>上位机SDK适配；负责人李文轩；2026-10-23；已完成。</p>
+</li>
+<li><p>采集验证与样机交付；负责人田浩；2026-10-30；待处理，节点今日到期。</p>
+</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-30 15:36:14。</p>
+</li>
+</ul>
+<p>目前已经提供一个初版的上位机软件，确定方案（姿态供应商）后再细化。织物部分仍需要修改</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>完成第三方姿态模块与我司触觉模块集成，交付可用数采手套样机；具备手部姿态与触觉数据采集能力，保留集成方案及联合采集测试记录。</p>
+<p><strong>搁置行动（1条）</strong></p>
+<h4 id="ACT-7ADCE6D1">1208串扰优化（ACT-7ADCE6D1）</h4>
+<ul>
+<li><p>主责：余庚。当前执行人：未指定。正式状态：搁置。</p>
+</li>
+<li><p>整体期限：未登记。搁置，历史日期不计逾期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：未登记。</p>
+</li>
+</ul>
+<p>未登记行动进展。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>未登记</p>
+<ul>
+<li><p>搁置原因：未登记。</p>
+</li>
+<li><p>恢复条件：未登记。与掉线分析分别跟踪。</p>
+</li>
+</ul>
+<p>本项不列为正在推进的承诺。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>TS1208、融合手套、掉线分析整体期限均为10/30，今日到期不算逾期。</p>
+</li>
+<li><p>融合行动的上位机SDK适配节点已完成，独立SDK行动尚未开发；适配完成不能替代独立SDK全部范围。</p>
+</li>
+<li><p>织物行动完成与未登记实际收样的文字差异保留。</p>
+</li>
+<li><p>先确认织物实际到货与改善效果、姿态供应商，再明确采集验证和样机交付时间。</p>
+</li>
+<li><p>SDK整体期限11/3，需确认开发安排。TS1208调试及掉线分析仍需结果。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+<h3 id="project-ebbe3620">RS-QN-2.0-EV</h3>
+<p>项目负责人：杨丽民。正式状态：进行中。</p>
+<p>**当前进度：**样品软件Bug未解决，等待嵌入式资源；试产搁置。</p>
+<p>最新进展录入：2026-10-30 15:57:25（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<ul>
+<li><p>10/27记录样品遇到软件Bug，需要嵌入式解决。</p>
+</li>
+<li><p>10/28原计划10/30尝试解决；10/30最新记录本周嵌入式忙碌，改为下周确认解决时间。</p>
+</li>
+</ul>
+<p><strong>未关闭问题（1个）</strong></p>
+<h4 id="ISS-D8786847">最小触发力改善尚待实验验证（ISS-D8786847）</h4>
+<ul>
+<li><p>负责人：杨丽民。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：根据周末事实建立性能改善问题，具体样品、当前值及验收阈值待补，不编造不良率。</p>
+</li>
+<li><p>根因记录：未登记</p>
+</li>
+<li><p>措施：不做硅胶，从碳膜方向改善最小触发力。160pcs加工属于EV；保留原40＋100需求与160pcs加工口径差异，切样后实测验证，尚未确认改善通过。</p>
+</li>
+<li><p>当前判断与待验证：旧措施为碳膜方向；本周EV当前阻塞为软件Bug，不把两者当作同一已解决问题。</p>
+</li>
+<li><p>问题最新进展录入：2026-09-09 14:09:52。字段更新：2026-09-09 14:08:54。</p>
+</li>
+</ul>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（3条）</strong></p>
+<h4 id="ACT-397C6E4A">EV样品制作（ACT-397C6E4A）</h4>
+<ul>
+<li><p>主责：陈德川。当前执行人：李斌。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-02。未到期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-10-30 15:57:25。</p>
+</li>
+</ul>
+<p>本周嵌入式忙碌，等下周确认BUG解决时间</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>未登记</p>
+<h4 id="ACT-31C66EB8">编制EV试产SOP（ACT-31C66EB8）</h4>
+<ul>
+<li><p>主责：刘哲。当前执行人：刘哲。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-02。未到期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：未登记。</p>
+</li>
+</ul>
+<p>未登记行动进展。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>未登记</p>
+<h4 id="ACT-68885671">开发EV代工厂（ACT-68885671）</h4>
+<ul>
+<li><p>主责：罗茜茜。当前执行人：罗茜茜。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-10-31。未到期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-10-14 15:01:00。</p>
+</li>
+</ul>
+<p>明确回复月底前开发</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>未登记</p>
+<p><strong>搁置行动（1条）</strong></p>
+<h4 id="ACT-57E07FF0">开展EV试产（ACT-57E07FF0）</h4>
+<ul>
+<li><p>主责：刘哲。当前执行人：未指定。正式状态：搁置。</p>
+</li>
+<li><p>整体期限：未登记。搁置，历史日期不计逾期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-10-13 10:26:41。</p>
+</li>
+</ul>
+<p>目前2.0这个项目还在做硅胶的测试验证，还在更换硅胶，还没有达到量产标准。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>未登记</p>
+<ul>
+<li><p>搁置原因：硅胶测试验证尚未达到量产标准。</p>
+</li>
+<li><p>恢复条件：正式恢复条件及时间未登记。</p>
+</li>
+</ul>
+<p>本项不列为正在推进的承诺。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>样品行动期限11/2，但最新文字只承诺下周确认Bug时间，不能写为11/2修复完成。</p>
+</li>
+<li><p>旧项目摘要仍为技术问题解决及准备转产，与当前Bug和试产搁置不一致。</p>
+</li>
+<li><p>在11/2所在周确认Bug处理节点，试产SOP行动整体期限11/2。</p>
+</li>
+<li><p>代工厂开发原期限10/31，最新进展仍为10/14的月底开发回复，需核对结果。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+<h3 id="project-e3001042">TS-HBD-1.0-座椅柔性织物垫</h3>
+<p>项目负责人：余庚。正式状态：进行中。</p>
+<p>**当前进度：**末批19套已发货；遗留ADC问题状态及受环境影响的复现仍需跟踪。</p>
+<p>最新进展录入：2026-10-30 15:55:24（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<ul>
+<li><p>10/28客户确认可以发货。10/30末批19套行动登记已发货并完成。</p>
+</li>
+<li><p>本周未登记新的ADC异常关闭记录，发货不等于客户验收或问题关闭。</p>
+</li>
+</ul>
+<p><strong>未关闭问题（3个）</strong></p>
+<h4 id="ISS-AAB6A552">ADC值异常抖动（ISS-AAB6A552）</h4>
+<ul>
+<li><p>负责人：李大军。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：ADC值出现异常抖动，具体发生场景、影响范围及复现条件待确认。</p>
+</li>
+<li><p>根因记录：待确认。</p>
+</li>
+<li><p>措施：未登记</p>
+</li>
+<li><p>当前判断与待验证：暂无新的问题进展，不与笔记本充电场景或阈值问题自行合并。</p>
+</li>
+<li><p>问题最新进展录入：未登记。字段更新：2026-10-21 18:23:27。</p>
+</li>
+<li><p>已关联未结行动：<a href="#ACT-6DAA7E81">解决笔记本充电时ADC闪烁（ACT-6DAA7E81）</a>。</p>
+</li>
+</ul>
+<h4 id="ISS-AA44A07F">笔记本充电时ADC闪烁（ISS-AA44A07F）</h4>
+<ul>
+<li><p>负责人：余庚。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：笔记本接入充电器后，ADC出现闪烁，内部已复现。该异常尚未解决，影响产品交付。</p>
+</li>
+<li><p>根因记录：待定位。</p>
+</li>
+<li><p>措施：未登记</p>
+</li>
+<li><p>当前判断与待验证：关联行动已搁置。10/21更新版本后未复现，复现受环境影响；问题仍OPEN。</p>
+</li>
+<li><p>问题最新进展录入：未登记。字段更新：2026-10-19 18:22:25。</p>
+</li>
+<li><p>已关联未结行动：<a href="#ACT-6DAA7E81">解决笔记本充电时ADC闪烁（ACT-6DAA7E81）</a>。</p>
+</li>
+</ul>
+<h4 id="ISS-D9A24633">客户阈值设置过低导致数值跳动，滤波效果待验证（ISS-D9A24633）</h4>
+<ul>
+<li><p>负责人：李大军。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：客户9/7测试反馈新异常，具体现象和影响待补充。李大军主责，李文轩、张荣俊排查；收集样品、软硬件版本、操作和日志，不提前判定为上位机或硬件设计问题。 协助：李文轩、张荣俊。</p>
+</li>
+<li><p>根因记录：9/8用户判断为客户阈值设置太低。</p>
+</li>
+<li><p>措施：无需改硬件的方向保留；上位机增加降噪算法（原方案含高通滤波），记录阈值、版本及处理前后数据，效果验证后再关闭。</p>
+</li>
+<li><p>当前判断与待验证：客户确认过串扰与颜色闪烁改善，问题台账仍OPEN；发货不自动关闭本问题。</p>
+</li>
+<li><p>问题最新进展录入：2026-09-10 12:07:13。字段更新：2026-09-10 12:07:12。</p>
+</li>
+</ul>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（0条）</strong></p>
+<p>未登记。</p>
+<p><strong>搁置行动（1条）</strong></p>
+<h4 id="ACT-6DAA7E81">解决笔记本充电时ADC闪烁（ACT-6DAA7E81）</h4>
+<ul>
+<li><p>主责：李斌。当前执行人：李斌。正式状态：搁置。</p>
+</li>
+<li><p>整体期限：2026-10-26。搁置，历史日期不计逾期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：2026-10-21 11:22:58。</p>
+</li>
+</ul>
+<p>嵌入式更新了一个版本，但今天已经无法复现了。不管是硬件改过的还是没改过的，都没有该异常现象。该问题的复现受环境影响很大。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>完成异常改善及复测，确认满足本订单客户验收要求，保留改善和测试记录。</p>
+<ul>
+<li><p>搁置原因：更新版本后无法复现，复现受环境影响。</p>
+</li>
+<li><p>恢复条件：正式恢复条件未登记；问题未关闭。</p>
+</li>
+</ul>
+<p>本项不列为正在推进的承诺。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>旧排期仍显示10/16出货、未开始，与10/30实发行动记录不同。</p>
+</li>
+<li><p>笔记本充电ADC闪烁行动已搁置：10/21记录更新版本后无法复现，且复现受环境影响。问题仍开放。</p>
+</li>
+<li><p>跟进本批收货及客户使用结果，出现可复现的ADC异常时按现有问题继续验证。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+<h3 id="project-24e9bfed">TS-MD-3232-STD-V2.0</h3>
+<p>项目负责人：余庚。正式状态：进行中。</p>
+<p>**当前进度：**标定算法完成，V2.0通过内部测试；小型化版本已发板。</p>
+<p>最新进展录入：2026-10-30 15:49:50（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<ul>
+<li><p>10/27登记3232标定算法已完成，10/28行动正式完成。</p>
+</li>
+<li><p>10/30登记V2.0效果通过内部测试，小型化版本发板，预计11/11左右回料。</p>
+</li>
+<li><p>10/27记录其硬件架构与6464 V2.0基本一致，可用。该结论不代表统一性能标准已完成。</p>
+</li>
+</ul>
+<p><strong>未关闭问题（0个）</strong></p>
+<p>未登记未关闭问题。</p>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（1条）</strong></p>
+<h4 id="ACT-462ED4F4">TS 32×32 阵列采集卡-V2.0（ACT-462ED4F4）</h4>
+<ul>
+<li><p>主责：黄德超。当前执行人：黄德超。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-11。未到期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li><p>硬件设计；负责人黄德超；2026-09-17；已完成。</p>
+</li>
+<li><p>物料入库；负责人未登记；2026-09-21；已完成。</p>
+</li>
+<li><p>嵌入式调试；负责人陈晓宇；2026-09-30；已完成。</p>
+</li>
+<li><p>产品测试；负责人黄德超；2026-10-16；已完成。</p>
+</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-30 15:49:50。</p>
+</li>
+</ul>
+<p>3232效果通过军哥测试，小型化的版本发板，预计11/11左右回料</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>冻结本次打样版本及资料，完成外发并取得厂家接单回执；另外登记到货计划。</p>
+<p><strong>搁置行动（0条）</strong></p>
+<p>未登记。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>项目旧摘要30%多与约3%的串扰估计未采用统一评价标准，不作为本周定量改善结论。</p>
+</li>
+<li><p>黄德超跟进小型化板回料，现行动整体期限及预计回料时间为11/11，未另造下周完成承诺。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+<h3 id="project-1572218e">PS-SJ-260904-汽车座椅感应</h3>
+<p>项目负责人：陈德川。正式状态：进行中。</p>
+<p>**当前进度：**嵌入式已提供温补算法，等待材料部门确认后续测试计划。</p>
+<p>最新进展录入：2026-10-30 15:53:21（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<ul>
+<li><p>10/27嵌入式暂未启动，10/28启动处理。</p>
+</li>
+<li><p>10/30登记温补算法已提供，材料部门下一步未确定；尚无补偿效果验证结论。</p>
+</li>
+</ul>
+<p><strong>未关闭问题（0个）</strong></p>
+<p>未登记未关闭问题。</p>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（1条）</strong></p>
+<h4 id="ACT-A4CFFFEB">汽车座椅温补算法（ACT-A4CFFFEB）</h4>
+<ul>
+<li><p>主责：李斌。当前执行人：陈德川。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-02。未到期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li>数据问题讨论会；负责人未登记；2026-09-29；已完成。</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-30 15:53:21。</p>
+</li>
+</ul>
+<p>嵌入式已经提供温补算法，待材料部门确认下一步计划</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>形成可供测试验证的温补算法及对应版本，交付测试。</p>
+<p><strong>搁置行动（1条）</strong></p>
+<h4 id="ACT-FE4C8D9B">通过1208验证后设计一拖三转接板（ACT-FE4C8D9B）</h4>
+<ul>
+<li><p>主责：张荣俊。当前执行人：未指定。正式状态：搁置。</p>
+</li>
+<li><p>整体期限：未登记。搁置，历史日期不计逾期。</p>
+</li>
+<li><p>当前节点：未登记。</p>
+</li>
+<li><p>最新进展录入：未登记。</p>
+</li>
+</ul>
+<p>未登记行动进展。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>1208验证通过，转接板设计输出及评审完成。</p>
+<ul>
+<li><p>搁置原因：有前置验证条件，未登记其他搁置原因。</p>
+</li>
+<li><p>恢复条件：1208验证通过后设计转接板；恢复时间未登记。</p>
+</li>
+</ul>
+<p>本项不列为正在推进的承诺。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>项目旧摘要“现有数据无规律”不能覆盖本周已提供算法的进展。</p>
+</li>
+<li><p>算法交付不等于材料验证通过。</p>
+</li>
+<li><p>材料部门确认样品、测试及结果安排，行动期限11/2。主责李斌、当前执行人陈德川分别保留。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+<h3 id="project-42579e02">RS-XY-261020-夹爪</h3>
+<p>项目负责人：杨丽民。正式状态：待启动。</p>
+<p>**当前进度：**3个样品已制作，等待包装及实际发货确认；41对传感器按计划组织。</p>
+<p>最新进展录入：2026-10-29 11:10:31（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<ul>
+<li><p>10/28记录当日制作样品、次日做检测报告；产品提供节点已完成。</p>
+</li>
+<li><p>10/28最新交付进展仍为彩盒未到，预计周五10/30到达，尚未登记实发。</p>
+</li>
+<li><p>夹持表面改善行动10/29完成，结论为不需要修改；夹持不稳问题仍为OPEN。</p>
+</li>
+<li><p>41对配套交付的确认及询价节点已完成，当前供应商制板贴片进行中。节点登记不等于已交付41对。</p>
+</li>
+</ul>
+<p><strong>未关闭问题（1个）</strong></p>
+<h4 id="ISS-8D64B4AD">夹爪对部分物品夹持不稳（ISS-8D64B4AD）</h4>
+<ul>
+<li><p>负责人：杨丽民。正式状态：OPEN（未关闭）。</p>
+</li>
+<li><p>现象与影响：前两批终端反馈部分物品夹不住，并指出夹爪平面过于光滑，影响相关物品的夹持使用。具体物品、夹持工况、影响数量及异常发生日期待确认。</p>
+</li>
+<li><p>根因记录：待验证。表面过于光滑为邮件反馈描述，尚无复现及分析结论。</p>
+</li>
+<li><p>措施：先确认反馈物品和工况，再复现并改善表面。验证夹持、传感及标定效果，明确本批版本。关闭需有约定工况、判据及导入证据；客户确认范围另定。</p>
+</li>
+<li><p>当前判断与待验证：10/29夹持表面改善行动完成，记录不需要修改；本问题仍开放，未登记关闭依据。</p>
+</li>
+<li><p>问题最新进展录入：未登记。字段更新：2026-10-27 17:53:04。</p>
+</li>
+<li><p>已关联未结行动：<a href="#ACT-1A24ABA6">完成41对夹爪传感器配套交付（ACT-1A24ABA6）</a>。</p>
+</li>
+</ul>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（2条）</strong></p>
+<h4 id="ACT-8A9DE26B">完成3个视触觉夹爪样产品交付（ACT-8A9DE26B）</h4>
+<ul>
+<li><p>主责：杨丽民。当前执行人：未指定。正式状态：等待反馈。</p>
+</li>
+<li><p>整体期限：2026-10-29。整体逾期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li>提供视触觉夹爪产品；负责人王国庆；2026-10-28；已完成。</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-28 15:26:38。</p>
+</li>
+</ul>
+<p>彩盒还没到，要到周五</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>交付3个产品，型号和配置符合确认结果。 按确认的测试项目和验收要求完成验证，保留产品版本、测试结果和交付记录。</p>
+<h4 id="ACT-1A24ABA6">完成41对夹爪传感器配套交付（ACT-1A24ABA6）</h4>
+<ul>
+<li><p>主责：杨丽民。当前执行人：罗茜茜。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-20。未到期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li><p>确认邮件并下单；负责人杨丽民；2026-10-20；已完成。</p>
+</li>
+<li><p>完成供应链询价；负责人杨丽民；2026-10-22；已完成。</p>
+</li>
+<li><p>完成供应商制板贴片；负责人杨丽民；2026-11-14；进行中。</p>
+</li>
+<li><p>完成物料转入；负责人杨丽民；2026-11-16；待处理。</p>
+</li>
+<li><p>完成41对夹爪贴碳膜；负责人杨丽民；2026-11-19；待处理。</p>
+</li>
+<li><p>完成41对夹爪标定测试；负责人杨丽民；2026-11-20；待处理。</p>
+</li>
+<li><p>发货第1批10对夹爪；负责人杨丽民；2026-11-17；待处理。</p>
+</li>
+<li><p>发货第2批10对夹爪；负责人杨丽民；2026-11-18；待处理。</p>
+</li>
+<li><p>发货第3批10对夹爪；负责人杨丽民；2026-11-19；待处理。</p>
+</li>
+<li><p>发货末批11对夹爪；负责人杨丽民；2026-11-20；待处理。</p>
+</li>
+</ul>
+</li>
+<li><p>最新进展录入：未登记。</p>
+</li>
+</ul>
+<p>未登记行动进展。</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>4批按10、10、10、11对合计交付41对，配对标识与标定数据对应，配对结果符合确认的一致性要求。 每对2组长短通讯线齐备，备用量符合确认结果；如转接器纳入供货，规格和数量与约定一致。 产品与线材按确认的测试要求完成检查，保留本批版本、配对清单、测试数据及各批出货记录。</p>
+<p><strong>搁置行动（0条）</strong></p>
+<p>未登记。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>正式项目状态仍为待启动，样品相关行动已推进；按正式字段保留差异。</p>
+</li>
+<li><p>3个样品行动整体期限10/29，当前已逾期，不能以制作节点完成替代实发。</p>
+</li>
+<li><p>夹持表面无需修改不等于夹持问题已关闭。</p>
+</li>
+<li><p>核对3件样品包装、报告与实际发货。</p>
+</li>
+<li><p>41对总交付11/20：供应商制板贴片11/14、物料转入11/16；4批10、10、10、11对，按11/17至11/20发货。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+<h3 id="project-9a058dc2">PS-VSNX-DOE2-超高密度</h3>
+<p>项目负责人：余庚。正式状态：进行中。</p>
+<p>**当前进度：**二次采样等待电阻板复核，技术结论未更新。</p>
+<p>最新进展录入：2026-10-14 14:20:34（北京时间）。</p>
+<p><strong>本周进展</strong></p>
+<p>本周未登记新进展。</p>
+<p><strong>未关闭问题（0个）</strong></p>
+<p>未登记未关闭问题。</p>
+<p><strong>开放风险</strong></p>
+<p>正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。</p>
+<p><strong>当前行动（1条）</strong></p>
+<h4 id="ACT-BCC067F0">VXN-128 x 128阵列采集卡-时序款（ACT-BCC067F0）</h4>
+<ul>
+<li><p>主责：刘俊。当前执行人：未指定。正式状态：进行中。</p>
+</li>
+<li><p>整体期限：2026-11-02。未到期。</p>
+</li>
+<li><p>节点（含已完成节点，按看板顺序）：</p>
+<ul>
+<li><p>转接板入库；负责人罗茜茜；2026-09-21；已完成。</p>
+</li>
+<li><p>初步调试；负责人刘俊；2026-09-23；已完成。</p>
+</li>
+<li><p>转接板V1.1制作；负责人李行能；2026-10-12；已完成。</p>
+</li>
+<li><p>客户调试效果反馈；负责人余庚；2026-09-29；已完成。</p>
+</li>
+<li><p>新时序验证；负责人刘俊；2026-10-10；已完成。</p>
+</li>
+</ul>
+</li>
+<li><p>最新进展录入：2026-10-14 14:20:34。</p>
+</li>
+</ul>
+<p>目前看来，二次采样可能会没什么用，还在验证的过程中，需要等电阻板到了之后，再次出一个新的结论</p>
+<ul>
+<li>完成标准（正式字段原文）：</li>
+</ul>
+<p>供应商承诺交期和当前制作状态已反馈，记录可追查。</p>
+<p><strong>搁置行动（0条）</strong></p>
+<p>未登记。</p>
+<p><strong>节点差异与后续计划</strong></p>
+<ul>
+<li><p>最新行动进展录于10/14，本周未登记新进展。全部旧节点已完成，正式总行动仍进行中。</p>
+</li>
+<li><p>现行动整体期限11/2。先确认电阻板状态、实际试验及可输出结论，不能将旧节点完成当成本周新成果。</p>
+</li>
+</ul>
+<p><a href="#panel-D">返回项目目录</a> · <a href="#top">返回顶部</a></p>
+</div></div>
+</section>
+</div>
+</div>
+</main>
+<textarea aria-hidden="true" hidden="" id="am-source" readonly="">---
+template: sheet
+cols: 1
+theme: paper
+mode: light
+lang: zh
+title: 项目周报
+subtitle: 2026年10月26日至10月30日
+---
+
+HBD末批19套已发货，3232算法和汽车座椅温补取得阶段结果。DV3量程及治具验证仍受阻，嵌入式资源冲突影响EV和TS1208进度。
+
+资料截至：2026-10-30 16:21:24（北京时间）。下周范围：11月2日至11月8日。
+
+[本周进度](#panel-A) · [下周计划](#panel-B) · [需要协助](#panel-C) · [项目目录](#panel-D) · [项目明细](#panel-E)
+
+## A 本周进度
+
+- **交付**：HBD末批19套织物垫已发货。RS-XY的3个视触觉夹爪样品已制作，最新记录仍在等待彩盒，尚未登记实发。
+- **DV3**：图纸、固件和SOP版本归档及本轮设计变更确认已完成。小指腹量程异常经电镜检查仍无根因结论；治具交付后因压块晃动、缺少轴承返厂，当前仍不满足研发需求。手掌时漂尚未通过，放大凸点碳膜已到样，待测试。
+- **新款视触觉**：指尖因耐用性问题更换硅胶并重新训练，非定制相机样品预计11/4左右提供。六维力模型正在验证，深度和滑移检测列入下一阶段；形貌重建仍为研究。
+- **触觉手套**：融合上位机初版已提供，织物仍需修改，姿态供应商尚待确定。TS1208板卡已收到，调试因逆向和温补任务延期；近期又出现2件掉线异常，样品已交李斌分析。
+- **采集卡**：3232标定算法已完成，V2.0效果通过内部测试，小型化版本已发板，预计11/11左右回料。6464本周已归档，现有防串扰方案可用，统一评价标准仍未形成。
+- **汽车座椅、EV**：汽车座椅温补算法已由嵌入式提供，等待材料部门确定下一步。EV样品遇到软件Bug，本周受嵌入式资源限制，修复节点推迟到下周确认。
+- **客户需求变化**：O30客户正在考虑视触觉方案，压阻方案推进放缓，后续装配测试等待新版结构件齐套。
+
+## B 下周计划
+
+- **DV3，11/2—11/6**：按现有节点完成FPC防串扰电路验证和PI碳膜工艺验证，推进竞品逆向及DOE。硬件防串扰行动整体期限为11/6。小指腹根因分析原目标11/1，尚无结论；治具返修及手掌碳膜测试需补齐新的输出节点。
+- **新款视触觉**：先跟进预计11/4左右的非定制相机指尖样品，同步开展深度检测训练和滑移方案研究。定制相机指尖节点保留11/10。新款夹爪整体期限11/10、样品节点11/15的差异需核对。
+- **触觉手套、EV**：明确姿态供应商及织物改善后，继续细化上位机和采集验证。手套SDK整体目标11/3，最新记录尚未启动。EV在11/2所在周先确认Bug修复节点，不将行动日期写成已承诺修复完成日。
+- **汽车座椅、DOE2**：汽车座椅由材料部门确认温补验证安排；行动期限11/2。DOE2行动期限同为11/2，但本周未登记新进展，需先确认电阻板及二次采样验证结果。
+- **交付跟进**：核实3个夹爪样品实际发货；41对配套交付按既有计划推进，11/14供应商制板贴片、11/17起分批发货、11/20末批交付，均为后续计划。
+
+## C 需要协助
+
+- **明确嵌入式优先级**：EV Bug、TS1208调试与逆向、温补任务存在资源冲突，已出现延期。需协调任务顺序和可投入资源，再确认各项交付节点。
+- **解决DV3验证瓶颈**：量程异常仍无根因结论，治具返修后仍不达标。需协调研发、结构与供应商的排查及整改节奏，给出可检查的结果和验证时间；当前没有足够依据承诺客户验收时间。
+- **对齐出样和验收安排**：视触觉指尖原10/30展示节点与预计11/4出样存在差异；手套织物行动已完成，但最新物流记录仅为预计到货。需确认实际结果，再同步业务展示及整机验证安排。
+- **落实材料侧下一步**：汽车座椅算法已提供，需要材料部门明确样品、测试安排和结果时间。DOE2需补齐本周结果及11/2节点的实际输出。
+
+## D 项目目录
+
+本期覆盖10个在途项目，28条未结行动（含8条搁置），13个未关闭问题。正式台账未登记开放风险。本周归档的6464另列结果。
+
+全部内容展开，支持浏览器查找、目录跳转、离线阅读和打印。主责、当前执行人和节点负责人分别保留。
+
+### [RS-QN-Revo3-DV3](#project-f34eb0cb)
+
+负责人：杨丽民。正式状态：进行中。
+
+版本及变更确认已完成，量程、手掌时漂和治具一致性仍阻碍稳定验证。
+
+未结行动8条（搁置2条），未关闭问题5个。
+
+### [RS-LXQS-O30-指尖](#project-814c8b05)
+
+负责人：余庚。正式状态：进行中。
+
+客户考虑转用视触觉，压阻方案放缓，等待结构件齐套后的装配测试。
+
+未结行动1条（搁置1条），未关闭问题0个。
+
+### [VS-MD-1.0-DBL1](#project-12a6c521)
+
+负责人：杨丽民。正式状态：进行中。
+
+新指尖更换硅胶并重新训练；相机、夹爪和多维感知能力仍在开发。
+
+未结行动3条（搁置1条），未关闭问题1个。
+
+### [TS-MD-260801-触觉手套](#project-4b614707)
+
+负责人：余庚。正式状态：进行中。
+
+上位机初版已提供，织物改善及姿态方案待落实；板卡和SDK影响集成。
+
+未结行动5条（搁置1条），未关闭问题2个。
+
+### [RS-QN-2.0-EV](#project-ebbe3620)
+
+负责人：杨丽民。正式状态：进行中。
+
+样品软件Bug未解决，等待嵌入式资源；试产搁置。
+
+未结行动4条（搁置1条），未关闭问题1个。
+
+### [TS-HBD-1.0-座椅柔性织物垫](#project-e3001042)
+
+负责人：余庚。正式状态：进行中。
+
+末批19套已发货；遗留ADC问题状态及受环境影响的复现仍需跟踪。
+
+未结行动1条（搁置1条），未关闭问题3个。
+
+### [TS-MD-3232-STD-V2.0](#project-24e9bfed)
+
+负责人：余庚。正式状态：进行中。
+
+标定算法完成，V2.0通过内部测试；小型化版本已发板。
+
+未结行动1条（搁置0条），未关闭问题0个。
+
+### [PS-SJ-260904-汽车座椅感应](#project-1572218e)
+
+负责人：陈德川。正式状态：进行中。
+
+嵌入式已提供温补算法，等待材料部门确认后续测试计划。
+
+未结行动2条（搁置1条），未关闭问题0个。
+
+### [RS-XY-261020-夹爪](#project-42579e02)
+
+负责人：杨丽民。正式状态：待启动。
+
+3个样品已制作，等待包装及实际发货确认；41对传感器按计划组织。
+
+未结行动2条（搁置0条），未关闭问题1个。
+
+### [PS-VSNX-DOE2-超高密度](#project-9a058dc2)
+
+负责人：余庚。正式状态：进行中。
+
+二次采样等待电阻板复核，技术结论未更新。
+
+未结行动1条（搁置0条），未关闭问题0个。
+
+**本周归档：6464防串扰项目**
+
+10/28正式归档。双电源V0.1调试完成；现有V1.1电压反馈、V2.0电流反馈和3232V2.0架构均有可用方案。电流反馈方案功耗超过400mA，需按工况选择。统一性能评价标准未形成，不能把归档写为所有验证完成。
+
+## E 项目明细
+
+本周范围为10/26至资料截止时刻。以下日志日期为录入日期，实际发生日期另有记录时单独说明。计划、完成、实际发货与客户验收分别表达。
+
+逾期按10/30判断：未完成且未搁置、日期早于10/30才算逾期。整体逾期2条，节点逾期0个。今日到期及日期差异分别提示，搁置旧日期不计逾期。
+
+### RS-QN-Revo3-DV3
+
+项目负责人：杨丽民。正式状态：进行中。
+
+**当前进度：**版本及变更确认已完成，量程、手掌时漂和治具一致性仍阻碍稳定验证。
+
+最新进展录入：2026-10-30 15:23:07（北京时间）。
+
+**本周进展**
+
+- 10/26登记出货标签增加出货日期已执行；10/27完成图纸、固件与SOP版本归档。
+
+- 1小时对外时漂报告行动10/26记为完成，但最新结论为V1.0.3-BETA2手掌时漂未通过，仍需优化算法。
+
+- 10/27日志记载治具于前一日交付，因压块晃动、缺少轴承返厂。10/30仍不符合研发需求，一致性存在瓶颈。
+
+- 10/28二次标定行动完成。其对夹具一致性、单点触发力有一定改善，区域准确性未明显改善，生产导入受压强标定设备限制。
+
+- 10/30放大凸点碳膜已到样，待测试。电镜尚未发现小指腹异常样品差异，根因仍无结论。
+
+- FPC防串扰电路已采购打板。竞品电子及嵌入式逆向、工艺实践准备进行中。设计变更行动10/30记为完成，最新文字为已确认变更情况，未据此推定全部性能指标通过。
+
+**未关闭问题（5个）**
+
+#### 大指腹SN误记录为小指腹（ISS-9C753E1F）
+
+- 负责人：杨丽民。正式状态：OPEN（未关闭）。
+
+- 现象与影响：生产过程中，大指腹SN被错误记录为小指腹SN，客户读取SN时发现异常。影响批次、数量、实际发生日期及根因待确认。
+
+- 根因记录：未登记
+
+- 措施：未登记
+
+- 当前判断与待验证：影响批次、数量、根因及措施未登记；本周未登记新进展。
+
+- 问题最新进展录入：未登记。字段更新：2026-10-22 18:06:29。
+
+#### 单点按压引发远端或行列误响应[串点][非关键]（ISS-51255A27）
+
+- 负责人：杨丽民。正式状态：OPEN（未关闭）。
+
+- 现象与影响：单点触发力测试中，按压一个点，远端触点或整行、整列会误响应。响应范围与加载位置不一致。
+
+- 根因记录：待确认。
+
+- 措施：1. 软件优化：先提供测试结论，再据结论安排实装。 2. 碳膜物理隔离：分割各触感点以实现物理隔离。用户反馈该方案验证通过，本批不导入，仅保留为后续改善方案。
+
+- 当前判断与待验证：正式标题已标注非关键。软件验证行动完成不等于此问题关闭；本批不导入碳膜物理隔离方案。
+
+- 问题最新进展录入：未登记。字段更新：2026-10-20 10:28:04。
+
+#### 治具不防呆（ISS-DB6C5C68）
+
+- 负责人：杨丽民。正式状态：OPEN（未关闭）。
+
+- 现象与影响：客户使用时将治具反向放置，造成加载位置错误及部分力值偏低。10月12日现场排查确认，当前治具放置位缺少防呆设计。
+
+- 根因记录：治具放置位缺少防呆设计，允许反向放置。
+
+- 措施：临时措施：使用3D打印定位板及油漆笔定位。 长期措施：采用硬防呆设计，导向柱由4根改为2根并增加轴承；完成3台治具改造及验证，根据改善效果评估是否导入生产。
+
+- 当前判断与待验证：长期治具行动最新10/30仍不符合研发需求，不能以节点完成认定已解决。
+
+- 问题最新进展录入：2026-10-15 16:56:28。字段更新：2026-10-19 14:57:34。
+
+- 已关联未结行动：[完成治具长期改造及验证（ACT-65B64907）](#ACT-65B64907)。
+
+#### 老化后小指腹ADC量程上限降低（ISS-1B1E6B26）
+
+- 负责人：杨丽民。正式状态：OPEN（未关闭）。
+
+- 现象与影响：产品装手并老化后，发现2pcs小指腹ADC量程上限降低。具体样品、老化条件及降低幅度待补充。
+
+- 根因记录：待确认。
+
+- 措施：开展内部老化复现，记录样品、测试条件及ADC量程变化，依据数据继续定位原因。
+
+- 当前判断与待验证：问题字段仍为历史2pcs，10/19项目日志累计3pcs。10/30电镜未见差异，根因分析尚无结论。
+
+- 问题最新进展录入：2026-10-16 16:59:56。字段更新：2026-10-19 14:57:06。
+
+- 已关联未结行动：[提供小指腹量程异常根因分析（ACT-ED70B34C）](#ACT-ED70B34C)。
+
+#### 带载时漂与首件表现不一致（ISS-1A216C49）
+
+- 负责人：杨丽民。正式状态：OPEN（未关闭）。
+
+- 现象与影响：客户反馈部分产品在500g负载下保持10分钟，力值漂移超过1N，与首件表现不一致。 历史反馈：研发曾评估波动与DV2相近、符合技术规格要求；客户认为未满足实际工况及市场要求。
+
+- 根因记录：碳膜或双面胶规格导致的漂移
+
+- 措施：1. 指腹采用算法优化，并配合固件调整及测试。 2. 手掌验证碳膜厚度、工艺与凸点放大，双面胶材料、硬度及点胶，贴胶工艺和气泡控制，并评估压块改善效果。 3. 高压消泡仅作研发研究方向，不作为本批已确定的导入措施。 4. 算法、材料及治具改善分别评估，不以方案提交替代效果验证。
+
+- 当前判断与待验证：1小时报告行动完成但手掌时漂未通过；放大凸点碳膜10/30到样待测。根因字段为材料方向，改善结论尚未验证。
+
+- 问题最新进展录入：2026-10-16 16:59:55。字段更新：2026-10-16 16:59:55。
+
+- 已关联未结行动：[改善手掌时漂材料与贴胶工艺（ACT-FC8AAC24）](#ACT-FC8AAC24)。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（6条）**
+
+#### 输出竞品拆机分析并开展DOE验证（ACT-C928BBA0）
+
+- 主责：杨丽民。当前执行人：李斌。正式状态：进行中。
+
+- 整体期限：2026-11-02。未到期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 汇总四专业竞品拆机报告及改善建议；负责人杨丽民；2026-10-30；待处理，节点今日到期。
+
+- 最新进展录入：2026-10-30 15:23:07。
+
+电子及嵌入式正在逆向，工艺已经准备实践测试
+
+- 完成标准（正式字段原文）：
+
+提交覆盖嵌入式、电子、工艺、传感器四个专业的拆机分析报告，明确产品启示与改善建议；完成对应DOE验证并形成可追溯数据与结论。拆机报告提交为阶段输出，整项完成需包含DOE结果。
+
+#### 完成治具长期改造及验证（ACT-65B64907）
+
+- 主责：杨丽民。当前执行人：杨丽民。正式状态：等待反馈。
+
+- 整体期限：2026-10-30。今日到期，不算逾期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 完成3台治具改造；负责人王健善；2026-10-23；已完成。
+
+  - 输出治具验证结论；负责人杨丽民；2026-10-28；已完成。
+
+  - 完成测试架及治具改造出图；负责人王健善；2026-10-16；已完成。
+
+- 最新进展录入：2026-10-30 14:17:58。
+
+目前治具仍不符合研发需求，且目前治具一致性存在瓶颈，可能成为风险
+
+- 完成标准（正式字段原文）：
+
+完成3台治具改造，提交验证数据及结论，明确改善效果及是否适合导入生产。
+
+#### 验证PI碳膜工艺可行性（ACT-44909C94）
+
+- 主责：陈德川。当前执行人：未指定。正式状态：进行中。
+
+- 整体期限：2026-11-02。未到期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-10-29 12:06:43。
+
+正参考MX拆机得到的工艺思路开展PI碳膜工艺研究，计划2026年11月2日完成验证。
+
+- 完成标准（正式字段原文）：
+
+输出PI碳膜工艺验证记录与结论，包含工艺方案、样品、试验条件、测试数据和对比结果，明确可行性、改善价值及遗留项。
+
+#### 改善手掌时漂材料与贴胶工艺（ACT-FC8AAC24）
+
+- 主责：杨丽民。当前执行人：陈德川。正式状态：进行中。
+
+- 整体期限：2026-10-29。整体逾期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 完成凸点放大碳膜打样；负责人罗茜茜；2026-10-23；已完成。
+
+  - 碳膜相关验证（供应商配合）；负责人杨丽民；2026-10-22；已完成。
+
+- 最新进展录入：2026-10-30 14:28:59。
+
+凸点放大后的碳膜样品已到了，需测试
+
+- 完成标准（正式字段原文）：
+
+提交测试数据及改善结论，包含方案、样品、测试条件和改善前后对比，明确改善效果及遗留项。
+
+#### 提供小指腹量程异常根因分析（ACT-ED70B34C）
+
+- 主责：陈德川。当前执行人：杨丽民。正式状态：进行中。
+
+- 整体期限：2026-11-01。未到期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-10-30 15:22:15。
+
+目前电镜也看不出来差异，尚无结论，属于风险较大的问题
+
+- 完成标准（正式字段原文）：
+
+提交小指腹量程异常根因分析，说明根因结论及支撑证据，明确尚待验证的事项。
+
+#### 验证DV3硬件防串扰方案并推进后续板卡设计（ACT-F0D3BDEE）
+
+- 主责：张荣俊。当前执行人：未指定。正式状态：进行中。
+
+- 整体期限：2026-11-06。未到期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 完成FPC防串扰电路验证；负责人张荣俊；2026-11-02；待处理。
+
+- 最新进展录入：2026-10-29 12:06:38。
+
+FPC防串扰电路已采购打板，计划2026年11月2日完成验证。
+
+- 完成标准（正式字段原文）：
+
+未登记
+
+**搁置行动（2条）**
+
+#### 核实INA826供货来源并落实下一批物料纠正措施（ACT-06D906F9）
+
+- 主责：贾刘云。当前执行人：未指定。正式状态：搁置。
+
+- 整体期限：2026-09-20。搁置，历史日期不计逾期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-09-17 17:55:53。
+
+9/11已发送正式P0预警，要求补齐来源证明、供应商协议和书面责任。该历史进展录于9/17。
+
+- 完成标准（正式字段原文）：
+
+供应商书面说明、受影响采购批次及数量可追溯；异常批次处置和下一批供货来源方案明确；下一批到料来源/批号凭证经采购与质量核对，纠正措施执行有记录。仅供应商口头承诺不视为完成。
+
+- 搁置原因：未登记。
+
+- 恢复条件：未登记。历史期限不计活动行动逾期。
+
+本项不列为正在推进的承诺。
+
+#### 复现局部轻压ADC突升并验证DV3算法适配（ACT-E9099C48）
+
+- 主责：杨丽民。当前执行人：未指定。正式状态：搁置。
+
+- 整体期限：未登记。搁置，历史日期不计逾期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-09-23 17:50:45。
+
+等待有产品出现该问题
+
+- 完成标准（正式字段原文）：
+
+形成稳定复现与根因结论，或提交覆盖样品、位置、装配、载荷、版本、次数及边界值的排除性测试记录；验证DV3算法在局部受力场景满足准确度要求。
+
+- 搁置原因：等待出现该异常的产品。
+
+- 恢复条件：取得可复现的产品后再验证；恢复时间未登记。
+
+本项不列为正在推进的承诺。
+
+**节点差异与后续计划**
+
+- 本周实发数量和客户性能验收结果未登记，不能由旧累计数量推算。
+
+- 治具节点标为已完成，但最新验证未达研发需求，总行动仍等待反馈。
+
+- 小指腹问题字段保留历史2pcs，10/19项目记录已累计3pcs；本周没有新的异常数量统计。
+
+- 11/1为小指腹量程根因分析现有期限；11/2为FPC电路及PI碳膜工艺验证节点。硬件防串扰整体期限11/6。
+
+- 治具返修和放大凸点碳膜测试尚需确定下一结果时间。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+### RS-LXQS-O30-指尖
+
+项目负责人：余庚。正式状态：进行中。
+
+**当前进度：**客户考虑转用视触觉，压阻方案放缓，等待结构件齐套后的装配测试。
+
+最新进展录入：2026-10-28 15:39:29（北京时间）。
+
+**本周进展**
+
+- 10/28项目日志记录客户考虑更换视触觉方案，压阻项目在客户内部进度放缓。
+
+- 客户待新版结构件齐套后提供少量装配测试，数量和时间未登记。
+
+**未关闭问题（0个）**
+
+未登记未关闭问题。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（0条）**
+
+未登记。
+
+**搁置行动（1条）**
+
+#### 验证完全固化后30万次按压不脱落（ACT-96424FB3）
+
+- 主责：陈嘉濠。当前执行人：未指定。正式状态：搁置。
+
+- 整体期限：2026-10-28。搁置，历史日期不计逾期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 测试样品制作；负责人姚鹤；2026-10-09；待处理，搁置历史日期不计逾期。
+
+  - 启动测试；负责人陈嘉濠；2026-10-13；待处理，搁置历史日期不计逾期。
+
+  - 测试结果；负责人陈嘉濠；2026-10-28；待处理，搁置历史日期不计逾期。
+
+- 最新进展录入：2026-10-08 12:00:23。
+
+客户拟变更结构ID和胶皮。待新版结构及胶皮提供后，再做可靠性测试。
+
+- 完成标准（正式字段原文）：
+
+完全固化后，30万次按压不脱落。
+
+- 搁置原因：等待客户新版结构及胶皮。
+
+- 恢复条件：取得新版结构和胶皮后再测试；恢复时间未登记。
+
+本项不列为正在推进的承诺。
+
+**节点差异与后续计划**
+
+- 客户考虑转方案不等于已确认终止压阻项目。
+
+- 等待客户结构件和试装安排，不另造交付日期。30万次按压验证保持搁置。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+### VS-MD-1.0-DBL1
+
+项目负责人：杨丽民。正式状态：进行中。
+
+**当前进度：**新指尖更换硅胶并重新训练；相机、夹爪和多维感知能力仍在开发。
+
+最新进展录入：2026-10-30 16:01:44（北京时间）。
+
+**本周进展**
+
+- 10/27决定先做3个样品，因2个镜头损坏，其中1个供业务宣传；原5套总范围仍保留。
+
+- 10/28项目日志明确现阶段聚焦六维力、深度和滑移检测，形貌重建仍在研究。六维力模型正在消融实验和网络修改，拟用云算力加快验证。
+
+- 10/30指尖耐用性不足，已换硅胶重新训练。非定制相机样品预计11/4左右提供，尚未完成。
+
+**未关闭问题（1个）**
+
+#### 老款夹爪模型需逐件数采训练（ISS-FC25F640）
+
+- 负责人：杨丽民。正式状态：OPEN（未关闭）。
+
+- 现象与影响：老款夹爪需逐件数采、训练及修正才能满足出货要求。同批模型尚不能直接复用。
+
+- 根因记录：跨产品复用受限的具体原因待确认。
+
+- 措施：未登记
+
+- 当前判断与待验证：逐件训练可用不等于模型跨产品复用问题已解决。
+
+- 问题最新进展录入：未登记。字段更新：2026-10-15 17:20:38。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（2条）**
+
+#### 新款视触觉指尖5套（ACT-7E37556B）
+
+- 主责：李文轩。当前执行人：未指定。正式状态：进行中。
+
+- 整体期限：2026-11-10。未到期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 交付1件新指尖样品及上位机；负责人李文轩；2026-10-20；已完成。
+
+  - 业务展示电源供电方案（24V）；负责人张荣俊；2026-10-19；已完成。
+
+  - 提供业务展示样品；负责人杨丽民；2026-10-30；待处理，节点今日到期。
+
+  - 完成新款指尖（定制相机）样品；负责人王国庆；2026-11-10；进行中。
+
+- 最新进展录入：2026-10-30 16:01:44。
+
+指尖耐用性不足，已更换硅胶并重新训练。非定制相机样品预计11/4左右提供。
+
+- 完成标准（正式字段原文）：
+
+完成5套样品制作并交付算法开展采集训练，提供配套上位机及交付记录。阶段样品交付不代表整项完成。
+
+#### 新款视触觉夹爪（ACT-F01ADF43）
+
+- 主责：王国庆。当前执行人：未指定。正式状态：进行中。
+
+- 整体期限：2026-11-10。未到期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 完成新款夹爪样品；负责人王国庆；2026-11-15；待处理。
+
+- 最新进展录入：2026-10-19 15:17:22。
+
+10/19记录拟整理结构件并外发供应商，相机共用。原预计11/10左右提供首个夹爪。
+
+- 完成标准（正式字段原文）：
+
+未登记
+
+**搁置行动（1条）**
+
+#### 制定夹爪老化试验方案（ACT-9DD055AB）
+
+- 主责：李文轩。当前执行人：未指定。正式状态：搁置。
+
+- 整体期限：2026-10-22。搁置，历史日期不计逾期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-10-19 15:52:19。
+
+资源不足，暂时搁置
+
+- 完成标准（正式字段原文）：
+
+输出夹爪老化试验方案，明确试验对象、条件、方法、评价指标及记录要求。
+
+- 搁置原因：资源不足。
+
+- 恢复条件：恢复条件及时间未登记。
+
+本项不列为正在推进的承诺。
+
+**节点差异与后续计划**
+
+- 业务展示样品当前节点仍为10/30，与最新预计11/4出样存在差异。
+
+- 新款夹爪行动整体期限11/10，样品节点11/15；10/19旧日志的“本周”不作为本周新增结果。
+
+- 老化试验方案因资源不足搁置，不作为正在推进的承诺。
+
+- 跟进预计11/4的非定制相机样品，下一阶段开展深度检测训练并同步研究滑移方案。
+
+- 定制相机指尖节点11/10；新款夹爪样品节点11/15。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+### TS-MD-260801-触觉手套
+
+项目负责人：余庚。正式状态：进行中。
+
+**当前进度：**上位机初版已提供，织物改善及姿态方案待落实；板卡和SDK影响集成。
+
+最新进展录入：2026-10-30 15:36:14（北京时间）。
+
+**本周进展**
+
+- 10/27 TS1208板卡已收到待调试。10/30记录因逆向及温补算法任务延期，未登记调试完成。
+
+- 10/28记录近期又出现2pcs掉线异常，样品已给李斌。
+
+- 10/30融合上位机初版已提供，待确定姿态供应商后细化，织物部分仍需修改。
+
+- 织物第二次打样行动10/30记为完成；最新10/29物流文字仍为当晚发货、预计10/30收到。实际收样及效果尚未明确记录。
+
+- 独立SDK行动10/29最新进展为尚未开始开发，与融合行动中的上位机适配节点分开保留。
+
+**未关闭问题（2个）**
+
+#### 1208采集板闪灯无信号、重烧后恢复（根因待查）（ISS-64771663）
+
+- 负责人：李文轩。正式状态：OPEN（未关闭）。
+
+- 现象与影响：现场1208采集板闪灯无信号，重烧后恢复，影响连接和生产测试。历史曾称“固件丢失”，但该根因尚未验证。
+
+- 根因记录：尚未确认。
+
+- 措施：梳理历史和当前样品状态，复现并收集证据。初步分析后再确定验证和整改安排。
+
+- 当前判断与待验证：近期新增2pcs异常，样品已交李斌。正式问题主责李文轩，当前分析行动主责李斌，分别保留。
+
+- 问题最新进展录入：2026-09-07 20:40:29。字段更新：2026-10-10 15:25:12。
+
+- 已关联未结行动：[分析1208采集板会掉线并再也无法连接（ACT-987EA32F）](#ACT-987EA32F)。
+
+#### 模切醋酸布无法稳定覆盖电极走线（ISS-7C59E21D）
+
+- 负责人：未登记。正式状态：OPEN（未关闭）。
+
+- 现象与影响：醋酸布有弹性和粘性，人工贴装易偏斜。现尺寸不能稳定覆盖电极走线，可能造成绝缘覆盖不足。
+
+- 根因记录：当前判断为尺寸余量不足，材料弹性、粘性和人工贴装偏差共同造成覆盖不足，尚待验证。
+
+- 措施：临时手工补贴未覆盖区域；后续扩大模切尺寸并验证实际贴装覆盖效果。
+
+- 当前判断与待验证：负责人未登记。本周未登记覆盖效果验证结果。
+
+- 问题最新进展录入：未登记。字段更新：2026-09-01 17:06:57。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（4条）**
+
+#### 开发SDK（ACT-3194B593）
+
+- 主责：李文轩。当前执行人：未指定。正式状态：进行中。
+
+- 整体期限：2026-11-03。未到期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 明确需求；负责人李文轩；2026-10-22；已完成。
+
+- 最新进展录入：2026-10-29 11:09:34。
+
+尚未开始开发
+
+- 完成标准（正式字段原文）：
+
+完成SDK开发并交付可用版本，具体功能范围以需求确认结果为准。
+
+#### 开发TS1208采集卡（ACT-28A137B7）
+
+- 主责：张荣俊。当前执行人：李斌。正式状态：进行中。
+
+- 整体期限：2026-10-30。今日到期，不算逾期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 设计 PCBA；负责人张荣俊；2026-10-16；已完成。
+
+- 最新进展录入：2026-10-30 15:35:26。
+
+由于逆向及温补算法延期
+
+- 完成标准（正式字段原文）：
+
+完成TS1208采集卡设计制作、调试及测试，形成可用采集卡和设计版本、调试测试记录；设计发版节点完成不等于整项完成。具体功能、性能及验证指标在对应阶段明确，不推测。
+
+#### 分析1208采集板会掉线并再也无法连接（ACT-987EA32F）
+
+- 主责：李斌。当前执行人：未指定。正式状态：进行中。
+
+- 整体期限：2026-10-30。今日到期，不算逾期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-10-28 14:39:36。
+
+近期又出现2pcs，不良样品已经给李斌
+
+- 完成标准（正式字段原文）：
+
+形成初步分析记录，至少包含历史发生情况、当前样品状态、复现情况、证据、可能原因和下一步验证安排。
+
+#### 开发姿态与触觉融合数采手套（ACT-38D9B437）
+
+- 主责：田浩。当前执行人：李文轩。正式状态：进行中。
+
+- 整体期限：2026-10-30。今日到期，不算逾期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 方案选型；负责人田浩；2026-10-16；已完成。
+
+  - 上位机SDK适配；负责人李文轩；2026-10-23；已完成。
+
+  - 采集验证与样机交付；负责人田浩；2026-10-30；待处理，节点今日到期。
+
+- 最新进展录入：2026-10-30 15:36:14。
+
+目前已经提供一个初版的上位机软件，确定方案（姿态供应商）后再细化。织物部分仍需要修改
+
+- 完成标准（正式字段原文）：
+
+完成第三方姿态模块与我司触觉模块集成，交付可用数采手套样机；具备手部姿态与触觉数据采集能力，保留集成方案及联合采集测试记录。
+
+**搁置行动（1条）**
+
+#### 1208串扰优化（ACT-7ADCE6D1）
+
+- 主责：余庚。当前执行人：未指定。正式状态：搁置。
+
+- 整体期限：未登记。搁置，历史日期不计逾期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：未登记。
+
+未登记行动进展。
+
+- 完成标准（正式字段原文）：
+
+未登记
+
+- 搁置原因：未登记。
+
+- 恢复条件：未登记。与掉线分析分别跟踪。
+
+本项不列为正在推进的承诺。
+
+**节点差异与后续计划**
+
+- TS1208、融合手套、掉线分析整体期限均为10/30，今日到期不算逾期。
+
+- 融合行动的上位机SDK适配节点已完成，独立SDK行动尚未开发；适配完成不能替代独立SDK全部范围。
+
+- 织物行动完成与未登记实际收样的文字差异保留。
+
+- 先确认织物实际到货与改善效果、姿态供应商，再明确采集验证和样机交付时间。
+
+- SDK整体期限11/3，需确认开发安排。TS1208调试及掉线分析仍需结果。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+### RS-QN-2.0-EV
+
+项目负责人：杨丽民。正式状态：进行中。
+
+**当前进度：**样品软件Bug未解决，等待嵌入式资源；试产搁置。
+
+最新进展录入：2026-10-30 15:57:25（北京时间）。
+
+**本周进展**
+
+- 10/27记录样品遇到软件Bug，需要嵌入式解决。
+
+- 10/28原计划10/30尝试解决；10/30最新记录本周嵌入式忙碌，改为下周确认解决时间。
+
+**未关闭问题（1个）**
+
+#### 最小触发力改善尚待实验验证（ISS-D8786847）
+
+- 负责人：杨丽民。正式状态：OPEN（未关闭）。
+
+- 现象与影响：根据周末事实建立性能改善问题，具体样品、当前值及验收阈值待补，不编造不良率。
+
+- 根因记录：未登记
+
+- 措施：不做硅胶，从碳膜方向改善最小触发力。160pcs加工属于EV；保留原40＋100需求与160pcs加工口径差异，切样后实测验证，尚未确认改善通过。
+
+- 当前判断与待验证：旧措施为碳膜方向；本周EV当前阻塞为软件Bug，不把两者当作同一已解决问题。
+
+- 问题最新进展录入：2026-09-09 14:09:52。字段更新：2026-09-09 14:08:54。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（3条）**
+
+#### EV样品制作（ACT-397C6E4A）
+
+- 主责：陈德川。当前执行人：李斌。正式状态：进行中。
+
+- 整体期限：2026-11-02。未到期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-10-30 15:57:25。
+
+本周嵌入式忙碌，等下周确认BUG解决时间
+
+- 完成标准（正式字段原文）：
+
+未登记
+
+#### 编制EV试产SOP（ACT-31C66EB8）
+
+- 主责：刘哲。当前执行人：刘哲。正式状态：进行中。
+
+- 整体期限：2026-11-02。未到期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：未登记。
+
+未登记行动进展。
+
+- 完成标准（正式字段原文）：
+
+未登记
+
+#### 开发EV代工厂（ACT-68885671）
+
+- 主责：罗茜茜。当前执行人：罗茜茜。正式状态：进行中。
+
+- 整体期限：2026-10-31。未到期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-10-14 15:01:00。
+
+明确回复月底前开发
+
+- 完成标准（正式字段原文）：
+
+未登记
+
+**搁置行动（1条）**
+
+#### 开展EV试产（ACT-57E07FF0）
+
+- 主责：刘哲。当前执行人：未指定。正式状态：搁置。
+
+- 整体期限：未登记。搁置，历史日期不计逾期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-10-13 10:26:41。
+
+目前2.0这个项目还在做硅胶的测试验证，还在更换硅胶，还没有达到量产标准。
+
+- 完成标准（正式字段原文）：
+
+未登记
+
+- 搁置原因：硅胶测试验证尚未达到量产标准。
+
+- 恢复条件：正式恢复条件及时间未登记。
+
+本项不列为正在推进的承诺。
+
+**节点差异与后续计划**
+
+- 样品行动期限11/2，但最新文字只承诺下周确认Bug时间，不能写为11/2修复完成。
+
+- 旧项目摘要仍为技术问题解决及准备转产，与当前Bug和试产搁置不一致。
+
+- 在11/2所在周确认Bug处理节点，试产SOP行动整体期限11/2。
+
+- 代工厂开发原期限10/31，最新进展仍为10/14的月底开发回复，需核对结果。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+### TS-HBD-1.0-座椅柔性织物垫
+
+项目负责人：余庚。正式状态：进行中。
+
+**当前进度：**末批19套已发货；遗留ADC问题状态及受环境影响的复现仍需跟踪。
+
+最新进展录入：2026-10-30 15:55:24（北京时间）。
+
+**本周进展**
+
+- 10/28客户确认可以发货。10/30末批19套行动登记已发货并完成。
+
+- 本周未登记新的ADC异常关闭记录，发货不等于客户验收或问题关闭。
+
+**未关闭问题（3个）**
+
+#### ADC值异常抖动（ISS-AAB6A552）
+
+- 负责人：李大军。正式状态：OPEN（未关闭）。
+
+- 现象与影响：ADC值出现异常抖动，具体发生场景、影响范围及复现条件待确认。
+
+- 根因记录：待确认。
+
+- 措施：未登记
+
+- 当前判断与待验证：暂无新的问题进展，不与笔记本充电场景或阈值问题自行合并。
+
+- 问题最新进展录入：未登记。字段更新：2026-10-21 18:23:27。
+
+- 已关联未结行动：[解决笔记本充电时ADC闪烁（ACT-6DAA7E81）](#ACT-6DAA7E81)。
+
+#### 笔记本充电时ADC闪烁（ISS-AA44A07F）
+
+- 负责人：余庚。正式状态：OPEN（未关闭）。
+
+- 现象与影响：笔记本接入充电器后，ADC出现闪烁，内部已复现。该异常尚未解决，影响产品交付。
+
+- 根因记录：待定位。
+
+- 措施：未登记
+
+- 当前判断与待验证：关联行动已搁置。10/21更新版本后未复现，复现受环境影响；问题仍OPEN。
+
+- 问题最新进展录入：未登记。字段更新：2026-10-19 18:22:25。
+
+- 已关联未结行动：[解决笔记本充电时ADC闪烁（ACT-6DAA7E81）](#ACT-6DAA7E81)。
+
+#### 客户阈值设置过低导致数值跳动，滤波效果待验证（ISS-D9A24633）
+
+- 负责人：李大军。正式状态：OPEN（未关闭）。
+
+- 现象与影响：客户9/7测试反馈新异常，具体现象和影响待补充。李大军主责，李文轩、张荣俊排查；收集样品、软硬件版本、操作和日志，不提前判定为上位机或硬件设计问题。 协助：李文轩、张荣俊。
+
+- 根因记录：9/8用户判断为客户阈值设置太低。
+
+- 措施：无需改硬件的方向保留；上位机增加降噪算法（原方案含高通滤波），记录阈值、版本及处理前后数据，效果验证后再关闭。
+
+- 当前判断与待验证：客户确认过串扰与颜色闪烁改善，问题台账仍OPEN；发货不自动关闭本问题。
+
+- 问题最新进展录入：2026-09-10 12:07:13。字段更新：2026-09-10 12:07:12。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（0条）**
+
+未登记。
+
+**搁置行动（1条）**
+
+#### 解决笔记本充电时ADC闪烁（ACT-6DAA7E81）
+
+- 主责：李斌。当前执行人：李斌。正式状态：搁置。
+
+- 整体期限：2026-10-26。搁置，历史日期不计逾期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：2026-10-21 11:22:58。
+
+嵌入式更新了一个版本，但今天已经无法复现了。不管是硬件改过的还是没改过的，都没有该异常现象。该问题的复现受环境影响很大。
+
+- 完成标准（正式字段原文）：
+
+完成异常改善及复测，确认满足本订单客户验收要求，保留改善和测试记录。
+
+- 搁置原因：更新版本后无法复现，复现受环境影响。
+
+- 恢复条件：正式恢复条件未登记；问题未关闭。
+
+本项不列为正在推进的承诺。
+
+**节点差异与后续计划**
+
+- 旧排期仍显示10/16出货、未开始，与10/30实发行动记录不同。
+
+- 笔记本充电ADC闪烁行动已搁置：10/21记录更新版本后无法复现，且复现受环境影响。问题仍开放。
+
+- 跟进本批收货及客户使用结果，出现可复现的ADC异常时按现有问题继续验证。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+### TS-MD-3232-STD-V2.0
+
+项目负责人：余庚。正式状态：进行中。
+
+**当前进度：**标定算法完成，V2.0通过内部测试；小型化版本已发板。
+
+最新进展录入：2026-10-30 15:49:50（北京时间）。
+
+**本周进展**
+
+- 10/27登记3232标定算法已完成，10/28行动正式完成。
+
+- 10/30登记V2.0效果通过内部测试，小型化版本发板，预计11/11左右回料。
+
+- 10/27记录其硬件架构与6464 V2.0基本一致，可用。该结论不代表统一性能标准已完成。
+
+**未关闭问题（0个）**
+
+未登记未关闭问题。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（1条）**
+
+#### TS 32×32 阵列采集卡-V2.0（ACT-462ED4F4）
+
+- 主责：黄德超。当前执行人：黄德超。正式状态：进行中。
+
+- 整体期限：2026-11-11。未到期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 硬件设计；负责人黄德超；2026-09-17；已完成。
+
+  - 物料入库；负责人未登记；2026-09-21；已完成。
+
+  - 嵌入式调试；负责人陈晓宇；2026-09-30；已完成。
+
+  - 产品测试；负责人黄德超；2026-10-16；已完成。
+
+- 最新进展录入：2026-10-30 15:49:50。
+
+3232效果通过军哥测试，小型化的版本发板，预计11/11左右回料
+
+- 完成标准（正式字段原文）：
+
+冻结本次打样版本及资料，完成外发并取得厂家接单回执；另外登记到货计划。
+
+**搁置行动（0条）**
+
+未登记。
+
+**节点差异与后续计划**
+
+- 项目旧摘要30%多与约3%的串扰估计未采用统一评价标准，不作为本周定量改善结论。
+
+- 黄德超跟进小型化板回料，现行动整体期限及预计回料时间为11/11，未另造下周完成承诺。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+### PS-SJ-260904-汽车座椅感应
+
+项目负责人：陈德川。正式状态：进行中。
+
+**当前进度：**嵌入式已提供温补算法，等待材料部门确认后续测试计划。
+
+最新进展录入：2026-10-30 15:53:21（北京时间）。
+
+**本周进展**
+
+- 10/27嵌入式暂未启动，10/28启动处理。
+
+- 10/30登记温补算法已提供，材料部门下一步未确定；尚无补偿效果验证结论。
+
+**未关闭问题（0个）**
+
+未登记未关闭问题。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（1条）**
+
+#### 汽车座椅温补算法（ACT-A4CFFFEB）
+
+- 主责：李斌。当前执行人：陈德川。正式状态：进行中。
+
+- 整体期限：2026-11-02。未到期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 数据问题讨论会；负责人未登记；2026-09-29；已完成。
+
+- 最新进展录入：2026-10-30 15:53:21。
+
+嵌入式已经提供温补算法，待材料部门确认下一步计划
+
+- 完成标准（正式字段原文）：
+
+形成可供测试验证的温补算法及对应版本，交付测试。
+
+**搁置行动（1条）**
+
+#### 通过1208验证后设计一拖三转接板（ACT-FE4C8D9B）
+
+- 主责：张荣俊。当前执行人：未指定。正式状态：搁置。
+
+- 整体期限：未登记。搁置，历史日期不计逾期。
+
+- 当前节点：未登记。
+
+- 最新进展录入：未登记。
+
+未登记行动进展。
+
+- 完成标准（正式字段原文）：
+
+1208验证通过，转接板设计输出及评审完成。
+
+- 搁置原因：有前置验证条件，未登记其他搁置原因。
+
+- 恢复条件：1208验证通过后设计转接板；恢复时间未登记。
+
+本项不列为正在推进的承诺。
+
+**节点差异与后续计划**
+
+- 项目旧摘要“现有数据无规律”不能覆盖本周已提供算法的进展。
+
+- 算法交付不等于材料验证通过。
+
+- 材料部门确认样品、测试及结果安排，行动期限11/2。主责李斌、当前执行人陈德川分别保留。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+### RS-XY-261020-夹爪
+
+项目负责人：杨丽民。正式状态：待启动。
+
+**当前进度：**3个样品已制作，等待包装及实际发货确认；41对传感器按计划组织。
+
+最新进展录入：2026-10-29 11:10:31（北京时间）。
+
+**本周进展**
+
+- 10/28记录当日制作样品、次日做检测报告；产品提供节点已完成。
+
+- 10/28最新交付进展仍为彩盒未到，预计周五10/30到达，尚未登记实发。
+
+- 夹持表面改善行动10/29完成，结论为不需要修改；夹持不稳问题仍为OPEN。
+
+- 41对配套交付的确认及询价节点已完成，当前供应商制板贴片进行中。节点登记不等于已交付41对。
+
+**未关闭问题（1个）**
+
+#### 夹爪对部分物品夹持不稳（ISS-8D64B4AD）
+
+- 负责人：杨丽民。正式状态：OPEN（未关闭）。
+
+- 现象与影响：前两批终端反馈部分物品夹不住，并指出夹爪平面过于光滑，影响相关物品的夹持使用。具体物品、夹持工况、影响数量及异常发生日期待确认。
+
+- 根因记录：待验证。表面过于光滑为邮件反馈描述，尚无复现及分析结论。
+
+- 措施：先确认反馈物品和工况，再复现并改善表面。验证夹持、传感及标定效果，明确本批版本。关闭需有约定工况、判据及导入证据；客户确认范围另定。
+
+- 当前判断与待验证：10/29夹持表面改善行动完成，记录不需要修改；本问题仍开放，未登记关闭依据。
+
+- 问题最新进展录入：未登记。字段更新：2026-10-27 17:53:04。
+
+- 已关联未结行动：[完成41对夹爪传感器配套交付（ACT-1A24ABA6）](#ACT-1A24ABA6)。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（2条）**
+
+#### 完成3个视触觉夹爪样产品交付（ACT-8A9DE26B）
+
+- 主责：杨丽民。当前执行人：未指定。正式状态：等待反馈。
+
+- 整体期限：2026-10-29。整体逾期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 提供视触觉夹爪产品；负责人王国庆；2026-10-28；已完成。
+
+- 最新进展录入：2026-10-28 15:26:38。
+
+彩盒还没到，要到周五
+
+- 完成标准（正式字段原文）：
+
+交付3个产品，型号和配置符合确认结果。 按确认的测试项目和验收要求完成验证，保留产品版本、测试结果和交付记录。
+
+#### 完成41对夹爪传感器配套交付（ACT-1A24ABA6）
+
+- 主责：杨丽民。当前执行人：罗茜茜。正式状态：进行中。
+
+- 整体期限：2026-11-20。未到期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 确认邮件并下单；负责人杨丽民；2026-10-20；已完成。
+
+  - 完成供应链询价；负责人杨丽民；2026-10-22；已完成。
+
+  - 完成供应商制板贴片；负责人杨丽民；2026-11-14；进行中。
+
+  - 完成物料转入；负责人杨丽民；2026-11-16；待处理。
+
+  - 完成41对夹爪贴碳膜；负责人杨丽民；2026-11-19；待处理。
+
+  - 完成41对夹爪标定测试；负责人杨丽民；2026-11-20；待处理。
+
+  - 发货第1批10对夹爪；负责人杨丽民；2026-11-17；待处理。
+
+  - 发货第2批10对夹爪；负责人杨丽民；2026-11-18；待处理。
+
+  - 发货第3批10对夹爪；负责人杨丽民；2026-11-19；待处理。
+
+  - 发货末批11对夹爪；负责人杨丽民；2026-11-20；待处理。
+
+- 最新进展录入：未登记。
+
+未登记行动进展。
+
+- 完成标准（正式字段原文）：
+
+4批按10、10、10、11对合计交付41对，配对标识与标定数据对应，配对结果符合确认的一致性要求。 每对2组长短通讯线齐备，备用量符合确认结果；如转接器纳入供货，规格和数量与约定一致。 产品与线材按确认的测试要求完成检查，保留本批版本、配对清单、测试数据及各批出货记录。
+
+**搁置行动（0条）**
+
+未登记。
+
+**节点差异与后续计划**
+
+- 正式项目状态仍为待启动，样品相关行动已推进；按正式字段保留差异。
+
+- 3个样品行动整体期限10/29，当前已逾期，不能以制作节点完成替代实发。
+
+- 夹持表面无需修改不等于夹持问题已关闭。
+
+- 核对3件样品包装、报告与实际发货。
+
+- 41对总交付11/20：供应商制板贴片11/14、物料转入11/16；4批10、10、10、11对，按11/17至11/20发货。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+### PS-VSNX-DOE2-超高密度
+
+项目负责人：余庚。正式状态：进行中。
+
+**当前进度：**二次采样等待电阻板复核，技术结论未更新。
+
+最新进展录入：2026-10-14 14:20:34（北京时间）。
+
+**本周进展**
+
+本周未登记新进展。
+
+**未关闭问题（0个）**
+
+未登记未关闭问题。
+
+**开放风险**
+
+正式台账未登记开放风险。未关闭问题、验证限制及依赖见上述内容，不据此表述为没有风险。
+
+**当前行动（1条）**
+
+#### VXN-128 x 128阵列采集卡-时序款（ACT-BCC067F0）
+
+- 主责：刘俊。当前执行人：未指定。正式状态：进行中。
+
+- 整体期限：2026-11-02。未到期。
+
+- 节点（含已完成节点，按看板顺序）：
+
+  - 转接板入库；负责人罗茜茜；2026-09-21；已完成。
+
+  - 初步调试；负责人刘俊；2026-09-23；已完成。
+
+  - 转接板V1.1制作；负责人李行能；2026-10-12；已完成。
+
+  - 客户调试效果反馈；负责人余庚；2026-09-29；已完成。
+
+  - 新时序验证；负责人刘俊；2026-10-10；已完成。
+
+- 最新进展录入：2026-10-14 14:20:34。
+
+目前看来，二次采样可能会没什么用，还在验证的过程中，需要等电阻板到了之后，再次出一个新的结论
+
+- 完成标准（正式字段原文）：
+
+供应商承诺交期和当前制作状态已反馈，记录可追查。
+
+**搁置行动（0条）**
+
+未登记。
+
+**节点差异与后续计划**
+
+- 最新行动进展录于10/14，本周未登记新进展。全部旧节点已完成，正式总行动仍进行中。
+
+- 现行动整体期限11/2。先确认电阻板状态、实际试验及可输出结论，不能将旧节点完成当成本周新成果。
+
+[返回项目目录](#panel-D) · [返回顶部](#top)
+
+</textarea>
+
+</body>
+</html>
